@@ -10,8 +10,9 @@
 - Repo clonado: `git@github.com:elijahizar/animal-rescue.git` (commit inicial `8641f53`)
 - Plan de producto aprobado (`docs/plan.md`)
 - Este plan de ejecución creado
-- Entorno: Node 24.14.1, npm 11.11.0, git 2.43.0
 - Directorio de trabajo: `/home/elijah/Documents/Projects/daniel/animal-rescue`
+- **FASE 0 completada** (scaffold Astro v7, shell visual, arquitectura i18n `/fr/`)
+- Next: FASE 1 — tracer bullet (ficha guépard). Validar con el usuario antes de continuar.
 
 ---
 
@@ -19,25 +20,25 @@
 
 ### 0.1 Git y repo
 - [x] Clonar repo GitHub en directorio actual
-- [ ] Añadir `.gitignore` (node_modules/, dist/, .astro/) — viene con el template Astro
-- [ ] Licencias: MIT (código) + CC BY-SA 4.0 (contenido) — incluir en commit inicial si el usuario lo confirma
+- [x] Añadir `.gitignore` (node_modules/, dist/, .astro/) — viene con el template Astro
+- [ ] Licencias: MIT (código) + CC BY-SA 4.0 (contenido) — omitidas por decisión del usuario (2026-08-05)
 
 ### 0.2 Scaffold de Astro
-- [ ] `npm create astro` (template minimal, TypeScript, npm) en el directorio actual
-- [ ] Verificar build local: `npm run dev` y `npm run build`
-- [ ] Commit: `chore: scaffold astro`
+- [x] `npm create astro` (template minimal, TypeScript, npm) en el directorio actual
+- [x] Verificar build local: `npm run dev` y `npm run build`
+- [x] Commit: `chore: scaffold astro`
 
 ### 0.3 Base visual (shell navegable)
-- [ ] Tokens de diseño en CSS: verde bosque `#2D6A4F`, crema `#FEFAE0`, naranja `#E76F51`, neutros, tipografía
-- [ ] Layout raíz (`BaseLayout`): header con nav (AIDE · INFOS · CARTE · AIDER · À PROPOS), footer con legal
-- [ ] Estilo moderno/vibrante, fotos protagonistas
-- [ ] Commit: `feat: shell visual (layout, header, footer, tokens)`
+- [x] Tokens de diseño en CSS: verde bosque `#2D6A4F`, crema `#FEFAE0`, naranja `#E76F51`, neutros, tipografía
+- [x] Layout raíz (`BaseLayout`): header con nav (AIDE · INFOS · CARTE · AIDER · À PROPOS), footer con legal
+- [x] Estilo moderno/vibrante, fotos protagonistas
+- [x] Commit: `feat: shell visual (layout, header, footer, tokens)`
 
 ### 0.4 Arquitectura i18n
-- [ ] Config `src/i18n`: `fr` como idioma por defecto, `src/pages/fr/` como raíz de contenido
-- [ ] Redirect de `/` → `/fr/` (o idioma raíz)
-- [ ] Estructura de Content Collections por locale (carpetas `fr/` al menos)
-- [ ] Commit: `feat: arquitectura i18n (fr default)`
+- [x] Config `src/i18n`: `fr` como idioma por defecto, `src/pages/fr/` como raíz de contenido
+- [x] Redirect de `/` → `/fr/` (routing `prefixDefaultLocale: true` + `redirectToDefaultLocale: true`)
+- [x] Estructura de Content Collections por locale (carpetas `fr/` al menos)
+- [x] Commit: `feat: arquitectura i18n (fr default)`
 
 ---
 
@@ -158,3 +159,6 @@ git status           # revisar antes de commits
 | 2026-08-05 | Repo `elijahizar/animal-rescue` clonado, primer commit |
 | 2026-08-05 | Este plan de ejecución creado |
 | 2026-08-05 | Islas interactivas: React · Rhinocéros noir (Diceros bicornis) · Dauphin commun (Delphinus delphis) |
+| 2026-08-05 | FASE 0 completada: scaffold Astro v7 (minimal, TS strict) + shell visual (tokens, BaseLayout, header/footer) |
+| 2026-08-05 | i18n: `src/i18n/index.ts`, rutas con prefijo `/fr/` (prefixDefaultLocale) + redirect `/` → `/fr/`, colecciones `src/content/{animals,news}/fr/` |
+| 2026-08-05 | Licencias MIT + CC BY-SA 4.0 **omitidas** por decisión del usuario (marcadas como pendiente, no bloquean) |
