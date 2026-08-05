@@ -19,9 +19,20 @@ interface Props {
 
 const { entry } = Astro.props;
 const title = entry.data.title;
+const description = excerpt(entry.body, 160);
+const pageUrl = getRelativeLocaleUrl('fr', `infos/${entry.id}`);
 ---
 
 <BaseLayout title="Article">
+	<Fragment slot="head">
+		<meta property="og:type" content="article" />
+		<meta property="og:title" content={`${title} — Animal Rescue`} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={pageUrl} />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content={`${title} — Animal Rescue`} />
+		<meta name="twitter:description" content={description} />
+	</Fragment>
 	<div class="container page">
 		<nav class="breadcrumb">
 			<a href={getRelativeLocaleUrl('fr', 'infos')}>← Infos</a>

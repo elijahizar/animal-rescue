@@ -101,7 +101,12 @@ const heroImage = animal.data.gallery[0]?.src;
 			<div class="gallery">
 				{animal.data.gallery.map((photo) => (
 					<figure class="gallery-item">
-						<img src={photo.src} alt={photo.alt ?? animal.data.name} loading="lazy" />
+						<img
+							src={photo.src}
+							alt={photo.alt ?? animal.data.name}
+							loading="lazy"
+							width="1280"
+						/>
 						<figcaption>
 							Photo :{' '}
 							<a href={photo.page} target="_blank" rel="noopener noreferrer">

@@ -125,13 +125,13 @@
 
 ### 2.5 Optimizaciones
 - [x] SEO básico: `@astrojs/sitemap` + `public/robots.txt` (site placeholder `animal-rescue.pages.dev`, actualizar en deploy)
-- [ ] `astro:assets` para todas las imágenes (AVIF/WebP, lazy-load)
-- [ ] OG tags + social sharing en todas las fichas y noticias
+- [x] OG tags + social sharing: fichas (og:image desde galería) y artículos de noticias (og:title/description/url). Lazy-load en galerías y home
+- [x] `astro:assets`: probado con imágenes remotas, descartado por decisión (ver bitácora) — hotlinking de thumbs de Wikimedia Commons con lazy-load
 
 ### 2.6 Despliegue Cloudflare Pages
-- [ ] Conectar repo a Cloudflare Pages (subdominio gratuito `animal-rescue.pages.dev` o similar)
-- [ ] Configurar build: `npm run build`, salida `dist/`
-- [ ] Cron diario: webhook/scheduled build que dispara redeploy → `fetch-rss.mjs` en build time
+- [~] Conectar repo a Cloudflare Pages (dashboard) — **bloqueado: requiere `wrangler login` del usuario**
+- [x] Configurar build: `npm run build`, salida `dist/`, script `npm run deploy` (wrangler pages deploy)
+- [ ] Cron diario: deploy webhook de Cloudflare Pages disparado por GitHub Actions `schedule` (o cron Worker) → `fetch-rss.mjs` se ejecuta en build time
 - [ ] Probar deploy y actualización de noticias
 - [ ] Commit final + tags/release si aplica
 
@@ -176,3 +176,5 @@ git status           # revisar antes de commits
 | 2026-08-05 | Fotos de las 3 últimas fichas seleccionadas y verificadas (HTTP 200) vía API de Wikimedia Commons (15 thumbs a 1280px, licencias CC BY-SA/CC BY/PD) |
 | 2026-08-05 | FASE 2.2-2.4: página `aider/` (acciones diarias + 6 ONGs), `apropos/`, `mentions-legales/`, `politique-de-confidentialite/`; blog INFOS completo (índice info + paginación 10/página + tags + artículo `/infos/[slug]`); home con especies à la une + últimas actualidades |
 | 2026-08-05 | RSS: 6 feeds verificados operativos (UICN, WWF—vacío hoy, Le Monde, Reporterre, Sciences & Avenir, Tara Océan); FNE/LPO/Geo/Le Point = URL rotas/403. 17 noticias tras limpiar falsos positivos (word-boundary matching `\b`) |
+| 2026-08-05 | FASE 2.5: sitemap + robots.txt (site placeholder `animal-rescue.pages.dev`); OG en fichas y noticias; lazy-load. `astro:assets` descartado: al optimizar 50 imágenes remotas en build, Wikimedia responde HTTP 429 (rate-limit por concurrencia) → builds lentos/frágiles para cron diario. Decisión: hotlinking de thumbs (1280px) de Commons + lazy-load |
+| 2026-08-05 | FASE 2.6 preparada pero bloqueada en auth: wrangler 4.119.0 instalado, `npx wrangler whoami` → sin autenticar. Pendiente `npx wrangler login` del usuario para crear Pages project y conectar |
