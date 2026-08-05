@@ -12,7 +12,8 @@
 - Este plan de ejecución creado
 - Directorio de trabajo: `/home/elijah/Documents/Projects/daniel/animal-rescue`
 - **FASE 0 completada** (scaffold Astro v7, shell visual, arquitectura i18n `/fr/`)
-- Next: FASE 1 — tracer bullet (ficha guépard). Validar con el usuario antes de continuar.
+- **FASE 1 ejecutada** (tracer bullet guépard: modelo datos, ficha, lista, carte, RSS) — falta revisión del usuario (1.7)
+- Next: revisión con el usuario de diseño/tono/estructura → Fase 2
 
 ---
 
@@ -47,46 +48,46 @@
 > Objetivo: validar TODA la cadena técnica (contenido, imágenes, mapa, RSS, i18n) con 1 especie antes de multiplicar contenido.
 
 ### 1.1 Modelo de datos (Content Collections + Zod)
-- [ ] Colección `animals` — schema: slug, nombre (fr), nombre scientifique, statut IUCN (enum CR/EN/VU/NT/LC + color badge), galería `[{src, crédit, licence}]`, description (markdown), causes (array de la taxonomía), comment aider (markdown), regiones (ids → colección `regions`), tags
-- [ ] Colección `regions` — schema: id, animalId, label (fr), lat, lng
-- [ ] Colección `news` — schema: slug, título, fecha, url fuente, tag animal, excerpt
-- [ ] Taxonomía de causas en constantes compartidas (fr): déforestation, braconnage, pollution, changement climatique, perte d'habitat, surpêche, espèces invasives, trafic d'espèces
-- [ ] Rutas de contenido por locale (`src/content/animals/fr/`, `src/content/news/fr/`)
+- [x] Colección `animals` — schema: slug, nombre (fr), nombre scientifique, statut IUCN (enum CR/EN/VU/NT/LC + color badge), galería `[{src, crédit, licence}]`, description (markdown), causes (array de la taxonomía), comment aider (markdown), regiones (ids → colección `regions`), tags
+- [x] Colección `regions` — schema: id, animalId, label (fr), lat, lng (+ `continent` para filtros de lista)
+- [x] Colección `news` — schema: slug, título, fecha, url fuente, tag animal, excerpt
+- [x] Taxonomía de causas en constantes compartidas (fr): déforestation, braconnage, pollution, changement climatique, perte d'habitat, surpêche, espèces invasives, trafic d'espèces
+- [x] Rutas de contenido por locale (`src/content/animals/fr/`, `src/content/news/fr/`)
 
 ### 1.2 Contenido del guépard (Acinonyx jubatus)
-- [ ] Ficha completa en francés: descripción (~2 párrafos), causas (taxonomía), cómo ayudar (acciones concretas)
-- [ ] 4-6 fotos de Wikimedia Commons (verificar licencia libre y autor para crédito)
-- [ ] Regiones `lat/lng` (África subsahariana, Irán — población asiática)
-- [ ] Verificar estadísticas IUCN reales (población estimada, tendencia)
+- [x] Ficha completa en francés: descripción (~2 párrafos), causas (taxonomía), cómo ayudar (acciones concretas)
+- [x] 4-6 fotos de Wikimedia Commons (verificar licencia libre y autor para crédito) — 6 fotos CC BY-SA 2.0/2.5/4.0 y CC0
+- [x] Regiones `lat/lng` (África subsahariana, Irán — población asiática)
+- [x] Verificar estadísticas IUCN reales (población estimada, tendencia) — VU, ~6 500 ind. matures, tendencia a la baja (IUCN 2022)
 
 ### 1.3 Página ficha `/aide/guépard/`
-- [ ] Galería de fotos con créditos visibles
-- [ ] Badge de estatus IUCN con color
-- [ ] Causas con iconos
-- [ ] Sección "Comment aider" (específica de la especie)
-- [ ] Mini-mapa Leaflet con la zona de distribución
-- [ ] OG tags + social sharing en esta página
+- [x] Galería de fotos con créditos visibles
+- [x] Badge de estatus IUCN con color
+- [x] Causas con iconos
+- [x] Sección "Comment aider" (específica de la especie)
+- [x] Mini-mapa Leaflet con la zona de distribución
+- [x] OG tags + social sharing en esta página
 
 ### 1.4 Página lista `/aide/`
-- [ ] Tarjetas de animal (foto, nombre, estatus, continente)
-- [ ] Filtros por chips: causa, estatus IUCN, continente
-- [ ] Búsqueda por texto (nombre, nombre científico)
-- [ ] Isla interactiva React (según decisión: React + Leaflet)
+- [x] Tarjetas de animal (foto, nombre, estatus, continente)
+- [x] Filtros por chips: causa, estatus IUCN, continente
+- [x] Búsqueda por texto (nombre, nombre científico)
+- [x] Isla interactiva React (según decisión: React + Leaflet)
 
 ### 1.5 CARTE mínimo
-- [ ] Leaflet + OpenStreetMap (sin API key) en página `/carte/`
-- [ ] Markers del guépard, popup → enlace a la ficha
-- [ ] Mapa mundial
+- [x] Leaflet + OpenStreetMap (sin API key) en página `/carte/`
+- [x] Markers del guépard, popup → enlace a la ficha
+- [x] Mapa mundial
 
 ### 1.6 INFOS mínimo (validación RSS)
-- [ ] Script `fetch-rss.mjs` local: descarga 1-2 feeds, parseo XML, filtro por keywords (guépard, tigre, corail, baleine, IUCN…), salida a datos
-- [ ] Ejecución manual `npm run fetch-news` y verificación de salida
-- [ ] NOTA: el cron diario se configura en Fase 2 (Cloudflare)
+- [x] Script `fetch-rss.mjs` local: descarga 3 feeds (UICN France, WWF France, Le Monde Planète), parseo XML, filtro por keywords, salida a datos
+- [x] Ejecución manual `npm run fetch-news` y verificación de salida (12 noticias iniciales)
+- [x] NOTA: el cron diario se configura en Fase 2 (Cloudflare)
 
 ### 1.7 Validación y revisión
 - [ ] Revisión con el usuario: diseño, tono, estructura de la ficha
 - [ ] Ajustes
-- [ ] Commit: `feat: tracer bullet — ficha guépard + lista + mapa + rss`
+- [x] Commit: `feat: tracer bullet — ficha guépard + lista + mapa + rss`
 
 ---
 
@@ -162,3 +163,8 @@ git status           # revisar antes de commits
 | 2026-08-05 | FASE 0 completada: scaffold Astro v7 (minimal, TS strict) + shell visual (tokens, BaseLayout, header/footer) |
 | 2026-08-05 | i18n: `src/i18n/index.ts`, rutas con prefijo `/fr/` (prefixDefaultLocale) + redirect `/` → `/fr/`, colecciones `src/content/{animals,news}/fr/` |
 | 2026-08-05 | Licencias MIT + CC BY-SA 4.0 **omitidas** por decisión del usuario (marcadas como pendiente, no bloquean) |
+| 2026-08-05 | FASE 1 (tracer bullet guépard) ejecutada. `content.config.ts` con loaders de `astro/loaders` (glob por locale) |
+| 2026-08-05 | Decisiones de implementación: colección `regions` con campo `continent` (filtro de lista); galería con `src/author/page/licence`; `aider` markdown renderizado con `marked` |
+| 2026-08-05 | Guépard: VU, ~6 500 individus matures, tendance en diminution (IUCN 2022); 6 fotos Commons verificadas (CC BY-SA / CC0) |
+| 2026-08-05 | Leaflet 1.9 + react-leaflet 5 (React 19); mapas con `client:only="react"` (Leaflet no se ejecuta en SSR) |
+| 2026-08-05 | `fetch-rss.mjs`: feeds operativos = UICN France, WWF France, Le Monde Planète (LPO: URL 404, pendiente verificar); 12 noticias iniciales filtradas por keywords |

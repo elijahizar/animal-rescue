@@ -1,0 +1,224 @@
+---
+import { getCollection, render } from 'astro:content';
+import { marked } from 'marked';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Causes from '../../../components/Causes.astro';
+import AnimalMap from '../../../components/AnimalMap.tsx';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { IUCN_STATUS } from '../../../lib/iucn';
+import type { CauseId } from '../../../lib/causes';
+
+export async function getStaticPaths() {
+	const animals = await getCollection('animals');
+	const regions = await getCollection('regions');
+	return animals.map((animal) => ({
+		params: { slug: animal.data.slug },
+		props: { animal, regions },
+	}));
+}
+
+interface Props {
+	animal: Awaited<ReturnType<typeof getCollection<'animals'>>>[number];
+	regions: Awaited<ReturnType<typeof getCollection<'regions'>>>[number][];
+}
+
+const { animal, regions } = Astro.props;
+const { Content } = await render(animal);
+
+const animalRegions = regions.filter((region) =>
+	animal.data.regions.includes(region.data.id),
+);
+
+const locale = 'fr';
+const pageUrl = getRelativeLocaleUrl(locale, `aide/${animal.data.slug}`);
+const causes = animal.data.causes as CauseId[];
+const status = IUCN_STATUS[animal.data.iucnStatus];
+const description = (animal.body ?? '').slice(0, 160).replace(/[*#_\n]/g, ' ').trim() + '…';
+const heroImage = animal.data.gallery[0]?.src;
+---
+
+<BaseLayout title={`${animal.data.name} (${animal.data.scientificName})`} description={description}>
+	<Fragment slot="head">
+		<meta property="og:type" content="article" />
+		<meta property="og:title" content={`${animal.data.name} — Animal Rescue`} />
+		<meta property="og:description" content={description} />
+		{heroImage && <meta property="og:image" content={heroImage} />}
+		<meta property="og:url" content={pageUrl} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={`${animal.data.name} — Animal Rescue`} />
+		<meta name="twitter:description" content={description} />
+		{heroImage && <meta name="twitter:image" content={heroImage} />}
+	</Fragment>
+
+	<div class="container fiche">
+		<nav class="breadcrumb">
+			<a href={getRelativeLocaleUrl(locale, 'aide')}>← Aide</a>
+		</nav>
+
+		<header class="fiche-header">
+			<div>
+				<h1>{animal.data.name}</h1>
+				<p class="fiche-scientific">{animal.data.scientificName}</p>
+			</div>
+			<span class="iucn-badge" style={`background: ${status.color};`}>
+				{animal.data.iucnStatus} · {status.label}
+			</span>
+		</header>
+
+		<section class="fiche-description">
+			<Content />
+		</section>
+
+		<section>
+			<h2>Causes du déclin</h2>
+			<Causes causes={causes} />
+		</section>
+
+		<section>
+			<h2>Comment aider</h2>
+			<div class="markdown" set:html={marked.parse(animal.data.aider) as string} />
+		</section>
+
+		<section>
+			<h2>Zone de répartition</h2>
+			<div class="mini-map">
+				<AnimalMap
+					regions={animalRegions.map((r) => ({
+						id: r.data.id,
+						label: r.data.label,
+						lat: r.data.lat,
+						lng: r.data.lng,
+						detailUrl: pageUrl,
+						detailLabel: 'Voir la fiche',
+					}))}
+					client:only="react"
+				/>
+			</div>
+		</section>
+
+		<section>
+			<h2>Galerie</h2>
+			<div class="gallery">
+				{animal.data.gallery.map((photo) => (
+					<figure class="gallery-item">
+						<img src={photo.src} alt={photo.alt ?? animal.data.name} loading="lazy" />
+						<figcaption>
+							Photo :{' '}
+							<a href={photo.page} target="_blank" rel="noopener noreferrer">
+								{photo.author}
+							</a>{' '}
+							· {photo.licence}
+						</figcaption>
+					</figure>
+				))}
+			</div>
+		</section>
+
+		<section class="share">
+			<h2>Partager</h2>
+			<button class="button share-btn" data-share="x" type="button">Partager sur X</button>
+			<button class="button share-btn" data-share="facebook" type="button">Partager sur Facebook</button>
+		</section>
+	</div>
+</BaseLayout>
+
+<script>
+	const url = window.location.href;
+	const title = document.title;
+	for (const btn of document.querySelectorAll<HTMLButtonElement>('.share-btn')) {
+		const kind = btn.dataset.share;
+		const link =
+			kind === 'x'
+				? `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`
+				: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+		btn.addEventListener('click', () => {
+			window.open(link, '_blank', 'noopener');
+		});
+	}
+</script>
+
+<style>
+	.breadcrumb {
+		margin-bottom: 1rem;
+		font-weight: 600;
+	}
+
+	.fiche-header {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 1rem;
+		justify-content: space-between;
+		margin-bottom: 1.5rem;
+	}
+
+	.fiche-scientific {
+		font-style: italic;
+		color: var(--color-muted);
+		font-size: var(--font-size-lg);
+		margin: 0.25rem 0 0;
+	}
+
+	.iucn-badge {
+		display: inline-block;
+		color: #fff;
+		font-weight: 700;
+		padding: 0.45rem 1rem;
+		border-radius: var(--radius-full);
+		font-size: 0.9rem;
+		letter-spacing: 0.03em;
+	}
+
+	.fiche section {
+		margin-top: var(--space-12);
+	}
+
+	.mini-map {
+		border-radius: var(--radius-md);
+		overflow: hidden;
+		box-shadow: var(--shadow-md);
+		border: 1px solid var(--color-border);
+	}
+
+	.gallery {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+		gap: 1.25rem;
+	}
+
+	.gallery-item {
+		margin: 0;
+		background: #fff;
+		border-radius: var(--radius-md);
+		overflow: hidden;
+		box-shadow: var(--shadow-sm);
+		border: 1px solid var(--color-border);
+	}
+
+	.gallery-item img {
+		width: 100%;
+		aspect-ratio: 4 / 3;
+		object-fit: cover;
+	}
+
+	.gallery-item figcaption {
+		padding: 0.6rem 0.9rem;
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+	}
+
+	.share {
+		display: flex;
+		gap: 0.75rem;
+		flex-wrap: wrap;
+		align-items: center;
+	}
+
+	.share h2 {
+		width: 100%;
+	}
+
+	.markdown h3 {
+		margin-top: 1.25rem;
+	}
+</style>

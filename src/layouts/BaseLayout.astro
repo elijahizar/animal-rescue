@@ -24,6 +24,7 @@ const pageTitle = `${title} · Animal Rescue`;
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="description" content={description} />
 		<title>{pageTitle}</title>
+		<slot name="head" />
 	</head>
 	<body>
 		<Header />

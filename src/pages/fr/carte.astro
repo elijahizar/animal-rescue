@@ -1,13 +1,51 @@
 ---
+import { getCollection } from 'astro:content';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-const title = 'Carte';
+import AnimalMap from '../../components/AnimalMap.tsx';
+import type { RegionMarker } from '../../components/AnimalMap.tsx';
+
+const locale = 'fr';
+const animals = await getCollection('animals');
+const regions = await getCollection('regions');
+
+const markers: RegionMarker[] = regions.flatMap((region) => {
+	const animal = animals.find((a) => a.data.slug === region.data.animalId);
+	return {
+		id: region.data.id,
+		label: region.data.label,
+		lat: region.data.lat,
+		lng: region.data.lng,
+		...(animal
+			? {
+					detailUrl: getRelativeLocaleUrl(locale, `aide/${animal.data.slug}`),
+					detailLabel: `${animal.data.name} — voir la fiche`,
+				}
+			: {}),
+	};
+});
 ---
 
-<BaseLayout title={title}>
+<BaseLayout title="Carte">
 	<div class="container">
-		<h1>Carte du monde</h1>
+		<h1>Carte des espèces menacées</h1>
 		<p class="text-muted">
-			Carte interactive Leaflet + OpenStreetMap prévue pour la Phase 1.
+			Cliquez sur un marqueur pour accéder à la fiche de l'espèce présente dans
+			cette région.
 		</p>
+
+		<div class="map">
+			<AnimalMap regions={markers} height={520} fitToMarkers={false} client:only="react" />
+		</div>
 	</div>
 </BaseLayout>
+
+<style>
+	.map {
+		margin-top: var(--space-8);
+		border-radius: var(--radius-md);
+		overflow: hidden;
+		border: 1px solid var(--color-border);
+		box-shadow: var(--shadow-md);
+	}
+</style>
