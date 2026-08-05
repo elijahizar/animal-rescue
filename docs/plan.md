@@ -5,14 +5,14 @@ Aplicación web para ayudar a salvar animales en peligro de extinción. Contenid
 ## Decisiones acordadas
 
 **Stack**
-- Astro (SSG) + islas interactivas (Leaflet, filtros/búsqueda)
+- Astro (SSG) + islas interactivas React (Leaflet, filtros/búsqueda)
 - Cloudflare Pages, subdominio gratuito
 - Cron diario = redeploy del sitio
 - Fetch de RSS en build time (script `fetch-rss.mjs` antes del build)
 - Sin backend, sin analítica, sin cookies
 
 **Contenido** (100% curado en francés, híbrido con IUCN Red List como referencia)
-- 10 especies iniciales: corail, tigre, rhinocéros, lion blanc, pingüino de Humboldt, thon rouge, dauphin, baleine bleue, guépard, requin blanc
+- 10 especies iniciales: corail, tigre, rhinocéros noir, lion blanc, pingüino de Humboldt, thon rouge, dauphin commun, baleine bleue, guépard, requin blanc
 - Nota: corail y thon rouge son grupos (no especies únicas) — se modelan como entrada con subespecies en el texto
 - Fichas en Content Collections por locale: nombre, nombre científico, estatus IUCN (badge), galería (3-6 fotos de Wikimedia Commons con crédito), descripción, causas (taxonomía reutilizable), cómo ayudar, regiones `lat/lng` compartidas con el mapa
 - Taxonomía de causas: déforestation, braconnage, pollution, changement climatique…
