@@ -19,10 +19,10 @@ Aplicación web para ayudar a salvar animales en peligro de extinción. Contenid
 - Noticias: feeds RSS francófonos, filtrado por keywords, últimas 30, blog con paginación y tags
 
 **News (INFOS)**
-- Automatización desde el día 1: cron diario (redeploy Cloudflare) dispara `fetch-rss.mjs`
-- Keyword matching automático para filtrar ruido
-- Retención: últimas 30 noticias
-- Blog tipo con paginación y búsqueda por tag
+- Importación en build time: `fetch-rss.mjs` antes de cada build (cron diario = redeploy, **pendiente** — hoy solo push a `main`)
+- Keyword matching automático con límites de palabra para filtrar ruido
+- Retención: últimas 30 noticias (archivos estables, no se sobrescriben)
+- Blog con paginación (10/página) y tags por especie
 
 **i18n**
 - Astro `src/i18n`, `fr` por defecto, estructura de Content Collections por locale
@@ -33,10 +33,10 @@ Aplicación web para ayudar a salvar animales en peligro de extinción. Contenid
 - Moderno/vibrante, verde bosque como primario, crema, acento naranja para CTAs
 
 **Extras**
-- OG tags + social sharing en las fichas
-- Lazy-load + optimización de imágenes con `astro:assets`
+- OG tags + social sharing en las fichas y noticias
+- Lazy-load sobre thumbnails de Wikimedia Commons (hotlinking; `astro:assets` descartado, ver ADR-0004)
 - Páginas legales: mentions légales + politique de confidentialité (sin cookies → sin banner)
-- Página `aider/` glogal: acciones diarias + ONGs con enlaces externos (sin donaciones)
+- Página `aider/` global: acciones diarias + ONGs con enlaces externos (sin donaciones)
 
 ## Páginas
 
@@ -49,18 +49,14 @@ Aplicación web para ayudar a salvar animales en peligro de extinción. Contenid
 - `/apropos/` → Misión del proyecto
 - `/mentions-legales/`, `/politique-de-confidentialite/` → Legal
 
-## Feeds RSS francófonos candidatos (verificar URLs en implementación)
+## Feeds RSS francófonos (verificados en implementación)
 
-- Comité français de l'UICN
-- WWF France
-- Le Monde — Planète/Climat
-- France Nature Environnement (FNE)
-- Geo
-- Sciences & Avenir / Le Point (environnement)
-- Fondation Tara Océan
-- LPO (Ligue pour la Protection des Oiseaux)
+Operativos: Comité français de l'UICN, WWF France, Le Monde — Planète,
+Reporterre, Sciences & Avenir, Fondation Tara Océan.
+Descartadas por URL rota/403: FNE, Geo, LPO, Le Point.
 
-Pool amplio porque el cron filtra por keywords (tigre, corail, guépard, baleine…). Empezar con 5-8 fuentes y ajustar tras ver volumen diario de noticias filtradas.
+Pool amplio porque el build filtra por keywords (tigre, corail, guépard, baleine…).
+Ajustar tras ver el volumen de noticias filtradas por build.
 
 ## Orden de implementación
 

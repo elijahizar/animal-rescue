@@ -1,43 +1,68 @@
-# Astro Starter Kit: Minimal
+# Animal Rescue
 
-```sh
-npm create astro@latest -- --template minimal
+Aplicación web para ayudar a salvar animales en peligro de extinción. Contenido
+100% en francés (multilingüe en el futuro). Sitio estático con Astro, sin backend,
+sin analítica, sin cookies.
+
+**En producción**: https://elijahizar.github.io/animal-rescue/fr/
+
+## Qué incluye
+
+- **Fichas de 10 especies** amenazadas (estatus IUCN, causas, cómo ayudar,
+  galería con créditos, mini-mapa de distribución)
+- **Mapa mundial interactivo** (Leaflet + OpenStreetMap)
+- **Blog de noticias** alimentado por 6 feeds RSS francófonos (UICN France, WWF,
+  Le Monde Planète, Reporterre, Sciences & Avenir, Tara Océan) actualizado en
+  cada build
+- **Páginas** Aider / À propos / legal (mentions légales, politique de
+  confidentialité)
+
+## Comandos
+
+```bash
+npm install        # instalar dependencias
+npm run dev        # servidor local (localhost:4321/animal-rescue/)
+npm run build      # build estático en dist/
+npm run preview    # previsualizar el build
+npm run fetch-news # importar noticias RSS (se ejecuta en el CI antes del build)
+npm run deploy     # fetch-news + build (el push a main despliega vía GitHub Actions)
+npx astro check    # chequeo de tipos/TS
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Estructura
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```
+.github/workflows/deploy.yml   pipeline (push a main → GitHub Pages)
+docs/                          plan, execution-plan, system-design, content-guidelines, adr/
+public/                        favicon, robots.txt
+scripts/fetch-rss.mjs          importación de noticias desde RSS
+src/
+  components/                  Header, Footer, Causes, AnimalMap (React), AnimalList (React)
+  content/                     animales, regiones y noticias por locale (fr)
+  content.config.ts            schemas Zod + loaders
+  i18n/                        configuración de locale
+  layouts/BaseLayout.astro     layout raíz
+  lib/                         causas, estatus IUCN, helpers de noticias
+  pages/fr/                    rutas públicas (home, aide, infos, carte, aider, apropos, legal)
+  styles/global.css            tokens de diseño
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Documentación
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- `docs/plan.md` — decisiones de producto
+- `docs/execution-plan.md` — plan de ejecución con estado y bitácora
+- `docs/system-design.md` — arquitectura y modelo de datos
+- `docs/content-guidelines.md` — estándar de contenido (cómo añadir especies)
+- `docs/adr/README.md` — decisiones técnicas (ADR)
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Despliegue
 
-## 🧞 Commands
+GitHub Pages (subpath `/animal-rescue/`). El workflow `.github/workflows/deploy.yml`
+compila y publica en cada push a `main` (y con `workflow_dispatch`). Noticias RSS
+se importan en build time (`npm run fetch-news`). Cron diario de redeploy:
+pendiente (añadir `schedule` al workflow).
 
-All commands are run from the root of the project, from a terminal:
+## Licencia de contenido
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Textos del sitio CC BY-SA 4.0 (por añadir). Fotografías de Wikimedia Commons con
+créditos visibles en cada ficha.

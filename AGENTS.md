@@ -8,7 +8,17 @@ astro dev --background
 
 Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
 
-## Documentation
+## Project documentation (read first)
+
+- `docs/plan.md` — decisions on the product (do not change without asking)
+- `docs/execution-plan.md` — executable plan with checkboxes and bitácora
+- `docs/system-design.md` — architecture, data model, deploy
+- `docs/content-guidelines.md` — content standards and checklists (required before adding species/regions/news)
+- `docs/adr/README.md` — technical decision records
+
+Rules: do not improvise changes to decisions found in the docs; commit only when prompted.
+
+## Astro documentation
 
 Full documentation: https://docs.astro.build
 

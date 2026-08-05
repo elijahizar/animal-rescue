@@ -15,6 +15,7 @@
 - **FASE 1 completada** (tracer bullet guépard) — revisión aprobada por el usuario (2026-08-05)
 - **FASE 2 COMPLETADA** (2026-08-05): 10 fichas + 36 regiones, `aider/`, `apropos/`, legal, blog INFOS con paginación/tags, optimizaciones SEO/OG, **deploy v1 en GitHub Pages** → https://elijahizar.github.io/animal-rescue/fr/ (workflow verde, URL verificada)
 - Next: **cron diario de redeploy** (pendiente) → mejoras de contenido/SEO/i18n
+- **FASE 3 COMPLETADA** (2026-08-05): documentación técnica y calidad al día (system-design, content-guidelines, 6 ADRs, session-kickoff, README, plan.md, AGENTS.md)
 
 ---
 
@@ -139,6 +140,52 @@
 
 ---
 
+## Fase 3 — Documentación técnica, consistencia y calidad
+
+> Objetivo: cerrar las brechas de documentación detectadas (README de plantilla, kickoff desactualizado, sin system design ni guías) para que cualquier sesión futura o agente pueda operar con calidad y consistencia. Todo aprobado por el usuario (2026-08-05).
+
+### 3.1 System design (`docs/system-design.md`)
+- [x] Arquitectura general (Astro SSG + islas React/Leaflet, sin backend)
+- [x] Modelo de datos: colecciones `animals` / `regions` / `news` + schemas
+- [x] Flujo de datos: RSS → `fetch-rss.mjs` → contenido estático → build → deploy
+- [x] i18n (fr default, prefijo, redirect) y estructura por locale
+- [x] Deploy GitHub Pages: base `/animal-rescue/`, workflow GH Actions, triggers
+- [x] Rendimiento y decisiones técnicas clave (hotlinking Commons, lazy-load)
+
+### 3.2 Guía de contenido (`docs/content-guidelines.md`)
+- [x] Esquema completo de ficha animal (frontmatter, body, reglas de francés)
+- [x] Cómo añadir una especie nueva (checklist: IUCN real, fotos Commons con crédito/licencia/URL 200, regiones lat/lng, causas de la taxonomía)
+- [x] Cómo añadir/ajustar feeds RSS y keywords
+- [x] Reglas de verificación de fuentes y calidad del francés
+
+### 3.3 ADRs (`docs/adr/`)
+- [x] ADR-0001 Stack: Astro SSG + React (Leaflet)
+- [x] ADR-0002 i18n: fr default con prefijo + redirect
+- [x] ADR-0003 Deploy: GitHub Pages (subpath) en vez de Cloudflare
+- [x] ADR-0004 Imágenes: hotlinking Wikimedia Commons en lugar de `astro:assets`
+- [x] ADR-0005 Noticias: RSS en build time (cron = redeploy)
+- [x] ADR-0006 Privacidad: sin analítica, sin cookies
+
+### 3.4 Actualizar `docs/session-kickoff.md`
+- [x] Estado de referencia al día (Fase 2 completa, deploy GitHub Pages, cron pendiente)
+- [x] Decisiones clave corregidas (GitHub Pages, hotlinking, 6 ONGs, cron pendiente)
+- [x] Referencias a system-design y content-guidelines
+
+### 3.5 Reescribir `README.md`
+- [x] Qué es el proyecto, URL en producción
+- [x] Comandos útiles (dev/build/fetch-news/deploy), estructura de carpetas
+- [x] Enlaces a los docs
+
+### 3.6 Coherencia `docs/plan.md` y `AGENTS.md`
+- [x] `plan.md`: cron "desde el día 1" → pendiente; `astro:assets` → hotlinking; ONGs (añadir UICN Comité français)
+- [x] `AGENTS.md`: enlazar system-design + content-guidelines como lecturas obligatorias
+
+### 3.7 Cierre
+- [x] `npm run build` + `astro check` sin errores
+- [x] Commit + push (docs)
+
+---
+
 ## Definición de listo (DoD) por sesión
 
 - Todos los cambios compilados: `npm run build` sin errores
@@ -184,3 +231,5 @@ git status           # revisar antes de commits
 | 2026-08-05 | Workflow `.github/workflows/deploy.yml` con triggers `push (main)` + `workflow_dispatch`. **Sin cron diario por ahora** (decisión del usuario: solo deploy en push; el `schedule` se añadirá en el futuro). build = npm ci + fetch-news + astro build + deploy-pages |
 | 2026-08-05 | Pendiente del usuario para terminar 2.6: activar GitHub Pages en Settings → Pages → Source "GitHub Actions" (1 vez) |
 | 2026-08-05 | **FASE 2 COMPLETADA**: deploy v1 verificado en producción — workflow `deploy-pages` verde (10s), URL `https://elijahizar.github.io/animal-rescue/fr/` con 200 en home/ficha/infos/sitemap; redirect `/animal-rescue/`→`/fr/` y hotlinking Commons OK. Pages ya estaba activado (`build_type: workflow`). Cron diario queda como mejora futura (decisión: solo push por ahora) |
+| 2026-08-05 | **FASE 3 planificada** (usuario: "incluye todo"): documentación técnica y calidad — system-design.md, content-guidelines.md, ADRs (6), actualizar session-kickoff/README/plan.md, AGENTS.md con enlaces. Pendiente de ejecución |
+| 2026-08-05 | **FASE 3 COMPLETADA**: creados `docs/system-design.md` (arquitectura, datos, flujo RSS, deploy, rendimiento) y `docs/content-guidelines.md` (esquema de ficha, fotos Commons, regiones, feeds, checklists); 6 ADRs en `docs/adr/README.md`; `session-kickoff.md` al día; README reescrito (proyecto real); `plan.md` coherente (cron pendiente, hotlinking, feeds verificados); AGENTS.md con lecturas obligatorias. Build + check limpios |
