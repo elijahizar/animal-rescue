@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://animal-rescue.pages.dev/sitemap-index.xml

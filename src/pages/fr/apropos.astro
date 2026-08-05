@@ -1,13 +1,150 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
 const title = 'À propos';
+const description =
+	'Animal Rescue : un site indépendant qui présente les espèces menacées, alerte sur les menaces et propose des actions concrètes.';
 ---
 
-<BaseLayout title={title}>
-	<div class="container">
-		<h1>À propos</h1>
-		<p class="text-muted">
-			La mission du projet sera présentée dans la Phase 2.
+<BaseLayout title={title} description={description}>
+	<header class="page-hero">
+		<div class="container">
+			<h1>À propos</h1>
+			<p class="subtitle">
+				Un site indépendant pour mieux connaître les espèces menacées, comprendre
+				les menaces et passer à l’action.
+			</p>
+		</div>
+	</header>
+
+	<section class="container section">
+		<h2>Notre mission</h2>
+		<p>
+			Animal Rescue a pour mission d’informer et de sensibiliser sur la
+			situation des espèces les plus menacées de la planète. Nous présentons
+			chaque animal avec des informations fiables, un statut de conservation
+			issu de la Liste rouge de l’UICN, et des manières concrètes de l’aider.
 		</p>
-	</div>
+		<p>
+			Face à la déforestation, au braconnage, à la pollution et au changement
+			climatique, il est facile de se sentir impuissant. Notre pari est
+			inverse : celui qui connaît et comprend une espèce est plus à même de la
+			protéger.
+		</p>
+	</section>
+
+	<section class="container section">
+		<h2>Nos valeurs</h2>
+		<div class="grid">
+			<article class="card">
+				<h3>Fiabilité</h3>
+				<p>
+					Chaque fiche indique son statut de conservation avec la source
+					scientifique de référence (UICN) et crédite les photographies.
+				</p>
+			</article>
+			<article class="card">
+				<h3>Indépendance</h3>
+				<p>
+					Le site ne collecte aucune donnée, n’affiche pas de publicité et ne
+					finance aucun intérêt commercial.
+				</p>
+			</article>
+			<article class="card">
+				<h3>Action</h3>
+				<p>
+					Chaque fiche propose des gestes concrets et vérifiés, du quotidien au
+					soutien aux organisations qui agissent sur le terrain.
+				</p>
+			</article>
+			<article class="card">
+				<h3>Respect</h3>
+				<p>
+					Les images proviennent de Wikimedia Commons et sont libres de droit,
+					avec crédits visibles pour leurs auteurs.
+				</p>
+			</article>
+		</div>
+	</section>
+
+	<section class="container section">
+		<h2>Ce que nous faisons</h2>
+		<ul class="features">
+			<li>
+				<strong>Des fiches espèces :</strong> description, statut IUCN, causes
+				de la menace et comment aider.
+			</li>
+			<li>
+				<strong>Une carte interactive</strong> des zones d’habitat de chaque
+				espèce présentée.
+			</li>
+			<li>
+				<strong>Une veille d’actualité</strong> en langue française sur les
+				espèces menacées, alimentée quotidiennement par des flux RSS
+				(observatoires, ONG, presse spécialisée).
+			</li>
+			<li>
+				<strong>Une page « Aider »</strong> pour passer de l’information à
+				l’action, sans jamais collecter de données personnelles.
+			</li>
+		</ul>
+	</section>
 </BaseLayout>
+
+<style>
+	.page-hero {
+		padding: var(--space-12) 0 var(--space-16);
+		background: linear-gradient(
+			145deg,
+			var(--color-forest) 0%,
+			var(--color-forest-dark) 100%
+		);
+		color: var(--color-cream);
+	}
+
+	.page-hero h1 {
+		color: var(--color-white);
+	}
+
+	.subtitle {
+		font-size: var(--font-size-xl);
+		max-width: 42rem;
+		color: var(--color-cream);
+		opacity: 0.95;
+	}
+
+	.section {
+		padding: var(--space-12) 0;
+	}
+
+	.section h2 {
+		margin-bottom: var(--space-4);
+	}
+
+	.section p {
+		max-width: 46rem;
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+		gap: var(--space-6);
+	}
+
+	.card {
+		background: var(--color-white);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-md);
+		padding: var(--space-6);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.features {
+		max-width: 46rem;
+		padding-left: var(--space-4);
+	}
+
+	.features li {
+		margin-bottom: var(--space-3);
+	}
+</style>

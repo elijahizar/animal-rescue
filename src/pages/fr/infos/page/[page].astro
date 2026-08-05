@@ -1,0 +1,121 @@
+---
+import { getCollection } from 'astro:content';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { formatDate, excerpt, newsTagLabel } from '../../../../lib/news';
+
+export async function getStaticPaths() {
+	const news = await getCollection('news');
+	news.sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
+	const pages = Math.max(1, Math.ceil(news.length / 10));
+	return Array.from({ length: pages - 1 }, (_, i) => ({
+		params: { page: String(i + 2) },
+		props: { pageNumber: i + 2, pageNews: news.slice((i + 1) * 10, (i + 2) * 10) },
+	}));
+}
+
+interface Props {
+	pageNumber: number;
+	pageNews: Awaited<ReturnType<typeof getCollection<'news'>>>[number][];
+}
+
+const { pageNumber, pageNews } = Astro.props;
+---
+
+<BaseLayout title={`Actualités — page ${pageNumber}`}>
+	<div class="container page">
+		<header class="page-head">
+			<h1>Actualités</h1>
+			<p class="text-muted">
+				Les dernières nouvelles sur les espèces menacées, en langue française
+				(flux RSS vérifiés). Page {pageNumber}.
+			</p>
+		</header>
+
+		<ol class="news-list">
+			{pageNews.map((entry) => (
+				<li class="news-item">
+					<a class="news-title" href={getRelativeLocaleUrl('fr', `infos/${entry.id}`)}>
+						{entry.data.title}
+					</a>
+					<p class="news-meta">
+						<span class="tag">{newsTagLabel(entry.data.animal)}</span>
+						<span>· {formatDate(entry.data.date)} · {entry.data.source}</span>
+					</p>
+					<p class="news-excerpt">{excerpt(entry.body)}</p>
+				</li>
+			))}
+		</ol>
+
+		<nav class="pagination">
+			<a href={getRelativeLocaleUrl('fr', `infos/page/${pageNumber - 1}`)}>← Précédente</a>
+		</nav>
+	</div>
+</BaseLayout>
+
+<style>
+	.page {
+		padding: var(--space-12) 0 var(--space-16);
+		max-width: 46rem;
+	}
+
+	.page-head h1 {
+		margin-bottom: var(--space-2);
+	}
+
+	.news-list {
+		list-style: none;
+		margin: var(--space-8) 0 0;
+		padding: 0;
+	}
+
+	.news-item {
+		padding: var(--space-6) 0;
+		border-top: 1px solid var(--color-border);
+	}
+
+	.news-item:last-child {
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.news-title {
+		font-size: var(--font-size-xl);
+		font-weight: 700;
+		color: var(--color-forest-dark);
+		text-decoration: none;
+		line-height: 1.25;
+	}
+
+	.news-title:hover {
+		color: var(--color-forest);
+		text-decoration: underline;
+	}
+
+	.news-meta {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem;
+		color: var(--color-muted);
+		font-size: var(--font-size-sm);
+		margin: var(--space-2) 0;
+	}
+
+	.tag {
+		background: var(--color-forest-light);
+		color: #fff;
+		padding: 0.2rem 0.7rem;
+		border-radius: var(--radius-full);
+		font-weight: 600;
+	}
+
+	.news-excerpt {
+		color: var(--color-muted);
+		margin: 0;
+	}
+
+	.pagination {
+		margin-top: var(--space-8);
+		font-weight: 600;
+	}
+</style>

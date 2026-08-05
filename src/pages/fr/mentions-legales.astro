@@ -1,13 +1,57 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
 const title = 'Mentions légales';
+const description = 'Mentions légales du site Animal Rescue.';
 ---
 
-<BaseLayout title={title}>
-	<div class="container">
+<BaseLayout title={title} description={description}>
+	<div class="container page">
 		<h1>Mentions légales</h1>
-		<p class="text-muted">
-			Éditeur, hébergeur (Cloudflare) - détaillés dans la Phase 2.
+
+		<h2>Éditeur du site</h2>
+		<p>
+			Le site <strong>Animal Rescue</strong> est édité et maintenu à titre
+			bénévole. Pour toute question relative au site, vous pouvez contacter
+			l’éditeur via le dépôt public du projet.
+		</p>
+
+		<h2>Hébergement</h2>
+		<p>
+			Le site est hébergé par Cloudflare Pages (Cloudflare, Inc., 101
+			Townsend Street, San Francisco, CA 94107, États-Unis).
+		</p>
+
+		<h2>Contenus et droits</h2>
+		<p>
+			Les textes du site sont publiés sous licence Creative Commons
+			Attribution - Partage dans les Mêmes Conditions 4.0 International
+			(CC BY-SA 4.0). Les photographies sont issues de Wikimedia Commons et
+			restent la propriété de leurs auteurs ; chaque image est accompagnée de
+			son crédit et de sa licence.
+		</p>
+
+		<h2>Liens externes</h2>
+		<p>
+			Les liens vers des sites tiers (organisations, presse, observatoires)
+			sont fournis à titre informatif. L’éditeur n’est pas responsable de leur
+			contenu.
 		</p>
 	</div>
 </BaseLayout>
+
+<style>
+	.page {
+		padding: var(--space-12) 0 var(--space-16);
+		max-width: 46rem;
+	}
+
+	.page h1 {
+		margin-bottom: var(--space-8);
+	}
+
+	.page h2 {
+		margin-top: var(--space-8);
+		margin-bottom: var(--space-3);
+	}
+</style>

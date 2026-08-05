@@ -1,0 +1,97 @@
+---
+import { getCollection } from 'astro:content';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { formatDate, excerpt, newsTagLabel } from '../../../lib/news';
+
+export async function getStaticPaths() {
+	const news = await getCollection('news');
+	news.sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
+	return news.map((entry) => ({
+		params: { slug: String(entry.id) },
+		props: { entry },
+	}));
+}
+
+interface Props {
+	entry: Awaited<ReturnType<typeof getCollection<'news'>>>[number];
+}
+
+const { entry } = Astro.props;
+const title = entry.data.title;
+---
+
+<BaseLayout title="Article">
+	<div class="container page">
+		<nav class="breadcrumb">
+			<a href={getRelativeLocaleUrl('fr', 'infos')}>← Infos</a>
+		</nav>
+		<article class="article">
+			<header class="article-head">
+				<p class="article-meta">
+					<a class="tag" href={getRelativeLocaleUrl('fr', `infos/tag/${entry.data.animal}`)}>
+						{newsTagLabel(entry.data.animal)}
+					</a>
+					<span>·</span>
+					<time datetime={entry.data.date}>{formatDate(entry.data.date)}</time>
+					<span>·</span>
+					<span>{entry.data.source}</span>
+				</p>
+				<h1>{title}</h1>
+			</header>
+			<p class="article-body">{entry.body}</p>
+			<p>
+				<a class="source-link" href={entry.data.url} target="_blank" rel="noopener noreferrer">
+					Lire l’article original →
+				</a>
+			</p>
+		</article>
+	</div>
+</BaseLayout>
+
+<style>
+	.page {
+		padding: var(--space-12) 0 var(--space-16);
+		max-width: 46rem;
+	}
+
+	.breadcrumb {
+		margin-bottom: var(--space-4);
+		font-weight: 600;
+	}
+
+	.article-head h1 {
+		margin: var(--space-2) 0 var(--space-4);
+	}
+
+	.article-meta {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem;
+		color: var(--color-muted);
+		font-size: var(--font-size-sm);
+	}
+
+	.tag {
+		background: var(--color-forest-light);
+		color: #fff;
+		padding: 0.2rem 0.7rem;
+		border-radius: var(--radius-full);
+		font-weight: 600;
+		text-decoration: none;
+	}
+
+	.tag:hover {
+		background: var(--color-forest-dark);
+		color: #fff;
+	}
+
+	.article-body {
+		font-size: var(--font-size-lg);
+	}
+
+	.source-link {
+		font-weight: 600;
+	}
+</style>

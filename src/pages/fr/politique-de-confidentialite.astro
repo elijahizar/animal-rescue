@@ -1,13 +1,68 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
 const title = 'Politique de confidentialité';
+const description =
+	'Politique de confidentialité du site Animal Rescue : aucune donnée collectée, aucun cookie.';
 ---
 
-<BaseLayout title={title}>
-	<div class="container">
+<BaseLayout title={title} description={description}>
+	<div class="container page">
 		<h1>Politique de confidentialité</h1>
-		<p class="text-muted">
-			Aucune donnée collectée, aucun cookie (détaillé dans la Phase 2).
+
+		<h2>Simplicité par conception</h2>
+		<p>
+			Animal Rescue est un site statique qui respecte votre vie privée par
+			conception : il ne collecte <strong>aucune donnée personnelle</strong>,
+			n’utilise <strong>aucun cookie</strong>, aucune publicité et aucun outil
+			d’analyse de fréquentation.
+		</p>
+
+		<h2>Ce que le site ne fait pas</h2>
+		<ul>
+			<li>Pas de formulaire de collecte de données.</li>
+			<li>Pas de traceurs publicitaires ni de cookies de mesure.</li>
+			<li>Pas de compte utilisateur ni de connexion.</li>
+			<li>Pas de partage de données avec des tiers.</li>
+		</ul>
+
+		<h2>Hébergement et logs</h2>
+		<p>
+			Le site est hébergé sur Cloudflare Pages. Comme tout service
+			d’hébergement, des logs techniques peuvent être conservés par
+			l’hébergeur dans le cadre de la sécurité de l’infrastructure ; ils ne
+			sont pas utilisés par Animal Rescue.
+		</p>
+
+		<h2>Liens externes</h2>
+		<p>
+			Les liens vers des sites tiers (ONG, presse, observatoires) relèvent de
+			leurs propres politiques de confidentialité, que nous vous invitons à
+			consulter si vous les visitez.
 		</p>
 	</div>
 </BaseLayout>
+
+<style>
+	.page {
+		padding: var(--space-12) 0 var(--space-16);
+		max-width: 46rem;
+	}
+
+	.page h1 {
+		margin-bottom: var(--space-8);
+	}
+
+	.page h2 {
+		margin-top: var(--space-8);
+		margin-bottom: var(--space-3);
+	}
+
+	.page ul {
+		padding-left: var(--space-6);
+	}
+
+	.page li {
+		margin-bottom: var(--space-2);
+	}
+</style>

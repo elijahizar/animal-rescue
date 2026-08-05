@@ -7,6 +7,9 @@ const FEEDS = [
 	{ name: 'UICN Comité Français', url: 'https://uicn.fr/feed/' },
 	{ name: 'WWF France', url: 'https://www.wwf.fr/rss.xml' },
 	{ name: 'Le Monde — Planète', url: 'https://www.lemonde.fr/planete/rss_full.xml' },
+	{ name: 'Reporterre', url: 'https://reporterre.net/spip.php?page=backend' },
+	{ name: 'Sciences & Avenir', url: 'https://www.sciencesetavenir.fr/rss.xml' },
+	{ name: 'Fondation Tara Océan', url: 'https://fondationtaraocean.org/feed/' },
 ];
 
 const KEYWORDS = {
@@ -32,10 +35,12 @@ const normalize = (text) =>
 		.replace(/[\u0300-\u036f]/g, '')
 		.toLowerCase();
 
+const escapeRegExp = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
 function matchAnimal(title, description) {
 	const haystack = normalize(`${title} ${description}`);
 	for (const [animal, words] of Object.entries(KEYWORDS)) {
-		if (words.some((word) => haystack.includes(normalize(word)))) {
+		if (words.some((word) => new RegExp(`\\b${escapeRegExp(normalize(word))}\\b`).test(haystack))) {
 			return animal;
 		}
 	}

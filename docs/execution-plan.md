@@ -13,8 +13,8 @@
 - Directorio de trabajo: `/home/elijah/Documents/Projects/daniel/animal-rescue`
 - **FASE 0 completada** (scaffold Astro v7, shell visual, arquitectura i18n `/fr/`)
 - **FASE 1 completada** (tracer bullet guépard) — revisión aprobada por el usuario (2026-08-05)
-- **FASE 2 en curso**: contenido de las 9 especies restantes completo (2.1) — 10 fichas totales, 36 regiones
-- Next: 2.2 página `aider/` global → 2.3 apropos+legal → 2.4 INFOS → 2.5 optimizaciones → 2.6 deploy
+- **FASE 2 en curso**: contenido de las 9 especies restantes completo (2.1) — 10 fichas totales, 36 regiones; páginas `aider/`, `apropos/`, legal y blog INFOS completos (2.2–2.4)
+- Next: 2.5 optimizaciones (sitemap/robots ya hechos, falta astro:assets + OG en noticias) → 2.6 deploy
 
 ---
 
@@ -107,24 +107,26 @@
 - [x] Cada ficha: fotos Commons con crédito, regiones lat/lng, causas de taxonomía, cómo ayudar
 
 ### 2.2 Página `aider/` (global)
-- [ ] Acciones diarias (consumo, alimentación, transporte…)
-- [ ] Lista de ONGs: WWF France, Greenpeace France, LPO, Sea Shepherd France, Fondation Nicolas Hulot, Comité français de l'UICN (enlaces externos, nuevo tab; SIN enlaces de donación)
+- [x] Acciones diarias (consommation, alimentation, transport, environnement)
+- [x] Lista de ONGs: WWF France, Greenpeace France, LPO, Sea Shepherd France, Fondation Nicolas Hulot, Comité français de l'UICN (enlaces externos, nuevo tab; SIN enlaces de donación)
 
 ### 2.3 Páginas `apropos/` + legal
-- [ ] `apropos/`: misión, valores, qué hacemos
-- [ ] `mentions-legales/`: editor, hébergeur (Cloudflare)
-- [ ] `politique-de-confidentialite/`: sin recogida de datos, sin cookies
+- [x] `apropos/`: misión, valores, qué hacemos
+- [x] `mentions-legales/`: editor, hébergeur (Cloudflare), licencias CC BY-SA
+- [x] `politique-de-confidentialite/`: sin recogida de datos, sin cookies
 
 ### 2.4 INFOS completo (blog)
-- [ ] `fetch-rss.mjs` final: 5-8 feeds francófonos (ver lista en `docs/plan.md`)
-- [ ] Verificar URLs RSS reales de cada feed
-- [ ] Blog `/infos/` con paginación (últimas 30)
-- [ ] Tags por especie/animal y búsqueda por tag
+- [x] `fetch-rss.mjs` final: 6 feeds francófonos verificados (UICN, WWF, Le Monde Planète, Reporterre, Sciences & Avenir, Tara Océan — FNE/LPO/Geo/Le Point: URLs rotas/404, descartados)
+- [x] Verificar URLs RSS reales de cada feed
+- [x] Blog `/infos/` con paginación (10 por página, `index` + `page/[page]`)
+- [x] Tags por especie (página `infos/tag/[tag]`) + filtro en el índice
+- [x] Artículo individual `/infos/[slug]` (contenido estable por nombre de archivo)
+- [x] Fix de matching: límites de palabra `\b` (evita falso positivo "lion" en "mil**lion**s")
 
 ### 2.5 Optimizaciones
+- [x] SEO básico: `@astrojs/sitemap` + `public/robots.txt` (site placeholder `animal-rescue.pages.dev`, actualizar en deploy)
 - [ ] `astro:assets` para todas las imágenes (AVIF/WebP, lazy-load)
 - [ ] OG tags + social sharing en todas las fichas y noticias
-- [ ] SEO básico (meta, sitemap, robots)
 
 ### 2.6 Despliegue Cloudflare Pages
 - [ ] Conectar repo a Cloudflare Pages (subdominio gratuito `animal-rescue.pages.dev` o similar)
@@ -172,3 +174,5 @@ git status           # revisar antes de commits
 | 2026-08-05 | Revisión Fase 1 aprobada por el usuario; sin ajustes (1.7 cerrado) |
 | 2026-08-05 | FASE 2.1 completada: 10 fichas de especies (9 nuevas en este commit) + 36 regiones JSON. Estados IUCN verificados: tigre EN (2022), lion blanc VU, rhinocéros noir CR (~5 495), corail EN (Scleractinia, 2024), thon rouge LC (T. thynnus 2021), dauphin commun LC (subpoblación mediterránea EN), baleine bleue EN (Cooke 2018, 10-25k ind.), requin blanc VU (Rigby 2022), pingouin Humboldt VU (BirdLife 2020, ~32k ind.) |
 | 2026-08-05 | Fotos de las 3 últimas fichas seleccionadas y verificadas (HTTP 200) vía API de Wikimedia Commons (15 thumbs a 1280px, licencias CC BY-SA/CC BY/PD) |
+| 2026-08-05 | FASE 2.2-2.4: página `aider/` (acciones diarias + 6 ONGs), `apropos/`, `mentions-legales/`, `politique-de-confidentialite/`; blog INFOS completo (índice info + paginación 10/página + tags + artículo `/infos/[slug]`); home con especies à la une + últimas actualidades |
+| 2026-08-05 | RSS: 6 feeds verificados operativos (UICN, WWF—vacío hoy, Le Monde, Reporterre, Sciences & Avenir, Tara Océan); FNE/LPO/Geo/Le Point = URL rotas/403. 17 noticias tras limpiar falsos positivos (word-boundary matching `\b`) |
