@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
 const title = 'Aider';
 const description =
@@ -136,7 +137,7 @@ const organisations = [
 			La sensibilisation est la première ligne de défense : on protège ce que
 			l’on connaît et que l’on aime.
 		</p>
-		<a class="button" href="/fr/aide/">Découvrir les espèces</a>
+		<a class="button" href={getRelativeLocaleUrl('fr', 'aide')}>Découvrir les espèces</a>
 	</section>
 </BaseLayout>
 

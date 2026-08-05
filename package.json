@@ -10,7 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "fetch-news": "node scripts/fetch-rss.mjs",
-    "deploy": "npm run fetch-news && astro build && wrangler pages deploy dist --project-name animal-rescue",
+    "deploy": "npm run fetch-news && astro build",
     "astro": "astro"
   },
   "dependencies": {

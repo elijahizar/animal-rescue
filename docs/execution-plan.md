@@ -128,12 +128,14 @@
 - [x] OG tags + social sharing: fichas (og:image desde galería) y artículos de noticias (og:title/description/url). Lazy-load en galerías y home
 - [x] `astro:assets`: probado con imágenes remotas, descartado por decisión (ver bitácora) — hotlinking de thumbs de Wikimedia Commons con lazy-load
 
-### 2.6 Despliegue Cloudflare Pages
-- [~] Conectar repo a Cloudflare Pages (dashboard) — **bloqueado: requiere `wrangler login` del usuario**
-- [x] Configurar build: `npm run build`, salida `dist/`, script `npm run deploy` (wrangler pages deploy)
-- [ ] Cron diario: deploy webhook de Cloudflare Pages disparado por GitHub Actions `schedule` (o cron Worker) → `fetch-rss.mjs` se ejecuta en build time
-- [ ] Probar deploy y actualización de noticias
-- [ ] Commit final + tags/release si aplica
+### 2.6 Despliegue GitHub Pages
+- [x] Config base/site en `astro.config.mjs` (`/animal-rescue/` en `elijahizar.github.io`)
+- [x] Fix de 3 enlaces absolutos rotos bajo subpath (favicon en BaseLayout, botón en aider)
+- [x] Coherencia: `robots.txt` (sitemap `/animal-rescue/`), `mentions-legales/` + `politique-de-confidentialite/` → hébergeur GitHub Pages; script `deploy` = fetch-news + build (sin wrangler)
+- [x] Workflow `.github/workflows/deploy.yml`: triggers `push (main)` + `workflow_dispatch` (sin cron por ahora, decisión del usuario); npm ci + fetch-news + build + deploy-pages
+- [ ] **Acción del usuario (1 vez)**: GitHub → Settings → Pages → Source: "GitHub Actions"
+- [ ] Probar deploy (workflow verde + URL `https://elijahizar.github.io/animal-rescue/fr/`)
+- [ ] Cron diario (futuro): añadir `schedule` al workflow → redeploy = re-ejecuta `fetch-rss`
 
 ---
 
@@ -178,3 +180,6 @@ git status           # revisar antes de commits
 | 2026-08-05 | RSS: 6 feeds verificados operativos (UICN, WWF—vacío hoy, Le Monde, Reporterre, Sciences & Avenir, Tara Océan); FNE/LPO/Geo/Le Point = URL rotas/403. 17 noticias tras limpiar falsos positivos (word-boundary matching `\b`) |
 | 2026-08-05 | FASE 2.5: sitemap + robots.txt (site placeholder `animal-rescue.pages.dev`); OG en fichas y noticias; lazy-load. `astro:assets` descartado: al optimizar 50 imágenes remotas en build, Wikimedia responde HTTP 429 (rate-limit por concurrencia) → builds lentos/frágiles para cron diario. Decisión: hotlinking de thumbs (1280px) de Commons + lazy-load |
 | 2026-08-05 | FASE 2.6 preparada pero bloqueada en auth: wrangler 4.119.0 instalado, `npx wrangler whoami` → sin autenticar. Pendiente `npx wrangler login` del usuario para crear Pages project y conectar |
+| 2026-08-05 | **CAMBIO DE PLAN (usuario)**: deploy v1 en GitHub Pages en vez de Cloudflare Pages. URL: `https://elijahizar.github.io/animal-rescue/` (subpath, sin dominio propio). `base: '/animal-rescue/'` + `site: https://elijahizar.github.io` en astro.config; redirect `/animal-rescue/` → `/animal-rescue/fr/` verificado en build |
+| 2026-08-05 | Workflow `.github/workflows/deploy.yml` con triggers `push (main)` + `workflow_dispatch`. **Sin cron diario por ahora** (decisión del usuario: solo deploy en push; el `schedule` se añadirá en el futuro). build = npm ci + fetch-news + astro build + deploy-pages |
+| 2026-08-05 | Pendiente del usuario para terminar 2.6: activar GitHub Pages en Settings → Pages → Source "GitHub Actions" (1 vez) |

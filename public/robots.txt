@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://animal-rescue.pages.dev/sitemap-index.xml
+Sitemap: https://elijahizar.github.io/animal-rescue/sitemap-index.xml

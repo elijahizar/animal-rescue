@@ -6,8 +6,8 @@ Aplicación web para ayudar a salvar animales en peligro de extinción. Contenid
 
 **Stack**
 - Astro (SSG) + islas interactivas React (Leaflet, filtros/búsqueda)
-- Cloudflare Pages, subdominio gratuito
-- Cron diario = redeploy del sitio
+- GitHub Pages (proyecto en subpath `https://elijahizar.github.io/animal-rescue/`) — **deploy v1, decisión 2026-08-05**; Cloudflare Pages quedó descartado
+- Cron diario = redeploy del sitio — **pendiente** (por ahora solo deploy en push; añadir schedule + deploy webhook en el futuro)
 - Fetch de RSS en build time (script `fetch-rss.mjs` antes del build)
 - Sin backend, sin analítica, sin cookies
 
@@ -72,4 +72,4 @@ Pool amplio porque el cron filtra por keywords (tigre, corail, guépard, baleine
 6. INFOS — `fetch-rss.mjs` + blog con paginación/tags
 7. `aider/`, `apropos/`, legal
 8. OG tags + optimización de imágenes
-9. Despliegue en Cloudflare Pages (subdominio gratuito)
+9. Despliegue en GitHub Pages (subpath, workflow GH Actions, base `/animal-rescue/`)

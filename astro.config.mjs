@@ -7,8 +7,9 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-	// TODO: remplacer par l'URL finale après le déploiement Cloudflare Pages
-	site: 'https://animal-rescue.pages.dev',
+	// GitHub Pages project site (subpath). Sin dominio propio.
+	site: 'https://elijahizar.github.io',
+	base: '/animal-rescue/',
 
 	i18n: {
 		locales: ['fr'],
