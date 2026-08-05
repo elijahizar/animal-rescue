@@ -222,7 +222,7 @@
 - [x] 1. `og:url` absoluto (`site` + `base` + path) en `aide/[slug].astro` y `infos/[slug].astro` (helper `src/lib/urls.ts` → `siteUrl()`)
 - [x] 2. `rel=canonical` absoluto en todas las páginas (en `BaseLayout` vía `Astro.url.pathname`; el helper normaliza si el pathname ya incluye la base)
 - [x] 3. `og:image` en artículos de noticias (decisión del usuario: imagen genérica de marca `public/og-news.svg` — opción A; sin extraer imágenes de feeds)
-- [x] 4. `srcset` (320/640/800px) en tarjetas del home, `/aide` y galerías (helper `commonsSrcset()` en `src/lib/urls.ts`, reescribe el sufijo `1280px-` de las thumbs de Commons)
+- [x] 4. `srcset` (500/960px — tamaños estándar de Wikimedia T414805) en tarjetas del home, `/aide` y galerías (helper `commonsSrcset()` en `src/lib/urls.ts`, reescribe el sufijo `1280px-` de las thumbs de Commons; valida contra `WIKIMEDIA_THUMB_STEPS`)
 
 ### 5.2 Accesibilidad — prioridad 2
 - [ ] 1. Fallback sin-JS en `/aide`: listado estático (SSG) + isla React que lo mejora
@@ -298,3 +298,4 @@ git status           # revisar antes de commits
 | 2026-08-05 | **FIX URLs**: los enlaces de las tarjetas de `/aide` se generaban como `/fr/aide//{slug}/` (doble slash): `baseUrl` de `getRelativeLocaleUrl(locale, 'aide')` termina en `/` y el template añadía `${slug}/`. Corregido con `baseUrl.replace(/\/+$/, '')` en `AnimalList.tsx`. Página de especie responde 200. |
 | 2026-08-05 | Commit Fase 4 (58466e7) + push a main: rediseño de chips, fix scoping CSS, fix doble slash. |
 | 2026-08-05 | **FASE 5.1 SEO COMPLETADA**: helper `src/lib/urls.ts` (`siteUrl()` = site + base + path con normalización de base duplicada; `commonsSrcset()` = reescribe sufijo `1280px-` de thumbs Commons a 320/640/800px). `og:url` absoluto en fichas y noticias; `rel=canonical` en `BaseLayout` (todas las páginas); `og:image` genérica `public/og-news.svg` en noticias (opción A, decisión del usuario); `srcset` en home, tarjetas `/aide` (isla React con `srcSet` camelCase) y galerías. Verificado: canonical `https://elijahizar.github.io/animal-rescue/fr/...`, build 41 páginas, `astro check` 0 errores. |
+| 2026-08-05 | **REGRESIÓN 5.1 en producción y fix**: Wikimedia cambió su política de thumbs (T414805, 2025-2026): solo genera tamaños estándar (20/40/60/120/250/330/500/960/1280/1920/3840px) y rechaza los demás con HTTP 400. Los `srcset` con 320/640/800px rompieron TODAS las imágenes (el navegador elige del `srcset`, no del `src`). Fix: `commonsSrcset` ahora usa [500, 960] (estándar, < 1280) y valida contra `WIKIMEDIA_THUMB_STEPS` para nunca emitir anchos no permitidos. Verificado: 500/960 → HTTP 200 en producción. |
