@@ -12,6 +12,7 @@ news.sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
 
 const featured = animals.slice(0, 3);
 const latestNews = news.slice(0, 3);
+const hero = animals.find((a) => a.data.slug === 'tigre')?.data.gallery[0];
 
 const title = 'Accueil';
 const description =
@@ -20,14 +21,33 @@ const description =
 
 <BaseLayout title={title} description={description}>
 	<section class="hero">
-		<div class="container">
-			<h1 class="hero-title">Aidons les animaux en danger d'extinction</h1>
-			<p class="hero-subtitle">
-				Découvrez les espèces menacées, comprenez les causes de leur déclin et
-				agissez concrètement pour les protéger.
-			</p>
-			<a class="button" href={getRelativeLocaleUrl('fr', 'aide')}>Voir les espèces</a>
+		<img
+			class="hero-media"
+			src={hero?.src}
+			srcset={commonsSrcset(hero?.src ?? '', [500, 960, 1280])}
+			sizes="100vw"
+			alt={hero?.alt ?? 'Tigre du Bengale'}
+			width="1280"
+			height="853"
+			fetchpriority="high"
+		/>
+		<div class="hero-content">
+			<div class="container">
+				<h1 class="hero-title">Aidons les animaux en danger d'extinction</h1>
+				<p class="hero-subtitle">
+					Découvrez les espèces menacées, comprenez les causes de leur déclin et
+					agissez concrètement pour les protéger.
+				</p>
+				<a class="button" href={getRelativeLocaleUrl('fr', 'aide')}>Voir les espèces</a>
+			</div>
 		</div>
+		{hero && (
+			<p class="hero-credit">
+				Photo : {hero.author}
+				<a href={hero.page} rel="noopener">Wikimedia Commons</a>
+				· {hero.licence}
+			</p>
+		)}
 	</section>
 
 	<div class="container">
