@@ -39,7 +39,11 @@ extinción. Sin backend, sin base de datos, sin analítica, sin cookies.
 ### 2.2 Islas React
 - `src/components/AnimalMap.tsx` — mapa Leaflet + OpenStreetMap, `client:only="react"`
   (Leaflet no funciona en SSR: `window is not defined`; por eso `client:only`)
-- `src/components/AnimalList.tsx` — tarjetas con búsqueda y filtros (causa, estatus, continente)
+- `src/components/AnimalList.tsx` — tarjetas con búsqueda y filtros (causa, estatus, continente).
+  Los filtros son chips con **color-coding por categoría**: borde con el color del token de
+  cada causa/estatus (`--chip-accent`, neutral forest para continentes), activo = verde
+  bosque sólido + check `✓`, y estados `hover` (tinte suave), `:focus-visible` (borde naranja)
+  y `:active` (presionado). Diseño definido 2026-08-05.
 
 ### 2.3 Sin dependencias de servidor
 Build 100% estático: ninguna página necesita runtime. El "backend" son los
@@ -73,6 +77,12 @@ la página `/carte/` y los filtros de la lista.
 El **nombre de archivo es estable** (slug del título): los enlaces no cambian al
 re-ejecutar `fetch-rss` (el script no sobrescribe archivos existentes).
 
+> **Retención (decisión 2026-08-05)**: el script solo escribe archivos nuevos y nunca
+> elimina. La "últimas 30" (`MAX_ITEMS=30`) aplica **por ejecución**, no al total en
+> disco: la colección acumula sin límite para preservar URLs estables. Si se quisiera
+> podar (p. ej. borrar noticias > N días), debe decidirse y documentarse aquí; no
+> improvisar (ver ADR-0005).
+
 ### 3.4 Constantes compartidas
 - `src/lib/causes.ts` — 8 causas con `label` y `color` (taxonomía reutilizable)
 - `src/lib/iucn.ts` — 5 estatus con `label`, `color`, `order`
@@ -87,6 +97,8 @@ re-ejecutar `fetch-rss` (el script no sobrescribe archivos existentes).
    30 más recientes en `src/content/news/fr/` como archivos `.md`.
    - Los archivos existentes no se sobrescriben (URLs estables).
    - Falsos positivos evitados con regex de límites (ej. "lion" no coincide en "millions").
+   - `MAX_ITEMS=30` por ejecución: solo se escriben archivos nuevos; no hay poda en
+     disco (ver retención en §3.3).
 3. **Build**: Astro genera las páginas de noticias (índice + paginación 10/página +
    tags + artículo por noticia) desde la colección.
 
@@ -119,9 +131,13 @@ re-ejecutar `fetch-rss` (el script no sobrescribe archivos existentes).
   `loading="lazy"` y `width="1280"`. Decisión documentada (ADR-0004): `astro:assets`
   con imágenes remotas produce HTTP 429 de Wikimedia en build (rate-limit) y hace
   frágil el pipeline de cron.
+  Mejora pendiente: añadir `srcset` con anchos menores (320/640/800px) en tarjetas y
+  home para reducir LCP en móvil (Commons sirve thumbs a varias anchuras).
 - **CSS**: un `global.css` con tokens de diseño (verde bosque `#2D6A4F`, crema
   `#FEFAE0`, naranja `#E76F51`).
 - **SEO**: sitemap (`@astrojs/sitemap`), `robots.txt`, OG tags en fichas y noticias.
+  Nota: el `og:url` de las fichas debe ser absoluto (`site` + base + path) — pendiente
+  de corregir (hoy se genera relativo).
 
 ## 8. Estructura de carpetas
 
@@ -148,5 +164,13 @@ src/
 - **Feeds inestables**: algunos feeds cambian de URL (LPO/FNE/Geo rotos en
   2026-08); el script tolera errores por feed (try/catch).
 - **WWF France**: el feed puede estar vacío (0 artículos); no es un error.
+- **OpenStreetMap/Leaflet**: los tiles se cargan en el navegador desde
+  `tile.openstreetmap.org` (tercero con política de uso). Dependencia de disponibilidad
+  en tiempo de visita; la atribución ya está presente.
+- **Islas React sin fallback**: `/aide` (lista y filtros) y `/carte` dependen de JS;
+  sin JS no hay tarjetas ni markers. Añadir fallback estático y `aria-label` al mapa
+  (accesibilidad) — pendiente.
+- **Fechas en UTC**: `formatDate` usa `timeZone: 'UTC'` — una noticia publicada el 27
+  por la noche (hora francesa) se muestra como 28. Menor, pero considerarlo.
 - **Subpath**: si algún día se usa dominio propio, quitar `base` y actualizar
   `robots.txt` + `site`.

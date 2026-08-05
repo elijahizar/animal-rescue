@@ -16,6 +16,8 @@
 - **FASE 2 COMPLETADA** (2026-08-05): 10 fichas + 36 regiones, `aider/`, `apropos/`, legal, blog INFOS con paginación/tags, optimizaciones SEO/OG, **deploy v1 en GitHub Pages** → https://elijahizar.github.io/animal-rescue/fr/ (workflow verde, URL verificada)
 - Next: **cron diario de redeploy** (pendiente) → mejoras de contenido/SEO/i18n
 - **FASE 3 COMPLETADA** (2026-08-05): documentación técnica y calidad al día (system-design, content-guidelines, 6 ADRs, session-kickoff, README, plan.md, AGENTS.md)
+- **FASE 4 COMPLETADA** (2026-08-05): verificación de diseño (system-design vs código), rediseño e implementación de los chips de filtros en `/aide` (color-coded por categoría + estados), fix de scoping CSS de la isla `AnimalList` (los estilos nunca se aplicaban) y fix de doble slash en URLs de tarjetas
+- Next: **Fase 5 (backlog priorizado)**: SEO (og:url absoluto, canonical, og:image noticias, srcset) → a11y (fallback sin-JS, mapa, contraste badges, skip-link) → rendimiento (preconnect, fetchpriority) → diseño/contenido (hero foto, OG home, fechas Europe/Paris) → operación (cron diario, 404)
 
 ---
 
@@ -186,6 +188,63 @@
 
 ---
 
+## Fase 4 — Revisión de diseño y fixes de la lista `/aide`
+
+> Objetivo: revisar el diseño del sistema vs código, rediseñar la interfaz de
+> filtros y cerrar bugs de renderizado detectados en la revisión (2026-08-05).
+
+### 4.1 Verificación de `system-design.md` vs código
+- [x] Documento fiel a la implementación (config, schemas, islas, RSS, deploy, i18n)
+- [x] Hallazgos documentados en `system-design.md` (retención de noticias, `og:url`, `srcset`, OSM, a11y, fechas UTC)
+
+### 4.2 Rediseño de chips de filtros (`/aide`)
+- [x] `AnimalList.tsx`: chips color-coded por categoría vía CSS var `--chip-accent` (color de cada causa/estatus; continentes neutral forest)
+- [x] `AnimalList.css`: base tintada, `hover` con tinte del color (`color-mix`), `:active` prensado, `:focus-visible` naranja, activo = verde bosque sólido + check `✓`
+
+### 4.3 Fixes de bugs encontrados
+- [x] **Fix scoping CSS**: los estilos de la isla React (`:global(...)` en `aide.astro`) se compilaban con `data-astro-cid-*` que la isla no lleva → nunca se aplicaban. Movidos a `src/components/AnimalList.css` e importados desde el componente (patrón de `AnimalMap.tsx` + leaflet)
+- [x] **Fix doble slash**: `baseUrl` (`getRelativeLocaleUrl(locale, 'aide')`) terminaba en `/` y el template añadía `${slug}/` → `/fr/aide//{slug}/`. Corregido con `baseUrl.replace(/\/+$/, '')`
+- [x] Verificación: build (41 páginas), `astro check` 0 errores, 0 selectores con `data-astro-cid`, fichas responden 200 en dev
+
+### 4.4 Pendientes documentados (futuras sesiones)
+
+> El backlog completo y priorizado está en **Fase 5** (SEO → a11y → perf → diseño → operación).
+
+---
+
+## Fase 5 — Mejoras priorizadas (backlog)
+
+> Orden de prioridad recomendado (2026-08-05): correctitud/SEO → accesibilidad →
+> rendimiento quick wins → diseño/contenido → operación. Cada ítem es independiente;
+> marcar `[x]` al completarlo y anotar en la bitácora.
+
+### 5.1 SEO — prioridad 1
+- [ ] 1. `og:url` absoluto (`site` + `base` + path) en `aide/[slug].astro` y `infos/[slug].astro`
+- [ ] 2. `rel=canonical` absoluto en todas las páginas (falta por completo hoy)
+- [ ] 3. `og:image` en artículos de noticias (hoy solo las fichas de especie lo tienen)
+- [ ] 4. `srcset` (320/640/800px) en tarjetas del home, `/aide` y galerías (reduce bytes en móvil, LCP)
+
+### 5.2 Accesibilidad — prioridad 2
+- [ ] 1. Fallback sin-JS en `/aide`: listado estático (SSG) + isla React que lo mejora
+- [ ] 2. `aria-label`/`role` en el mapa (`/carte` y mini-mapa — hoy sin affordance semántica)
+- [ ] 3. Contraste de los badges de estatus IUCN: texto oscuro sobre `#e9c46a` (VU) y colores claros (NT/LC) para cumplir WCAG
+- [ ] 4. Enlace "Skip to content" + `:focus-visible` global en `global.css`
+
+### 5.3 Rendimiento — prioridad 3 (quick wins)
+- [ ] 1. `preconnect` a `upload.wikimedia.org` (hotlinking) y `tile.openstreetmap.org` (mapa)
+- [ ] 2. `fetchpriority="high"` en la primera imagen visible de cada página
+
+### 5.4 Diseño/contenido — prioridad 4
+- [ ] 1. Hero con foto de sección en home (el plan pedía "fotos protagonistas"; hoy solo gradiente)
+- [ ] 2. OG tags en home (hoy carecen de ellos)
+- [ ] 3. Fechas en `news.ts`: cambiar `timeZone: 'UTC'` → `Europe/Paris` (las noticias de la noche se muestran con 1 día de desplazamiento en Francia)
+
+### 5.5 Operación — prioridad 5
+- [ ] 1. Cron diario: añadir `schedule` al workflow `deploy.yml`
+- [ ] 2. Página 404 personalizada en francés
+
+---
+
 ## Definición de listo (DoD) por sesión
 
 - Todos los cambios compilados: `npm run build` sin errores
@@ -233,3 +292,7 @@ git status           # revisar antes de commits
 | 2026-08-05 | **FASE 2 COMPLETADA**: deploy v1 verificado en producción — workflow `deploy-pages` verde (10s), URL `https://elijahizar.github.io/animal-rescue/fr/` con 200 en home/ficha/infos/sitemap; redirect `/animal-rescue/`→`/fr/` y hotlinking Commons OK. Pages ya estaba activado (`build_type: workflow`). Cron diario queda como mejora futura (decisión: solo push por ahora) |
 | 2026-08-05 | **FASE 3 planificada** (usuario: "incluye todo"): documentación técnica y calidad — system-design.md, content-guidelines.md, ADRs (6), actualizar session-kickoff/README/plan.md, AGENTS.md con enlaces. Pendiente de ejecución |
 | 2026-08-05 | **FASE 3 COMPLETADA**: creados `docs/system-design.md` (arquitectura, datos, flujo RSS, deploy, rendimiento) y `docs/content-guidelines.md` (esquema de ficha, fotos Commons, regiones, feeds, checklists); 6 ADRs en `docs/adr/README.md`; `session-kickoff.md` al día; README reescrito (proyecto real); `plan.md` coherente (cron pendiente, hotlinking, feeds verificados); AGENTS.md con lecturas obligatorias. Build + check limpios |
+| 2026-08-05 | Verificación de diseño (`system-design.md` vs código): doc fiel a la implementación. Hallazgos documentados: retención de noticias (30/ejecución, acumulación sin poda — decisión: URLs estables), `og:url` absoluto pendiente, `srcset` pendiente en tarjetas, riesgos OSM/a11y/fechas UTC. |
+| 2026-08-05 | Diseño de filtros `/aide` definido e **implementado**: chips color-coded por categoría (causa/estatus usan su token de color como borde vía `--chip-accent`, continentes neutral forest), activo = verde bosque sólido + `✓`, hover tinte suave (`color-mix`), `:focus-visible` naranja, `:active` prensado. Build + check limpios. |
+| 2026-08-05 | **FIX scoping CSS**: los estilos de `AnimalList` estaban en `aide.astro` con `.animal-list :global(...)` → Astro los compilaba como `.animal-list[data-astro-cid-*]`, pero la isla React renderiza ese div en cliente sin el atributo → **nunca se aplicaban** (chips, buscador y tarjetas se veían como HTML por defecto; bug preexistente). Solución: mover los estilos a `src/components/AnimalList.css` importado dentro del componente (mismo patrón que `AnimalMap.tsx` + leaflet.css) y eliminar el bloque `<style>` de `aide.astro`. Verificado: 0 selectores con `data-astro-cid`, 21 reglas globales aplicándose. |
+| 2026-08-05 | **FIX URLs**: los enlaces de las tarjetas de `/aide` se generaban como `/fr/aide//{slug}/` (doble slash): `baseUrl` de `getRelativeLocaleUrl(locale, 'aide')` termina en `/` y el template añadía `${slug}/`. Corregido con `baseUrl.replace(/\/+$/, '')` en `AnimalList.tsx`. Página de especie responde 200. |

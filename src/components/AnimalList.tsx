@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { IUCN_STATUS } from '../lib/iucn';
 import { CAUSES, CAUSE_IDS } from '../lib/causes';
+import './AnimalList.css';
 
 export interface AnimalListItem {
 	slug: string;
@@ -17,13 +18,24 @@ interface Props {
 	baseUrl: string;
 }
 
-function Chip({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
+function Chip({
+	active,
+	accent,
+	onClick,
+	children,
+}: {
+	active: boolean;
+	onClick: () => void;
+	accent?: string;
+	children: React.ReactNode;
+}) {
 	return (
 		<button
 			type="button"
 			className={`chip ${active ? 'chip-active' : ''}`}
 			aria-pressed={active}
 			onClick={onClick}
+			style={{ '--chip-accent': accent } as React.CSSProperties}
 		>
 			{children}
 		</button>
@@ -82,6 +94,7 @@ export default function AnimalList({ animals, baseUrl }: Props) {
 						<Chip
 							key={id}
 							active={causes.has(id)}
+							accent={CAUSES[id].color}
 							onClick={() => toggle(causes, setCauses, id)}
 						>
 							{CAUSES[id].label}
@@ -95,6 +108,7 @@ export default function AnimalList({ animals, baseUrl }: Props) {
 						<Chip
 							key={code}
 							active={statuses.has(code)}
+							accent={meta.color}
 							onClick={() => toggle(statuses, setStatuses, code)}
 						>
 							{code} · {meta.label}
@@ -123,7 +137,11 @@ export default function AnimalList({ animals, baseUrl }: Props) {
 					{filtered.map((animal) => {
 						const status = IUCN_STATUS[animal.iucnStatus];
 						return (
-							<a className="card" href={`${baseUrl}/${animal.slug}/`} key={animal.slug}>
+							<a
+								className="card"
+								href={`${baseUrl.replace(/\/+$/, '')}/${animal.slug}/`}
+								key={animal.slug}
+							>
 								{animal.image && <img src={animal.image} alt={animal.name} loading="lazy" />}
 								<div className="card-body">
 									<div className="card-title-row">
