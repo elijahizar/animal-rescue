@@ -14,7 +14,7 @@
 - **FASE 0 completada** (scaffold Astro v7, shell visual, arquitectura i18n `/fr/`)
 - **FASE 1 completada** (tracer bullet guépard) — revisión aprobada por el usuario (2026-08-05)
 - **FASE 2 COMPLETADA** (2026-08-05): 10 fichas + 36 regiones, `aider/`, `apropos/`, legal, blog INFOS con paginación/tags, optimizaciones SEO/OG, **deploy v1 en GitHub Pages** → https://elijahizar.github.io/animal-rescue/fr/ (workflow verde, URL verificada)
-- Next: etapas siguientes (ver propuesta al final de la sesión) — cron diario de redeploy, mejoras de contenido/SEO o i18n
+- Next: **cron diario de redeploy** (pendiente) → mejoras de contenido/SEO/i18n
 
 ---
 
@@ -135,7 +135,7 @@
 - [x] Workflow `.github/workflows/deploy.yml`: triggers `push (main)` + `workflow_dispatch` (sin cron por ahora, decisión del usuario); npm ci + fetch-news + build + deploy-pages
 - [x] **Acción del usuario (1 vez)**: GitHub → Settings → Pages → Source: "GitHub Actions" (ya estaba activado con `build_type: workflow`, verificado por API)
 - [x] Probar deploy: workflow verde en 10s + URL `https://elijahizar.github.io/animal-rescue/fr/` verificada (200 en home, ficha, infos, sitemap; redirect raíz y hotlinking de Commons OK)
-- [x] Cron diario (futuro, no incluido por decisión del usuario: solo deploy en push): añadir `schedule` al workflow → redeploy = re-ejecuta `fetch-rss`
+- [ ] Cron diario (pendiente): añadir `schedule` al workflow → redeploy = re-ejecuta `fetch-rss` y actualiza noticias automáticamente
 
 ---
 
