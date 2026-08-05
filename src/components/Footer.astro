@@ -1,15 +1,27 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { defaultLocale, getUi } from '../i18n';
+
+const locale = defaultLocale;
+const texts = getUi(locale);
+
 const legalLinks = [
-	{ href: '/mentions-legales/', label: 'Mentions légales' },
-	{ href: '/politique-de-confidentialite/', label: 'Politique de confidentialité' },
+	{
+		href: getRelativeLocaleUrl(locale, 'mentions-legales'),
+		label: texts['footer.legal.mentions'],
+	},
+	{
+		href: getRelativeLocaleUrl(locale, 'politique-de-confidentialite'),
+		label: texts['footer.legal.confidentialite'],
+	},
 ];
 ---
 
 <footer class="site-footer">
 	<div class="container footer-inner">
 		<p class="brand" style="margin: 0">
-			<span class="brand-name">Animal Rescue</span>
-			<span class="brand-tagline">Protéger les espèces menacées</span>
+			<span class="brand-name">{texts['brand.name']}</span>
+			<span class="brand-tagline">{texts['brand.tagline']}</span>
 		</p>
 		<ul class="footer-legal">
 			{

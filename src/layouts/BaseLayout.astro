@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { defaultLocale } from '../i18n';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
@@ -9,7 +10,7 @@ interface Props {
 	lang?: string;
 }
 
-const { title, description = 'Animal Rescue — Protéger les espèces menacées', lang = 'fr' } = Astro.props;
+const { title, description = 'Animal Rescue — Protéger les espèces menacées', lang = defaultLocale } = Astro.props;
 const pageTitle = `${title} · Animal Rescue`;
 ---
 

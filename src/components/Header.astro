@@ -1,18 +1,26 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { defaultLocale, getUi } from '../i18n';
+
+const locale = defaultLocale;
+const texts = getUi(locale);
+
 const navItems = [
-	{ href: '/aide/', label: 'Aide' },
-	{ href: '/infos/', label: 'Infos' },
-	{ href: '/carte/', label: 'Carte' },
-	{ href: '/aider/', label: 'Aider' },
-	{ href: '/apropos/', label: 'À propos' },
+	{ href: getRelativeLocaleUrl(locale, 'aide'), label: texts['nav.aide'] },
+	{ href: getRelativeLocaleUrl(locale, 'infos'), label: texts['nav.infos'] },
+	{ href: getRelativeLocaleUrl(locale, 'carte'), label: texts['nav.carte'] },
+	{ href: getRelativeLocaleUrl(locale, 'aider'), label: texts['nav.aider'] },
+	{ href: getRelativeLocaleUrl(locale, 'apropos'), label: texts['nav.apropos'] },
 ];
+
+const homeUrl = getRelativeLocaleUrl(locale);
 ---
 
 <header class="site-header">
 	<div class="container">
-		<a class="brand" href="/">
-			<span class="brand-name">Animal Rescue</span>
-			<span class="brand-tagline">Protéger les espèces menacées</span>
+		<a class="brand" href={homeUrl}>
+			<span class="brand-name">{texts['brand.name']}</span>
+			<span class="brand-tagline">{texts['brand.tagline']}</span>
 		</a>
 		<nav class="site-nav" aria-label="Navigation principale">
 			<ul>
