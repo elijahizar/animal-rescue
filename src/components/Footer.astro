@@ -1,0 +1,24 @@
+---
+const legalLinks = [
+	{ href: '/mentions-legales/', label: 'Mentions légales' },
+	{ href: '/politique-de-confidentialite/', label: 'Politique de confidentialité' },
+];
+---
+
+<footer class="site-footer">
+	<div class="container footer-inner">
+		<p class="brand" style="margin: 0">
+			<span class="brand-name">Animal Rescue</span>
+			<span class="brand-tagline">Protéger les espèces menacées</span>
+		</p>
+		<ul class="footer-legal">
+			{
+				legalLinks.map((item) => (
+					<li>
+						<a href={item.href}>{item.label}</a>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</footer>

@@ -1,17 +1,23 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Accueil">
+	<section class="hero">
+		<div class="container">
+			<h1 class="hero-title">Aidons les animaux en danger d'extinction</h1>
+			<p class="hero-subtitle">
+				Découvrez les espèces menacées, comprenez les causes de leur déclin et
+				agissez concrètement pour les protéger.
+			</p>
+			<a class="button" href="/aide/">Voir les espèces</a>
+		</div>
+	</section>
+
+	<div class="container">
+		<p class="text-muted">
+			Le contenu de cette page (espèces en vedette et dernières actualités)
+			arrive avec les prochaines étapes du projet.
+		</p>
+	</div>
+</BaseLayout>

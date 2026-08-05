@@ -1,0 +1,29 @@
+---
+const navItems = [
+	{ href: '/aide/', label: 'Aide' },
+	{ href: '/infos/', label: 'Infos' },
+	{ href: '/carte/', label: 'Carte' },
+	{ href: '/aider/', label: 'Aider' },
+	{ href: '/apropos/', label: 'À propos' },
+];
+---
+
+<header class="site-header">
+	<div class="container">
+		<a class="brand" href="/">
+			<span class="brand-name">Animal Rescue</span>
+			<span class="brand-tagline">Protéger les espèces menacées</span>
+		</a>
+		<nav class="site-nav" aria-label="Navigation principale">
+			<ul>
+				{
+					navItems.map((item) => (
+						<li>
+							<a href={item.href}>{item.label}</a>
+						</li>
+					))
+				}
+			</ul>
+		</nav>
+	</div>
+</header>
