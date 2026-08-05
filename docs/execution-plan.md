@@ -13,8 +13,8 @@
 - Directorio de trabajo: `/home/elijah/Documents/Projects/daniel/animal-rescue`
 - **FASE 0 completada** (scaffold Astro v7, shell visual, arquitectura i18n `/fr/`)
 - **FASE 1 completada** (tracer bullet guépard) — revisión aprobada por el usuario (2026-08-05)
-- **FASE 2 en curso**: contenido de las 9 especies restantes completo (2.1) — 10 fichas totales, 36 regiones; páginas `aider/`, `apropos/`, legal y blog INFOS completos (2.2–2.4)
-- Next: 2.5 optimizaciones (sitemap/robots ya hechos, falta astro:assets + OG en noticias) → 2.6 deploy
+- **FASE 2 COMPLETADA** (2026-08-05): 10 fichas + 36 regiones, `aider/`, `apropos/`, legal, blog INFOS con paginación/tags, optimizaciones SEO/OG, **deploy v1 en GitHub Pages** → https://elijahizar.github.io/animal-rescue/fr/ (workflow verde, URL verificada)
+- Next: etapas siguientes (ver propuesta al final de la sesión) — cron diario de redeploy, mejoras de contenido/SEO o i18n
 
 ---
 
@@ -133,9 +133,9 @@
 - [x] Fix de 3 enlaces absolutos rotos bajo subpath (favicon en BaseLayout, botón en aider)
 - [x] Coherencia: `robots.txt` (sitemap `/animal-rescue/`), `mentions-legales/` + `politique-de-confidentialite/` → hébergeur GitHub Pages; script `deploy` = fetch-news + build (sin wrangler)
 - [x] Workflow `.github/workflows/deploy.yml`: triggers `push (main)` + `workflow_dispatch` (sin cron por ahora, decisión del usuario); npm ci + fetch-news + build + deploy-pages
-- [ ] **Acción del usuario (1 vez)**: GitHub → Settings → Pages → Source: "GitHub Actions"
-- [ ] Probar deploy (workflow verde + URL `https://elijahizar.github.io/animal-rescue/fr/`)
-- [ ] Cron diario (futuro): añadir `schedule` al workflow → redeploy = re-ejecuta `fetch-rss`
+- [x] **Acción del usuario (1 vez)**: GitHub → Settings → Pages → Source: "GitHub Actions" (ya estaba activado con `build_type: workflow`, verificado por API)
+- [x] Probar deploy: workflow verde en 10s + URL `https://elijahizar.github.io/animal-rescue/fr/` verificada (200 en home, ficha, infos, sitemap; redirect raíz y hotlinking de Commons OK)
+- [x] Cron diario (futuro, no incluido por decisión del usuario: solo deploy en push): añadir `schedule` al workflow → redeploy = re-ejecuta `fetch-rss`
 
 ---
 
@@ -183,3 +183,4 @@ git status           # revisar antes de commits
 | 2026-08-05 | **CAMBIO DE PLAN (usuario)**: deploy v1 en GitHub Pages en vez de Cloudflare Pages. URL: `https://elijahizar.github.io/animal-rescue/` (subpath, sin dominio propio). `base: '/animal-rescue/'` + `site: https://elijahizar.github.io` en astro.config; redirect `/animal-rescue/` → `/animal-rescue/fr/` verificado en build |
 | 2026-08-05 | Workflow `.github/workflows/deploy.yml` con triggers `push (main)` + `workflow_dispatch`. **Sin cron diario por ahora** (decisión del usuario: solo deploy en push; el `schedule` se añadirá en el futuro). build = npm ci + fetch-news + astro build + deploy-pages |
 | 2026-08-05 | Pendiente del usuario para terminar 2.6: activar GitHub Pages en Settings → Pages → Source "GitHub Actions" (1 vez) |
+| 2026-08-05 | **FASE 2 COMPLETADA**: deploy v1 verificado en producción — workflow `deploy-pages` verde (10s), URL `https://elijahizar.github.io/animal-rescue/fr/` con 200 en home/ficha/infos/sitemap; redirect `/animal-rescue/`→`/fr/` y hotlinking Commons OK. Pages ya estaba activado (`build_type: workflow`). Cron diario queda como mejora futura (decisión: solo push por ahora) |
