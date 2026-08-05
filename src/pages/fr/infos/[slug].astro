@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import { siteUrl } from '../../../lib/urls';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { formatDate, excerpt, newsTagLabel } from '../../../lib/news';
 
@@ -20,7 +21,8 @@ interface Props {
 const { entry } = Astro.props;
 const title = entry.data.title;
 const description = excerpt(entry.body, 160);
-const pageUrl = getRelativeLocaleUrl('fr', `infos/${entry.id}`);
+const pageUrl = siteUrl(getRelativeLocaleUrl('fr', `infos/${entry.id}`));
+const newsImage = siteUrl('og-news.svg');
 ---
 
 <BaseLayout title="Article">
@@ -29,9 +31,11 @@ const pageUrl = getRelativeLocaleUrl('fr', `infos/${entry.id}`);
 		<meta property="og:title" content={`${title} — Animal Rescue`} />
 		<meta property="og:description" content={description} />
 		<meta property="og:url" content={pageUrl} />
+		<meta property="og:image" content={newsImage} />
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:title" content={`${title} — Animal Rescue`} />
 		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={newsImage} />
 	</Fragment>
 	<div class="container page">
 		<nav class="breadcrumb">

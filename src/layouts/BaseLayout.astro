@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { defaultLocale } from '../i18n';
+import { siteUrl } from '../lib/urls';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
@@ -12,6 +13,7 @@ interface Props {
 
 const { title, description = 'Animal Rescue — Protéger les espèces menacées', lang = defaultLocale } = Astro.props;
 const pageTitle = `${title} · Animal Rescue`;
+const canonical = siteUrl(Astro.url.pathname);
 ---
 
 <!doctype html>
@@ -23,6 +25,7 @@ const pageTitle = `${title} · Animal Rescue`;
 		<link rel="icon" type="image/svg+xml" href={import.meta.env.BASE_URL + 'favicon.svg'} />
 		<link rel="icon" href={import.meta.env.BASE_URL + 'favicon.ico'} />
 		<meta name="description" content={description} />
+		<link rel="canonical" href={canonical} />
 		<title>{pageTitle}</title>
 		<slot name="head" />
 	</head>

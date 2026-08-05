@@ -21,11 +21,14 @@ ESTADO DE REFERENCIA:
 - Repo: github.com/elijahizar/animal-rescue (SSH: git@github.com:elijahizar/animal-rescue.git)
 - Ruta: /home/elijah/Documents/Projects/daniel/animal-rescue
 - Entorno: Node v24.14.1, npm 11.11.0, git 2.43.0, Astro v7.1.6
-- **Fases 0–2 COMPLETADAS** (2026-08-05): scaffold + shell + i18n fr, tracer bullet
+- **Fases 0–4 COMPLETADAS** (2026-08-05): scaffold + shell + i18n fr, tracer bullet
   guépard, 10 fichas + 36 regiones, `aider/`/`apropos/`/legal, blog INFOS (paginación
   + tags), SEO (sitemap/robots/OG) y **deploy v1 en GitHub Pages**:
   https://elijahizar.github.io/animal-rescue/fr/
-- FASE 3 (documentación técnica) planificada; cron diario pendiente.
+- **FASE 5.1 SEO COMPLETADA** (2026-08-05): `og:url` absoluto, `rel=canonical` en todas
+  las páginas, `og:image` genérica (`public/og-news.svg`) en noticias, `srcset` en
+  home/`/aide`/galerías (`src/lib/urls.ts`). Siguiente: Fase 5.2 a11y.
+- Cron diario pendiente.
 
 DECISIONES CLAVE (resumen):
 - Stack: Astro SSG + islas React (mapa Leaflet + lista con filtros) · **GitHub Pages**

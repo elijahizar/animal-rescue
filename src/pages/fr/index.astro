@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { formatDate, excerpt, newsTagLabel } from '../../lib/news';
+import { commonsSrcset } from '../../lib/urls';
 import { IUCN_STATUS } from '../../lib/iucn';
 
 const animals = await getCollection('animals');
@@ -46,6 +47,7 @@ const description =
 							<img
 								class="card-img"
 								src={animal.data.gallery[0]?.src}
+								srcset={commonsSrcset(animal.data.gallery[0]?.src ?? '')}
 								alt={animal.data.gallery[0]?.alt ?? animal.data.name}
 								loading="lazy"
 								width="1280"

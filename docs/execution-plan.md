@@ -17,7 +17,7 @@
 - Next: **cron diario de redeploy** (pendiente) → mejoras de contenido/SEO/i18n
 - **FASE 3 COMPLETADA** (2026-08-05): documentación técnica y calidad al día (system-design, content-guidelines, 6 ADRs, session-kickoff, README, plan.md, AGENTS.md)
 - **FASE 4 COMPLETADA** (2026-08-05): verificación de diseño (system-design vs código), rediseño e implementación de los chips de filtros en `/aide` (color-coded por categoría + estados), fix de scoping CSS de la isla `AnimalList` (los estilos nunca se aplicaban) y fix de doble slash en URLs de tarjetas
-- Next: **Fase 5 (backlog priorizado)**: SEO (og:url absoluto, canonical, og:image noticias, srcset) → a11y (fallback sin-JS, mapa, contraste badges, skip-link) → rendimiento (preconnect, fetchpriority) → diseño/contenido (hero foto, OG home, fechas Europe/Paris) → operación (cron diario, 404)
+- Next: **Fase 5 (backlog priorizado)**: SEO **5.1 COMPLETADA** (og:url absoluto, canonical, og:image noticias, srcset) → a11y (fallback sin-JS, mapa, contraste badges, skip-link) → rendimiento (preconnect, fetchpriority) → diseño/contenido (hero foto, OG home, fechas Europe/Paris) → operación (cron diario, 404)
 
 ---
 
@@ -219,10 +219,10 @@
 > marcar `[x]` al completarlo y anotar en la bitácora.
 
 ### 5.1 SEO — prioridad 1
-- [ ] 1. `og:url` absoluto (`site` + `base` + path) en `aide/[slug].astro` y `infos/[slug].astro`
-- [ ] 2. `rel=canonical` absoluto en todas las páginas (falta por completo hoy)
-- [ ] 3. `og:image` en artículos de noticias (hoy solo las fichas de especie lo tienen)
-- [ ] 4. `srcset` (320/640/800px) en tarjetas del home, `/aide` y galerías (reduce bytes en móvil, LCP)
+- [x] 1. `og:url` absoluto (`site` + `base` + path) en `aide/[slug].astro` y `infos/[slug].astro` (helper `src/lib/urls.ts` → `siteUrl()`)
+- [x] 2. `rel=canonical` absoluto en todas las páginas (en `BaseLayout` vía `Astro.url.pathname`; el helper normaliza si el pathname ya incluye la base)
+- [x] 3. `og:image` en artículos de noticias (decisión del usuario: imagen genérica de marca `public/og-news.svg` — opción A; sin extraer imágenes de feeds)
+- [x] 4. `srcset` (320/640/800px) en tarjetas del home, `/aide` y galerías (helper `commonsSrcset()` en `src/lib/urls.ts`, reescribe el sufijo `1280px-` de las thumbs de Commons)
 
 ### 5.2 Accesibilidad — prioridad 2
 - [ ] 1. Fallback sin-JS en `/aide`: listado estático (SSG) + isla React que lo mejora
@@ -296,3 +296,5 @@ git status           # revisar antes de commits
 | 2026-08-05 | Diseño de filtros `/aide` definido e **implementado**: chips color-coded por categoría (causa/estatus usan su token de color como borde vía `--chip-accent`, continentes neutral forest), activo = verde bosque sólido + `✓`, hover tinte suave (`color-mix`), `:focus-visible` naranja, `:active` prensado. Build + check limpios. |
 | 2026-08-05 | **FIX scoping CSS**: los estilos de `AnimalList` estaban en `aide.astro` con `.animal-list :global(...)` → Astro los compilaba como `.animal-list[data-astro-cid-*]`, pero la isla React renderiza ese div en cliente sin el atributo → **nunca se aplicaban** (chips, buscador y tarjetas se veían como HTML por defecto; bug preexistente). Solución: mover los estilos a `src/components/AnimalList.css` importado dentro del componente (mismo patrón que `AnimalMap.tsx` + leaflet.css) y eliminar el bloque `<style>` de `aide.astro`. Verificado: 0 selectores con `data-astro-cid`, 21 reglas globales aplicándose. |
 | 2026-08-05 | **FIX URLs**: los enlaces de las tarjetas de `/aide` se generaban como `/fr/aide//{slug}/` (doble slash): `baseUrl` de `getRelativeLocaleUrl(locale, 'aide')` termina en `/` y el template añadía `${slug}/`. Corregido con `baseUrl.replace(/\/+$/, '')` en `AnimalList.tsx`. Página de especie responde 200. |
+| 2026-08-05 | Commit Fase 4 (58466e7) + push a main: rediseño de chips, fix scoping CSS, fix doble slash. |
+| 2026-08-05 | **FASE 5.1 SEO COMPLETADA**: helper `src/lib/urls.ts` (`siteUrl()` = site + base + path con normalización de base duplicada; `commonsSrcset()` = reescribe sufijo `1280px-` de thumbs Commons a 320/640/800px). `og:url` absoluto en fichas y noticias; `rel=canonical` en `BaseLayout` (todas las páginas); `og:image` genérica `public/og-news.svg` en noticias (opción A, decisión del usuario); `srcset` en home, tarjetas `/aide` (isla React con `srcSet` camelCase) y galerías. Verificado: canonical `https://elijahizar.github.io/animal-rescue/fr/...`, build 41 páginas, `astro check` 0 errores. |

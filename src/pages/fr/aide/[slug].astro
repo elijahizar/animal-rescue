@@ -5,6 +5,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Causes from '../../../components/Causes.astro';
 import AnimalMap from '../../../components/AnimalMap.tsx';
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import { siteUrl, commonsSrcset } from '../../../lib/urls';
 import { IUCN_STATUS } from '../../../lib/iucn';
 import type { CauseId } from '../../../lib/causes';
 
@@ -30,7 +31,7 @@ const animalRegions = regions.filter((region) =>
 );
 
 const locale = 'fr';
-const pageUrl = getRelativeLocaleUrl(locale, `aide/${animal.data.slug}`);
+const pageUrl = siteUrl(getRelativeLocaleUrl(locale, `aide/${animal.data.slug}`));
 const causes = animal.data.causes as CauseId[];
 const status = IUCN_STATUS[animal.data.iucnStatus];
 const description = (animal.body ?? '').slice(0, 160).replace(/[*#_\n]/g, ' ').trim() + '…';
@@ -103,6 +104,7 @@ const heroImage = animal.data.gallery[0]?.src;
 					<figure class="gallery-item">
 						<img
 							src={photo.src}
+							srcset={commonsSrcset(photo.src)}
 							alt={photo.alt ?? animal.data.name}
 							loading="lazy"
 							width="1280"
