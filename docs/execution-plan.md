@@ -12,8 +12,9 @@
 - Este plan de ejecución creado
 - Directorio de trabajo: `/home/elijah/Documents/Projects/daniel/animal-rescue`
 - **FASE 0 completada** (scaffold Astro v7, shell visual, arquitectura i18n `/fr/`)
-- **FASE 1 ejecutada** (tracer bullet guépard: modelo datos, ficha, lista, carte, RSS) — falta revisión del usuario (1.7)
-- Next: revisión con el usuario de diseño/tono/estructura → Fase 2
+- **FASE 1 completada** (tracer bullet guépard) — revisión aprobada por el usuario (2026-08-05)
+- **FASE 2 en curso**: contenido de las 9 especies restantes completo (2.1) — 10 fichas totales, 36 regiones
+- Next: 2.2 página `aider/` global → 2.3 apropos+legal → 2.4 INFOS → 2.5 optimizaciones → 2.6 deploy
 
 ---
 
@@ -85,8 +86,8 @@
 - [x] NOTA: el cron diario se configura en Fase 2 (Cloudflare)
 
 ### 1.7 Validación y revisión
-- [ ] Revisión con el usuario: diseño, tono, estructura de la ficha
-- [ ] Ajustes
+- [x] Revisión con el usuario: diseño, tono, estructura de la ficha (aprobada 2026-08-05)
+- [x] Ajustes (ninguno requerido)
 - [x] Commit: `feat: tracer bullet — ficha guépard + lista + mapa + rss`
 
 ---
@@ -94,16 +95,16 @@
 ## Fase 2 — Contenido completo y pulido
 
 ### 2.1 Las 9 especies restantes
-- [ ] corail (grupo — entrada con subespecies en el texto)
-- [ ] tigre (Panthera tigris)
-- [ ] rhinocéros noir (Diceros bicornis)
-- [ ] lion blanc (Panthera leo — nota: no es especie, es morfo de color; redactar con precisión)
-- [ ] pingüino de Humboldt (Spheniscus humboldti)
-- [ ] thon rouge (grupo — entrada con subespecies)
-- [ ] dauphin commun (Delphinus delphis)
-- [ ] baleine bleue (Balaenoptera musculus)
-- [ ] requin blanc (Carcharodon carcharias)
-- [ ] Cada ficha: fotos Commons con crédito, regiones lat/lng, causas de taxonomía, cómo ayudar
+- [x] corail (grupo — entrada con subespecies en el texto)
+- [x] tigre (Panthera tigris)
+- [x] rhinocéros noir (Diceros bicornis)
+- [x] lion blanc (Panthera leo — nota: no es especie, es morfo de color; redactar con precisión)
+- [x] pingüino de Humboldt (Spheniscus humboldti)
+- [x] thon rouge (grupo — entrada con subespecies)
+- [x] dauphin commun (Delphinus delphis)
+- [x] baleine bleue (Balaenoptera musculus)
+- [x] requin blanc (Carcharodon carcharias)
+- [x] Cada ficha: fotos Commons con crédito, regiones lat/lng, causas de taxonomía, cómo ayudar
 
 ### 2.2 Página `aider/` (global)
 - [ ] Acciones diarias (consumo, alimentación, transporte…)
@@ -168,3 +169,6 @@ git status           # revisar antes de commits
 | 2026-08-05 | Guépard: VU, ~6 500 individus matures, tendance en diminution (IUCN 2022); 6 fotos Commons verificadas (CC BY-SA / CC0) |
 | 2026-08-05 | Leaflet 1.9 + react-leaflet 5 (React 19); mapas con `client:only="react"` (Leaflet no se ejecuta en SSR) |
 | 2026-08-05 | `fetch-rss.mjs`: feeds operativos = UICN France, WWF France, Le Monde Planète (LPO: URL 404, pendiente verificar); 12 noticias iniciales filtradas por keywords |
+| 2026-08-05 | Revisión Fase 1 aprobada por el usuario; sin ajustes (1.7 cerrado) |
+| 2026-08-05 | FASE 2.1 completada: 10 fichas de especies (9 nuevas en este commit) + 36 regiones JSON. Estados IUCN verificados: tigre EN (2022), lion blanc VU, rhinocéros noir CR (~5 495), corail EN (Scleractinia, 2024), thon rouge LC (T. thynnus 2021), dauphin commun LC (subpoblación mediterránea EN), baleine bleue EN (Cooke 2018, 10-25k ind.), requin blanc VU (Rigby 2022), pingouin Humboldt VU (BirdLife 2020, ~32k ind.) |
+| 2026-08-05 | Fotos de las 3 últimas fichas seleccionadas y verificadas (HTTP 200) vía API de Wikimedia Commons (15 thumbs a 1280px, licencias CC BY-SA/CC BY/PD) |

@@ -1,0 +1,8 @@
+{
+	"id": "corail-ocean-atlantique",
+	"animalId": "corail",
+	"label": "Océan Atlantique",
+	"continent": "Océans",
+	"lat": 15,
+	"lng": -60
+}
