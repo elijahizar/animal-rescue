@@ -128,7 +128,7 @@ coincidir dentro de "mil**lions**".
 - [ ] Revisar la ficha en local (`npm run dev`)
 - [ ] Actualizar `docs/execution-plan.md` (checkboxes + bitácora)
 
-## 5. Cómo añadir una región a una especie existente
+## 6. Cómo añadir una región a una especie existente
 
 - [ ] Comprobar que el `animalId` coincide con el slug de la ficha.
 - [ ] Buscar centro geográfico verosímil (Wikipedia / maps approx).
@@ -136,7 +136,7 @@ coincidir dentro de "mil**lions**".
 - [ ] Añadir el id al campo `regions` de la ficha.
 - [ ] Build + check.
 
-## 6. Checklist de calidad (DoD contenido)
+## 7. Checklist de calidad (DoD contenido)
 
 - [ ] Francés correcto (ortografía, acentos, concordancia, la/le)
 - [ ] Estatus IUCN citado con fuente/evaluación

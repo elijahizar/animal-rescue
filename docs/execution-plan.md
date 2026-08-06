@@ -18,6 +18,7 @@
 - **FASE 3 COMPLETADA** (2026-08-05): documentación técnica y calidad al día (system-design, content-guidelines, 6 ADRs, session-kickoff, README, plan.md, AGENTS.md)
 - **FASE 4 COMPLETADA** (2026-08-05): verificación de diseño (system-design vs código), rediseño e implementación de los chips de filtros en `/aide` (color-coded por categoría + estados), fix de scoping CSS de la isla `AnimalList` (los estilos nunca se aplicaban) y fix de doble slash en URLs de tarjetas
 - Next: **Fase 5 (backlog priorizado)**: SEO **5.1 COMPLETADA** (og:url absoluto, canonical, og:image noticias, srcset) → a11y (fallback sin-JS, mapa, contraste badges, skip-link) → rendimiento (preconnect, fetchpriority) → diseño/contenido (hero foto, OG home, fechas Europe/Paris) → operación (cron diario, 404)
+- **SESIONES PLANIFICADAS (2026-08-06)**: **Fase 6** = añadir 20 animales en peligro de extinción del Perú (lista aprobada por el usuario) + **Fase 7** = migrar todas las imágenes a self-hosted con `astro:assets` (decisión Opción A: descarga local + schema `image()`, migrar también las 10 fichas actuales). Plan tareas en las fases 6 y 7.
 
 ---
 
@@ -245,6 +246,119 @@
 
 ---
 
+## Fase 6 — 20 animales en peligro de extinción del Perú
+
+> **Objetivo**: ampliar el catálogo con 20 especies peruanas (de CR a VU).
+> **Lista aprobada por el usuario (2026-08-06)**. Contenido 100% en francés
+> siguiendo `docs/content-guidelines.md` (secciones 2 y 3). Independiente de la
+> Fase 7 (imágenes): las fichas se crean con URLs de Commons (hotlink) y la Fase 7
+> las migra a self-hosted con `astro:assets`.
+
+### 6.1 Las 20 especies (lista aprobada)
+
+| # | Slug (fr) | Nom (fr) | Scientifique | IUCN vér. | Éval. | Hábitat |
+|---|---|---|---|---|---|---|
+| 1 | `ours-a-lunettes` | Ours à lunettes | *Tremarctos ornatus* | VU | 2017 | Andes |
+| 2 | `condor-des-andes` | Condor des Andes | *Vultur gryphus* | VU | 2020 | Andes |
+| 3 | `chat-des-andes` | Chat des Andes | *Leopardus jacobita* | EN | 2024 | Puna |
+| 4 | `loutre-marine` | Loutre marine | *Lontra felina* | EN | 2015 | Côte |
+| 5 | `loutre-geante` | Loutre géante | *Pteronura brasiliensis* | EN | 2015 | Amazonie |
+| 6 | `dauphin-rose-amazonie` | Dauphin rose de l'Amazone | *Inia geoffrensis* | EN | 2018 | Amazonie |
+| 7 | `lamantin-amazonie` | Lamantin de l'Amazone | *Trichechus inunguis* | VU | 2016 | Amazonie |
+| 8 | `singe-choro-queue-jaune` | Singe choro à queue jaune | *Lagothrix flavicauda* | CR | 2021 | Endémique (Andes nord) |
+| 9 | `singe-tocon-san-martin` | Singe tocón de San Martín | *Plecturocebus oenanthe* | CR | 2020 | Endémique |
+| 10 | `singe-araignee-noir` | Singe araignée noir | *Ateles chamek* | EN | 2016 | Amazonie |
+| 11 | `tapir-terrestre` | Tapir terrestre | *Tapirus terrestris* | VU | 2018 | Amazonie |
+| 12 | `tapir-des-andes` | Tapir des Andes | *Tapirus pinchaque* | EN | 2016 | Andes du Nord |
+| 13 | `harpie-feroce` | Harpie féroce | *Harpia harpyja* | VU | 2021 | Amazonie |
+| 14 | `grand-fourmilier` | Grand fourmilier | *Myrmecophaga tridactyla* | VU | 2024 | Amazonie |
+| 15 | `grebe-titicaca` | Grèbe du Titicaca | *Rollandia microptera* | EN | 2020 | Lac Titicaca |
+| 16 | `pava-aliblanca` | Pava à ailes blanches | *Penelope albipennis* | EN | 2018 | Endémique (Nord-Ouest) |
+| 17 | `perruche-tumbes` | Perruche de Tumbes | *Brotogeris pyrrhoptera* | VU | 2021 | Tumbes |
+| 18 | `grenouille-titicaca` | Grenouille géante du lac Titicaca | *Telmatobius culeus* | EN | 2020 | Lac Titicaca |
+| 19 | `crocodile-tumbes` | Crocodile de Tumbes | *Crocodylus acutus* | VU | 2022 | Mangroves de Tumbes |
+| 20 | `tortue-imbriquee` | Tortue imbriquée | *Eretmochelys imbricata* | CR | 2008 | Côtes du Nord (nidification) |
+
+
+> **Estatus IUCN verificados en línea** el 2026-08-06. Cambios vs. la lista
+> prelver: la pava es **EN** (no CR, bajada en 2018); la perruche de Tumbes es
+> **VU** (bajada del EN en 2021); la grenouille du Titicaca es **EN** (no CR,
+> actualización 2020); el pudú fue sustituido por el **grèbe du Titicaca** (EN).
+> Tapirus pinchaque = EN. Tapir terrestris = VU.
+
+### 6.2 Pasos por especie (checklist sección 5 de `content-guidelines.md`)
+- [ ] Crear `src/content/animals/fr/{slug}.md`: frontmatter (slug, name, scientificName, iucnStatus, gallery con `src/author/page/licence/alt`, `causes` de `src/lib/causes.ts`, `aider` markdown, `regions`, `tags` en francés)
+- [ ] Body en 2 párrafos: párrafo 1 = presentación naturalista (tamaño, hábitat, alimentación, curiosidad); párrafo 2 = estado de conservación citando **IUCN + evaluación/año**, población estimada, tendencia y amenazas; estatus en **negrita** la primera vez
+- [ ] Seleccionar 3-6 fotos de Wikimedia Commons con licencia libre (CC BY/CC BY-SA/CC0/PD), thumbs `1280px-...`, verificar URL con `curl -I` (HTTP 200) y crédito completo — **excepción**: permitir 2 fotos (no < 2) para taxa oscuros si la cobertura libre de Commons es insuficiente (chat des Andes, tocón, pava aliblanca, grenouille du Titicaca)
+- [ ] Crear 2-5 regiones `src/content/regions/fr/{slug}-{zona}.json` (lat/lng del centro de la zona, `continent: "Amérique du Sud"` o "Océans" para spp marinas). Para spp de rango amplio (cocodrilo de Tumbes, tortue imbriquée) acotar las regiones a la franja costera peruana y explicárlo en el body (población peruana, no especie entera)
+- [ ] Usar SOLO las causas de la taxonomía (`src/lib/causes.ts`)
+- [ ] `tags` sugeridos: ej. `perou`, `amazonie`, `andes`, `mammifere`, `oiseau`, `reptile`, `cote`
+- [ ] Añadir la especie a `KEYWORDS` de `scripts/fetch-rss.mjs` (nombre común fr + científico) para que el blog INFOS pesque noticias sobre ella — sin esto no recibe artículos
+
+### 6.3 Sugerencia de `causes` por especie (revisar en creación)
+- Andes (ours, condor, chat des Andes, pudú, tapir des Andes): `perte-habitat`, `braconnage` (si aplica)
+- Amazonie (loutre géante, dauphin rose, lamantin, singes, tapir terrestre, harpie, grand fourmilier): `deforestation`, `trafic-especes` (primates), `pollution` (dauphin)
+- Côte/mer (loutre marine, crocodile de Tumbes, tortue imbriquée): `pollution`, `surpeche` (tortue), `changement-climatique`
+- Endémicas críticas (mono choro, tocón, pava, grenouille du Titicaya): `perte-habitat` + situación local
+- Titicaca: `pollution`, `especes-invasives` (truite arc-en-ciel)
+- Recordar: markers del CARTE y mini-mapas salen solos de `regions`; verificar cobertura final
+
+### 6.4 Verificación final Fase 6
+- [ ] `npm run build` (0 errores) + `npx astro check` (0 errores)
+- [ ] Revisión de varias fichas nuevas en `npm run dev` (galería, badge, mini-mapa, causas, créditos)
+- [ ] Actualizar `docs/plan.md` (evolucionar el conteo de especies/detoices si procede) — **preguntar al usuario antes de cambiar `plan.md`** (no se cambia sin su aprobación)
+- [ ] Actualizar este plan de ejecución (checkboxes + bitácora)
+
+---
+
+## Fase 7 — Imágenes self-hosted con `astro:assets` (migración completa)
+
+> **Contexto / decisión (2026-08-06, Opción A aprobada):** acabar con el hotlinking
+> de Wikimedia (ADR-0004 quedó superado). Descargar TODAS las imágenes una vez
+> (las 20 nuevas de la Fase 6 + las 10 fichas actuales) a `src/assets/species/`,
+> cambiar el schema de la colección a `image()` y renderizarlas con el componente
+> `<Image>` de `astro:assets` (webp + responsive automático, optimización LOCAL en
+> build → sin HTTP 429 de Wikimedia).
+>
+> ⚠️ Implicación del schema único: `gallery` se comparte para todas las spp; si
+> se cambia a `image()`, todas las fichas (incluidas las 10 actuales) deben usar
+> local. **Migrar también las 10 existentes** (mismo script, sus thumbs ya están
+> seleccionadas). **~40 imágenes extra, bajo riesgo.**
+
+### 7.1 Script de descarga `scripts/fetch-species-images.mjs` (nuevo)
+- [ ] Leer todos los `src/content/animals/fr/*.md` y extraer `gallery[].src`
+- [ ] Descargar cada thumb **1280px** a `src/assets/species/{slug}/{i}.jpg` **secuencial con pausa ~300 ms** (límite de rate de Wikimedia), verificar `HTTP 200`, saltar errores, idempotente (no redescarga si existe)
+- [ ] Reescribir el frontmatter: `src: <url>` → `image: ../../assets/species/{slug}/{i}.jpg` (ruta relativa desde `src/content/animals/fr/`), conservando `author/page/licence/alt`
+- [ ] Añadir script npm `"fetch-images": "node scripts/fetch-species-images.mjs"` en `package.json`
+
+### 7.2 Schema (`src/content.config.ts`)
+- [ ] Cambiar `gallery[].src: z.string()` → `gallery[].image: image()` (helper de `astro:content`, resuelve rutas relativas que apunten dentro de la carpeta de contenido)
+- [ ] Regenerar tipos: `npx astro sync`
+
+### 7.3 Consumo en componentes (usar el componente `<Image>` de `astro:assets`)
+- [ ] `src/pages/fr/aide/[slug].astro`: `<img src={photo.src} srcset={commonsSrcset(photo.src)}>` → `<Image src={photo.image} ...>`; `heroImage` para og:image → `siteUrl(photo.image.src)` absoluto
+- [ ] `src/pages/fr/index.astro`: hero (mantener `fetchpriority`) y tarjetas destacadas con `<Image>`
+- [ ] `src/pages/fr/aide.astro` + `AnimalList.tsx`: pasar `image: gallery[0].image.src` (string ya procesado) a la isla React; en la tarjeta `<img src>` simple (sin srcset)
+- [ ] Revisar el footer/CARTE por si referencia `gallery[].src` (verificar con `grep`)
+
+### 7.4 Limpieza del hotlinking
+- [ ] En `src/lib/urls.ts`: eliminar `commonsSrcset` y `WIKIMEDIA_THUMB_STEPS`; conservar `siteUrl`
+- [ ] Quitar todos los usos de `commonsSrcset` (home, ficha, AnimalList) y sus importaciones
+
+### 7.5 Docs (tras validación)
+- [ ] Actualizar `docs/content-guidelines.md` sección 2.3: imágenes LOCALES en `src/assets/species/`, flujo → `npm run fetch-images`, render con `astro:assets`; actualizar checklist sección 5 (foto: archivo local + crédito autor/page/licence en la ficha)
+- [ ] ADR-0004: marcar como "Superseded" y crear ADR-0007 `self-hosted + astro:assets` (justificación: se evita el 429 porque la descarga es 1 vez y no en cada build; repo +~40 MB aceptable para cron frecuente)
+- [ ] Actualizar `docs/system-design.md` (flujo de imágenes) y revisar `docs/plan.md` — pedir aprobación si cambia decisiones de `plan.md`
+- [ ] Actualizar este plan de ejecución (checkboxes + bitácora)
+
+### 7.6 Validación Fase 7
+- [ ] `npm run build` (0 errores) + `npx astro check` (0 errores)
+- [ ] `npm run preview` o deploy local: verificar og:image absolutos, hero, tarjetas y galería con las nuevas URLs locales
+- [ ] Confirmar que NO hay ninguna referencia `upload.wikimedia.org` en el build final (`grep -r upload.wikimedia dist/` → vacío)
+- [ ] Revisar en `npm run dev` una ficha antigua y una nueva (galería, crédito, mapa)
+
+---
+
 ## Definición de listo (DoD) por sesión
 
 - Todos los cambios compilados: `npm run build` sin errores
@@ -299,3 +413,6 @@ git status           # revisar antes de commits
 | 2026-08-05 | Commit Fase 4 (58466e7) + push a main: rediseño de chips, fix scoping CSS, fix doble slash. |
 | 2026-08-05 | **FASE 5.1 SEO COMPLETADA**: helper `src/lib/urls.ts` (`siteUrl()` = site + base + path con normalización de base duplicada; `commonsSrcset()` = reescribe sufijo `1280px-` de thumbs Commons a 320/640/800px). `og:url` absoluto en fichas y noticias; `rel=canonical` en `BaseLayout` (todas las páginas); `og:image` genérica `public/og-news.svg` en noticias (opción A, decisión del usuario); `srcset` en home, tarjetas `/aide` (isla React con `srcSet` camelCase) y galerías. Verificado: canonical `https://elijahizar.github.io/animal-rescue/fr/...`, build 41 páginas, `astro check` 0 errores. |
 | 2026-08-05 | **REGRESIÓN 5.1 en producción y fix**: Wikimedia cambió su política de thumbs (T414805, 2025-2026): solo genera tamaños estándar (20/40/60/120/250/330/500/960/1280/1920/3840px) y rechaza los demás con HTTP 400. Los `srcset` con 320/640/800px rompieron TODAS las imágenes (el navegador elige del `srcset`, no del `src`). Fix: `commonsSrcset` ahora usa [500, 960] (estándar, < 1280) y valida contra `WIKIMEDIA_THUMB_STEPS` para nunca emitir anchos no permitidos. Verificado: 500/960 → HTTP 200 en producción. |
+| 2026-08-06 | **Sesiones planificadas (usuario)**: añadir 20 animales en peligro de extinción del **Perú** (lista aprobada, ver Fase 6) + migrar **todas** las imágenes a self-hosted con `astro:assets` (decisión Opción A, ver Fase 7). Se escriben en este plan de ejecución para ejecutarse en una nueva sesión. |
+| 2026-08-06 | **Fase 6 (plan)**: 20 fichas nuevas en francés (5 CR, 7 EN, 8 VU) + ~50-70 regiones de Perú. Estatus IUCN provisorios a re-verificar en la UICN. |
+| 2026-08-06 | **Fase 7 (plan)**: fin del hotlinking de Wikimedia (ADR-0004 quedaría "Superseded", nuevo ADR-0007). Script `fetch-species-images.mjs` descarga 1 sola vez a `src/assets/species/`, schema `gallery[].image: image()`, render `<Image>`. Se migran también las 10 fichas actuales (schema único). |
