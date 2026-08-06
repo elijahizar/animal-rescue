@@ -4,12 +4,12 @@ name: Tortue imbriquée
 scientificName: Eretmochelys imbricata
 iucnStatus: CR
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Tortuga_carey_%28Eretmochelys_imbricata%29%2C_parque_nacional_Ras_Muhammad%2C_Egipto%2C_2022-03-28%2C_DD_56.jpg/1280px-Tortuga_carey_%28Eretmochelys_imbricata%29%2C_parque_nacional_Ras_Muhammad%2C_Egipto%2C_2022-03-28%2C_DD_56.jpg
+  - image: ../../../assets/species/tortue-imbriquee/0.jpg
     author: Diego Delso
     page: https://commons.wikimedia.org/wiki/File:Tortuga_carey_(Eretmochelys_imbricata),_parque_nacional_Ras_Muhammad,_Egipto,_2022-03-28,_DD_56.jpg
     licence: CC BY-SA 4.0
     alt: Tortue imbriquée nageant dans les eaux claires
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Tortuga_carey_%28Eretmochelys_imbricata%29%2C_islas_Ad_Dimaniyat%2C_Om%C3%A1n%2C_2024-08-15%2C_DD_15.jpg/1280px-Tortuga_carey_%28Eretmochelys_imbricata%29%2C_islas_Ad_Dimaniyat%2C_Om%C3%A1n%2C_2024-08-15%2C_DD_15.jpg
+  - image: ../../../assets/species/tortue-imbriquee/1.jpg
     author: Diego Delso
     page: https://commons.wikimedia.org/wiki/File:Tortuga_carey_(Eretmochelys_imbricata),_islas_Ad_Dimaniyat,_Omán,_2024-08-15,_DD_15.jpg
     licence: CC BY-SA 4.0

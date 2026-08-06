@@ -4,32 +4,32 @@ name: Guépard
 scientificName: Acinonyx jubatus
 iucnStatus: VU
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/003_Cheetah_hissing_after_a_meal_in_Kalahari_Desert_Photo_by_Giles_Laurent.jpg/1280px-003_Cheetah_hissing_after_a_meal_in_Kalahari_Desert_Photo_by_Giles_Laurent.jpg
+  - image: ../../../assets/species/guepard/0.jpg
     author: Giles Laurent
     page: https://commons.wikimedia.org/wiki/File:003_Cheetah_hissing_after_a_meal_in_Kalahari_Desert_Photo_by_Giles_Laurent.jpg
     licence: CC BY-SA 4.0
     alt: Guépard dans le désert du Kalahari
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Cheetah_%28Acinonyx_jubatus%29_male_..._%2849037621467%29.jpg/1280px-Cheetah_%28Acinonyx_jubatus%29_male_..._%2849037621467%29.jpg
+  - image: ../../../assets/species/guepard/1.jpg
     author: Bernard DUPONT
     page: https://commons.wikimedia.org/wiki/File:Cheetah_(Acinonyx_jubatus)_male_..._(49037621467).jpg
     licence: CC BY-SA 2.0
     alt: Guépard mâle au Masai Mara
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Cheetahs_of_Tiger_Canyon_by_Daniella_Kueck_Wildlife_Photographer.jpg/1280px-Cheetahs_of_Tiger_Canyon_by_Daniella_Kueck_Wildlife_Photographer.jpg
+  - image: ../../../assets/species/guepard/2.jpg
     author: Daniella Kueck
     page: https://commons.wikimedia.org/wiki/File:Cheetahs_of_Tiger_Canyon_by_Daniella_Kueck_Wildlife_Photographer.jpg
     licence: CC BY-SA 4.0
     alt: Deux guépards dans le Tiger Canyon
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Rietvlei_Female_to_Makutsi.jpg/1280px-Rietvlei_Female_to_Makutsi.jpg
+  - image: ../../../assets/species/guepard/3.jpg
     author: Kelseylbrown
     page: https://commons.wikimedia.org/wiki/File:Rietvlei_Female_to_Makutsi.jpg
     licence: CC BY-SA 4.0
     alt: Guépard femelle en Afrique du Sud
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Cheeta_4.JPG/1280px-Cheeta_4.JPG
+  - image: ../../../assets/species/guepard/4.jpg
     author: Bhaskaranaidu
     page: https://commons.wikimedia.org/wiki/File:Cheeta_4.JPG
     licence: CC BY-SA 2.5
     alt: Guépard en Inde
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Southern_and_Eastern_African_Cheetah_548388572.jpg/1280px-Southern_and_Eastern_African_Cheetah_548388572.jpg
+  - image: ../../../assets/species/guepard/5.jpg
     author: iNaturalist
     page: https://commons.wikimedia.org/wiki/File:Southern_and_Eastern_African_Cheetah_548388572.jpg
     licence: CC0

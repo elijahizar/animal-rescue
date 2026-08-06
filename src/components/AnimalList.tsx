@@ -1,7 +1,6 @@
 import { useMemo, useState } from 'react';
 import { IUCN_STATUS } from '../lib/iucn';
 import { CAUSES, CAUSE_IDS } from '../lib/causes';
-import { commonsSrcset } from '../lib/urls';
 import './AnimalList.css';
 
 export interface AnimalListItem {
@@ -146,9 +145,9 @@ export default function AnimalList({ animals, baseUrl }: Props) {
 								{animal.image && (
 									<img
 										src={animal.image}
-										srcSet={commonsSrcset(animal.image)}
 										alt={animal.name}
 										loading="lazy"
+										width="1280"
 									/>
 								)}
 								<div className="card-body">

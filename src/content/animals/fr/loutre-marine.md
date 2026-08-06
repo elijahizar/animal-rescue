@@ -4,22 +4,22 @@ name: Loutre marine
 scientificName: Lontra felina
 iucnStatus: EN
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Marine_otter_%28Lontra_felina%29_Chiloe.jpg/1280px-Marine_otter_%28Lontra_felina%29_Chiloe.jpg
+  - image: ../../../assets/species/loutre-marine/0.jpg
     author: Charles J. Sharp
     page: https://commons.wikimedia.org/wiki/File:Marine_otter_(Lontra_felina)_Chiloe.jpg
     licence: CC BY-SA 4.0
     alt: Loutre marine sur les rochers de la côte
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Marine_otter_%28Lontra_felina%29_swimming_Chiloe.jpg/1280px-Marine_otter_%28Lontra_felina%29_swimming_Chiloe.jpg
+  - image: ../../../assets/species/loutre-marine/1.jpg
     author: Charles J. Sharp
     page: https://commons.wikimedia.org/wiki/File:Marine_otter_(Lontra_felina)_swimming_Chiloe.jpg
     licence: CC BY-SA 4.0
     alt: Loutre marine nageant entre les rochers
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Lontra_felina_01.jpg/1280px-Lontra_felina_01.jpg
+  - image: ../../../assets/species/loutre-marine/2.jpg
     author: Josue Hermoza
     page: https://commons.wikimedia.org/wiki/File:Lontra_felina_01.jpg
     licence: CC BY-SA 4.0
     alt: Loutre marine photographiée par un naturaliste péruvien
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Lontra_felina_05.jpg/1280px-Lontra_felina_05.jpg
+  - image: ../../../assets/species/loutre-marine/3.jpg
     author: Josue Hermoza
     page: https://commons.wikimedia.org/wiki/File:Lontra_felina_05.jpg
     licence: CC BY-SA 4.0

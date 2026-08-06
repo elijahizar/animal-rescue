@@ -4,22 +4,22 @@ name: Condor des Andes
 scientificName: Vultur gryphus
 iucnStatus: VU
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Vultur_gryphus_head_%28Linnaeus%2C_1758%29.jpg/1280px-Vultur_gryphus_head_%28Linnaeus%2C_1758%29.jpg
+  - image: ../../../assets/species/condor-des-andes/0.jpg
     author: Michael Gäbler
     page: https://commons.wikimedia.org/wiki/File:Vultur_gryphus_head_(Linnaeus,_1758).jpg
     licence: CC BY 3.0
     alt: Tête et collier de plumes d'un condor des Andes
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Andean_Condor_in_flight.jpg/1280px-Andean_Condor_in_flight.jpg
+  - image: ../../../assets/species/condor-des-andes/1.jpg
     author: Pedro Szekely
     page: https://commons.wikimedia.org/wiki/File:Andean_Condor_in_flight.jpg
     licence: CC BY-SA 2.0
     alt: Condor des Andes en vol
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Peru_-_Colca_Canyon_-_Andean_condor_%28Vultur_gryphus%29_02.jpg/1280px-Peru_-_Colca_Canyon_-_Andean_condor_%28Vultur_gryphus%29_02.jpg
+  - image: ../../../assets/species/condor-des-andes/2.jpg
     author: Thomas Fuhrmann
     page: https://commons.wikimedia.org/wiki/File:Peru_-_Colca_Canyon_-_Andean_condor_(Vultur_gryphus)_02.jpg
     licence: CC BY-SA 4.0
     alt: Condor des Andes au-dessus du canyon de Colca
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Andean_Condor_065.jpg/1280px-Andean_Condor_065.jpg
+  - image: ../../../assets/species/condor-des-andes/3.jpg
     author: Ltshears
     page: https://commons.wikimedia.org/wiki/File:Andean_Condor_065.jpg
     licence: CC BY-SA 3.0

@@ -10,6 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "fetch-news": "node scripts/fetch-rss.mjs",
+    "fetch-images": "node scripts/fetch-species-images.mjs",
     "deploy": "npm run fetch-news && astro build",
     "astro": "astro"
   },

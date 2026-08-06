@@ -4,22 +4,22 @@ name: Dauphin rose de l'Amazone
 scientificName: Inia geoffrensis
 iucnStatus: EN
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Inia_geoffrensis_geoffrensis_62673186.jpg/1280px-Inia_geoffrensis_geoffrensis_62673186.jpg
+  - image: ../../../assets/species/dauphin-rose-amazonie/0.jpg
     author: Dan Riskin
     page: https://commons.wikimedia.org/wiki/File:Inia_geoffrensis_geoffrensis_62673186.jpg
     licence: CC BY 4.0
     alt: Dauphin rose de l'Amazone dans les eaux sombres du fleuve
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Inia_geoffrensis_geoffrensis_103297350.jpg/1280px-Inia_geoffrensis_geoffrensis_103297350.jpg
+  - image: ../../../assets/species/dauphin-rose-amazonie/1.jpg
     author: Austin R. Kelly
     page: https://commons.wikimedia.org/wiki/File:Inia_geoffrensis_geoffrensis_103297350.jpg
     licence: CC BY 4.0
     alt: Dauphin rose émergeant à la surface de l'Amazone
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Inia_geoffrensis_11791034.jpg/1280px-Inia_geoffrensis_11791034.jpg
+  - image: ../../../assets/species/dauphin-rose-amazonie/2.jpg
     author: Julien Renoult
     page: https://commons.wikimedia.org/wiki/File:Inia_geoffrensis_11791034.jpg
     licence: CC BY 4.0
     alt: Dauphin rose de l'Amazone en plongée
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Inia_geoffrensis_175141085.jpg/1280px-Inia_geoffrensis_175141085.jpg
+  - image: ../../../assets/species/dauphin-rose-amazonie/3.jpg
     author: Tiago Lubiana
     page: https://commons.wikimedia.org/wiki/File:Inia_geoffrensis_175141085.jpg
     licence: CC0

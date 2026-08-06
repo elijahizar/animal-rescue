@@ -4,17 +4,17 @@ name: Harpie féroce
 scientificName: Harpia harpyja
 iucnStatus: VU
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Harpia-harpyja-001.jpg/1280px-Harpia-harpyja-001.jpg
+  - image: ../../../assets/species/harpie-feroce/0.jpg
     author: Mdf
     page: https://commons.wikimedia.org/wiki/File:Harpia-harpyja-001.jpg
     licence: CC BY-SA 3.0
     alt: Harpie féroce perché dans la canopée
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Harpy_Eagle_%28Harpia_harpyja%29.jpg/1280px-Harpy_Eagle_%28Harpia_harpyja%29.jpg
+  - image: ../../../assets/species/harpie-feroce/1.jpg
     author: Brian Gratwicke
     page: https://commons.wikimedia.org/wiki/File:Harpy_Eagle_(Harpia_harpyja).jpg
     licence: CC BY 2.0
     alt: Harpie féroce en captivité
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Captive_Harpia_harpyja_%28Harpy_Eagle%29_at_Belize_Zoo.jpg/1280px-Captive_Harpia_harpyja_%28Harpy_Eagle%29_at_Belize_Zoo.jpg
+  - image: ../../../assets/species/harpie-feroce/2.jpg
     author: Perryprog
     page: https://commons.wikimedia.org/wiki/File:Captive_Harpia_harpyja_(Harpy_Eagle)_at_Belize_Zoo.jpg
     licence: CC BY-SA 4.0

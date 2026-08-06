@@ -4,22 +4,22 @@ name: Lamantin de l'Amazone
 scientificName: Trichechus inunguis
 iucnStatus: VU
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Amazonian_manatee_%28Trichechus_inunguis%29.jpg/1280px-Amazonian_manatee_%28Trichechus_inunguis%29.jpg
+  - image: ../../../assets/species/lamantin-amazonie/0.jpg
     author: Dirk Meyer
     page: https://commons.wikimedia.org/wiki/File:Amazonian_manatee_(Trichechus_inunguis).jpg
     licence: CC BY-SA 4.0
     alt: Lamantin de l'Amazone dans une eau claire
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Manati_amazonico_en_Iquitos.jpg/1280px-Manati_amazonico_en_Iquitos.jpg
+  - image: ../../../assets/species/lamantin-amazonie/1.jpg
     author: Alan Kotok
     page: https://commons.wikimedia.org/wiki/File:Manati_amazonico_en_Iquitos.jpg
     licence: CC BY 2.0
     alt: Lamantin de l'Amazone photographié à Iquitos
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Trichechus_inunguis.jpg/1280px-Trichechus_inunguis.jpg
+  - image: ../../../assets/species/lamantin-amazonie/2.jpg
     author: KCO3
     page: https://commons.wikimedia.org/wiki/File:Trichechus_inunguis.jpg
     licence: Public domain
     alt: Portrait d'un lamantin de l'Amazone
-  - src: https://upload.wikimedia.org/wikipedia/commons/8/8c/Trichechus_inunguis_%28Peixe-boi_amaz%C3%B4nico%29_por_F%C3%A1bia_Luna_ICMBioCMA.png
+  - image: ../../../assets/species/lamantin-amazonie/3.png
     author: Fábia Luna / ICMBioCMA
     page: https://commons.wikimedia.org/wiki/File:Trichechus_inunguis_(Peixe-boi_amazônico)_por_Fábia_Luna_ICMBioCMA.png
     licence: CC BY-SA 4.0

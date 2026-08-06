@@ -4,22 +4,22 @@ name: Perruche de Tumbes
 scientificName: Brotogeris pyrrhoptera
 iucnStatus: VU
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Brotogeris_pyrrhoptera_-Guayas_-Ecuador-8.jpg/1280px-Brotogeris_pyrrhoptera_-Guayas_-Ecuador-8.jpg
+  - image: ../../../assets/species/perruche-tumbes/0.jpg
     author: markaharper1
     page: https://commons.wikimedia.org/wiki/File:Brotogeris_pyrrhoptera_-Guayas_-Ecuador-8.jpg
     licence: CC BY-SA 2.0
     alt: Perruche de Tumbes perché sur une branche
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Brotogeris-pyrrhoptera.jpg/1280px-Brotogeris-pyrrhoptera.jpg
+  - image: ../../../assets/species/perruche-tumbes/1.jpg
     author: Penkinvaltaaja
     page: https://commons.wikimedia.org/wiki/File:Brotogeris-pyrrhoptera.jpg
     licence: CC BY-SA 4.0
     alt: Perruche de Tumbes dans la végétation
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Grey-cheeked_Parakeet_%28Brotogeris_pyrrhoptera%29_captivity.jpg/1280px-Grey-cheeked_Parakeet_%28Brotogeris_pyrrhoptera%29_captivity.jpg
+  - image: ../../../assets/species/perruche-tumbes/2.jpg
     author: Beatrice Murch
     page: https://commons.wikimedia.org/wiki/File:Grey-cheeked_Parakeet_(Brotogeris_pyrrhoptera)_captivity.jpg
     licence: CC BY 2.0
     alt: Perruche de Tumbes vue de près
-  - src: https://upload.wikimedia.org/wikipedia/commons/1/19/Brotogeris_pyrrhopterus_98001_%2820667185158%29.jpg
+  - image: ../../../assets/species/perruche-tumbes/3.jpg
     author: Diego Tirira
     page: https://commons.wikimedia.org/wiki/File:Brotogeris_pyrrhopterus_98001_(20667185158).jpg
     licence: CC BY-SA 2.0

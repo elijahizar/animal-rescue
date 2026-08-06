@@ -22,10 +22,10 @@ extinción. Sin backend, sin base de datos, sin analítica, sin cookies.
 └─────────────┘   └──────────────┘   └───────────┘   └──────┬───────┘
                                                             │
 ┌─────────────┐   ┌──────────────┐   ┌───────────┐          ▼
-│ Wikimedia   │──▶│ hotlinking   │   │ GitHub    │◀──────── GitHub Pages
-│ Commons     │   │ (img src)    │   │ Actions   │          /animal-rescue/
-└─────────────┘   └──────────────┘   │ (deploy)  │
-                                     └───────────┘
+│ Wikimedia   │──▶│ fetch-images │──▶│ Content   │          GitHub Pages
+│ Commons     │   │ .mjs (once)  │   │ animals/fr│          /animal-rescue/
+│ (descarga)  │   └──────────────┘   │ + assets  │
+└─────────────┘                      └───────────┘
 ```
 
 ## 2. Arquitectura
@@ -127,17 +127,20 @@ re-ejecutar `fetch-rss` (el script no sobrescribe archivos existentes).
 
 ## 7. Rendimiento e imágenes
 
-- **Fotos**: hotlinking de thumbnails de Wikimedia Commons (1280px) con
-  `loading="lazy"` y `width="1280"`. Decisión documentada (ADR-0004): `astro:assets`
-  con imágenes remotas produce HTTP 429 de Wikimedia en build (rate-limit) y hace
-  frágil el pipeline de cron.
-  Mejora pendiente: añadir `srcset` con anchos menores (320/640/800px) en tarjetas y
-  home para reducir LCP en móvil (Commons sirve thumbs a varias anchuras).
+- **Fotos**: auto-gestionadas en local y optimizadas con `astro:assets`
+  (ADR-0007, supersede ADR-0004). Cada ficha referencia imágenes locales en
+  `src/assets/species/{slug}/` vía `gallery[].image: image()`. El componente
+  `<Image>` genera webp/avif + `srcset` (500/960/1280/1920) en build; el
+  `heroImage` de OG también es local. Las islas React (`AnimalList`) reciben
+  `image.src` procesado y usan `<img>` simple.
+  Importación: `npm run fetch-images` (`scripts/fetch-species-images.mjs`) lee
+  las urls de la galería, las descarga una vez (secuencial, pausa, reintentos —
+  evita el HTTP 429 de Wikimedia) y reescribe el frontmatter. NO se llama a
+  Wikimedia en build ni en visita.
 - **CSS**: un `global.css` con tokens de diseño (verde bosque `#2D6A4F`, crema
   `#FEFAE0`, naranja `#E76F51`).
-- **SEO**: sitemap (`@astrojs/sitemap`), `robots.txt`, OG tags en fichas y noticias.
-  Nota: el `og:url` de las fichas debe ser absoluto (`site` + base + path) — pendiente
-  de corregir (hoy se genera relativo).
+- **SEO**: sitemap (`@astrojs/sitemap`), `robots.txt`, OG tags en fichas, noticias
+  y home. `og:url` y `og:image` absolutos (`site` + base + path).
 
 ## 8. Estructura de carpetas
 
@@ -159,8 +162,8 @@ src/
 
 ## 9. Riesgos y notas
 
-- **Wikimedia 429**: el hotlinking en el navegador es seguro; evitar descargas
-  masivas en build.
+- **Wikimedia 429**: evitado con `fetch-images` (pausa + reintentos); en build y
+  visita no hay peticiones a Wikimedia.
 - **Feeds inestables**: algunos feeds cambian de URL (LPO/FNE/Geo rotos en
   2026-08); el script tolera errores por feed (try/catch).
 - **WWF France**: el feed puede estar vacío (0 artículos); no es un error.

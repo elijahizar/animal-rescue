@@ -4,12 +4,12 @@ name: Singe choro à queue jaune
 scientificName: Lagothrix flavicauda
 iucnStatus: CR
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/8/89/Cola_amarilla.jpg
+  - image: ../../../assets/species/singe-choro-queue-jaune/0.jpg
     author: Platyrrhinus
     page: https://commons.wikimedia.org/wiki/File:Cola_amarilla.jpg
     licence: CC BY-SA 3.0
     alt: Singe choro à queue jaune dans les Andes du nord du Pérou
-  - src: https://upload.wikimedia.org/wikipedia/commons/1/18/Mono_choro_de_cola_amarilla.jpg
+  - image: ../../../assets/species/singe-choro-queue-jaune/1.jpg
     author: YslaLeon
     page: https://commons.wikimedia.org/wiki/File:Mono_choro_de_cola_amarilla.jpg
     licence: CC0

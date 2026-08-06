@@ -4,27 +4,27 @@ name: Baleine bleue
 scientificName: Balaenoptera musculus
 iucnStatus: EN
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Antarctic_blue_whale.jpg/1280px-Antarctic_blue_whale.jpg
+  - image: ../../../assets/species/baleine-bleue/0.jpg
     author: Paul Ensor
     page: https://commons.wikimedia.org/wiki/File:Antarctic_blue_whale.jpg
     licence: CC BY-SA 2.0
     alt: Baleine bleue antarctique
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/2024-08-11_Blue_whale_Isfjord_Svalbard_01.jpg/1280px-2024-08-11_Blue_whale_Isfjord_Svalbard_01.jpg
+  - image: ../../../assets/species/baleine-bleue/1.jpg
     author: Carina Gsottbauer
     page: https://commons.wikimedia.org/wiki/File:2024-08-11_Blue_whale_Isfjord_Svalbard_01.jpg
     licence: CC BY-SA 4.0
     alt: Baleine bleue au Svalbard
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/20160130_Sri_Lanka_4271_crop_Indian_Ocean_sRGB_%2825744960026%29.jpg/1280px-20160130_Sri_Lanka_4271_crop_Indian_Ocean_sRGB_%2825744960026%29.jpg
+  - image: ../../../assets/species/baleine-bleue/2.jpg
     author: Dan Lundberg
     page: https://commons.wikimedia.org/wiki/File:20160130_Sri_Lanka_4271_crop_Indian_Ocean_sRGB_(25744960026).jpg
     licence: CC BY-SA 2.0
     alt: Baleine bleue dans l'océan Indien
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Anim1754_-_Flickr_-_NOAA_Photo_Library.jpg/1280px-Anim1754_-_Flickr_-_NOAA_Photo_Library.jpg
+  - image: ../../../assets/species/baleine-bleue/3.jpg
     author: NOAA Photo Library
     page: https://commons.wikimedia.org/wiki/File:Anim1754_-_Flickr_-_NOAA_Photo_Library.jpg
     licence: Public domain
     alt: Baleine bleue observée par la NOAA
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/2024-08-11_Blue_whale_Isfjord_Svalbard_05.jpg/1280px-2024-08-11_Blue_whale_Isfjord_Svalbard_05.jpg
+  - image: ../../../assets/species/baleine-bleue/4.jpg
     author: Carina Gsottbauer
     page: https://commons.wikimedia.org/wiki/File:2024-08-11_Blue_whale_Isfjord_Svalbard_05.jpg
     licence: CC BY-SA 4.0

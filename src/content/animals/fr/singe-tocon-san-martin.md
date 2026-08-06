@@ -4,17 +4,17 @@ name: Singe tocón de San Martín
 scientificName: Plecturocebus oenanthe
 iucnStatus: CR
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Plecturocebus_oenanthe_244863412.jpg/1280px-Plecturocebus_oenanthe_244863412.jpg
+  - image: ../../../assets/species/singe-tocon-san-martin/0.jpg
     author: thibaudaronson
     page: https://commons.wikimedia.org/wiki/File:Plecturocebus_oenanthe_244863412.jpg
     licence: CC BY-SA 4.0
     alt: Singe tocón de San Martín perché sur une branche
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Plecturocebus_oenanthe_244863437.jpg/1280px-Plecturocebus_oenanthe_244863437.jpg
+  - image: ../../../assets/species/singe-tocon-san-martin/1.jpg
     author: thibaudaronson
     page: https://commons.wikimedia.org/wiki/File:Plecturocebus_oenanthe_244863437.jpg
     licence: CC BY-SA 4.0
     alt: Singe tocón de San Martín observant son environnement
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Rio_Mayo_Titi_Monkey.jpg/1280px-Rio_Mayo_Titi_Monkey.jpg
+  - image: ../../../assets/species/singe-tocon-san-martin/2.jpg
     author: CurtisJTripp
     page: https://commons.wikimedia.org/wiki/File:Rio_Mayo_Titi_Monkey.jpg
     licence: CC BY-SA 4.0

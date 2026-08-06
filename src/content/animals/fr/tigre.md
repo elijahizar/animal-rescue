@@ -4,27 +4,27 @@ name: Tigre
 scientificName: Panthera tigris
 iucnStatus: EN
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/BENGALtiger.jpg/1280px-BENGALtiger.jpg
+  - image: ../../../assets/species/tigre/0.jpg
     author: Nikhil-SREJ
     page: https://commons.wikimedia.org/wiki/File:BENGALtiger.jpg
     licence: CC BY-SA 4.0
     alt: Tigre du Bengale dans la forêt
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Lick_by_nagarjun.jpg/1280px-Lick_by_nagarjun.jpg
+  - image: ../../../assets/species/tigre/1.jpg
     author: Kandukuru Nagarjun
     page: https://commons.wikimedia.org/wiki/File:Lick_by_nagarjun.jpg
     licence: CC BY 2.0
     alt: Tigre se léchant la patte en Inde
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Royal_Bengal_Tiger_drinking_water_copy.jpg/1280px-Royal_Bengal_Tiger_drinking_water_copy.jpg
+  - image: ../../../assets/species/tigre/2.jpg
     author: Supradai
     page: https://commons.wikimedia.org/wiki/File:Royal_Bengal_Tiger_drinking_water_copy.jpg
     licence: CC BY 4.0
     alt: Tigre royal du Bengale buvant de l'eau
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Siberian_tiger_-_Seoul_Zoo.jpg/1280px-Siberian_tiger_-_Seoul_Zoo.jpg
+  - image: ../../../assets/species/tigre/3.jpg
     author: Drcbrothephotographer
     page: https://commons.wikimedia.org/wiki/File:Siberian_tiger_-_Seoul_Zoo.jpg
     licence: CC0
     alt: Tigre de Sibérie au zoo de Séoul
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Panthera_tigris_by_Christian_Ursilva.jpg/1280px-Panthera_tigris_by_Christian_Ursilva.jpg
+  - image: ../../../assets/species/tigre/4.jpg
     author: Christian Ursilva
     page: https://commons.wikimedia.org/wiki/File:Panthera_tigris_by_Christian_Ursilva.jpg
     licence: CC BY-SA 4.0

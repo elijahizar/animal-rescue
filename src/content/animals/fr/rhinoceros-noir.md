@@ -4,27 +4,27 @@ name: Rhinocéros noir
 scientificName: Diceros bicornis
 iucnStatus: CR
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Black_Rhino_%28Diceros_bicornis%29_in_the_evening_light_..._%2840361019683%29.jpg/1280px-Black_Rhino_%28Diceros_bicornis%29_in_the_evening_light_..._%2840361019683%29.jpg
+  - image: ../../../assets/species/rhinoceros-noir/0.jpg
     author: Bernard DUPONT
     page: https://commons.wikimedia.org/wiki/File:Black_Rhino_(Diceros_bicornis)_in_the_evening_light_..._(40361019683).jpg
     licence: CC BY-SA 2.0
     alt: Rhinocéros noir en lumière du soir
-  - src: https://upload.wikimedia.org/wikipedia/commons/9/99/Black_rhino_scratching_on_a_log._%288011490841%29.jpg
+  - image: ../../../assets/species/rhinoceros-noir/1.jpg
     author: Derek Keats
     page: https://commons.wikimedia.org/wiki/File:Black_rhino_scratching_on_a_log._(8011490841).jpg
     licence: CC BY 2.0
     alt: Rhinocéros noir se grattant sur une bûche
-  - src: https://upload.wikimedia.org/wikipedia/commons/3/34/Black_rhino_running_in_this_direction._%288011491031%29.jpg
+  - image: ../../../assets/species/rhinoceros-noir/2.jpg
     author: Derek Keats
     page: https://commons.wikimedia.org/wiki/File:Black_rhino_running_in_this_direction._(8011491031).jpg
     licence: CC BY 2.0
     alt: Rhinocéros noir au galop
-  - src: https://upload.wikimedia.org/wikipedia/commons/a/a6/Black_Rhino_Segera_Conservancy.jpg
+  - image: ../../../assets/species/rhinoceros-noir/3.jpg
     author: Tish Madesh
     page: https://commons.wikimedia.org/wiki/File:Black_Rhino_Segera_Conservancy.jpg
     licence: CC0
     alt: Rhinocéros noir au Segera Conservancy au Kenya
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Diceros_bicornis_458201602.jpg/1280px-Diceros_bicornis_458201602.jpg
+  - image: ../../../assets/species/rhinoceros-noir/4.jpg
     author: Ian Webb
     page: https://commons.wikimedia.org/wiki/File:Diceros_bicornis_458201602.jpg
     licence: CC BY 4.0

@@ -4,27 +4,27 @@ name: Dauphin commun
 scientificName: Delphinus delphis
 iucnStatus: LC
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Common_dolphin_%28Delphinus_delphis%29_Sagres.jpg/1280px-Common_dolphin_%28Delphinus_delphis%29_Sagres.jpg
+  - image: ../../../assets/species/dauphin-commun/0.jpg
     author: Charles J. Sharp
     page: https://commons.wikimedia.org/wiki/File:Common_dolphin_(Delphinus_delphis)_Sagres.jpg
     licence: CC BY-SA 4.0
     alt: Dauphin commun sautant près de Sagres
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Common_Dolphins_in_Gibraltar_Bay.jpg/1280px-Common_Dolphins_in_Gibraltar_Bay.jpg
+  - image: ../../../assets/species/dauphin-commun/1.jpg
     author: Radekostojski78
     page: https://commons.wikimedia.org/wiki/File:Common_Dolphins_in_Gibraltar_Bay.jpg
     licence: CC BY-SA 4.0
     alt: Groupe de dauphins communs dans la baie de Gibraltar
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Common_dolphin_noaa.jpg/1280px-Common_dolphin_noaa.jpg
+  - image: ../../../assets/species/dauphin-commun/2.jpg
     author: NOAA NMFS
     page: https://commons.wikimedia.org/wiki/File:Common_dolphin_noaa.jpg
     licence: Public domain
     alt: Dauphin commun photographié par la NOAA
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/A%C3%A7ores_2010-07-21_%285113118899%29.jpg/1280px-A%C3%A7ores_2010-07-21_%285113118899%29.jpg
+  - image: ../../../assets/species/dauphin-commun/3.jpg
     author: Guillaume Baviere
     page: https://commons.wikimedia.org/wiki/File:Açores_2010-07-21_(5113118899).jpg
     licence: CC BY 2.0
     alt: Dauphin commun aux Açores
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/CSIRO_ScienceImage_3012_Dolphin.jpg/1280px-CSIRO_ScienceImage_3012_Dolphin.jpg
+  - image: ../../../assets/species/dauphin-commun/4.jpg
     author: Robert Kerton (CSIRO)
     page: https://commons.wikimedia.org/wiki/File:CSIRO_ScienceImage_3012_Dolphin.jpg
     licence: CC BY 3.0

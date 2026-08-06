@@ -4,27 +4,27 @@ name: Thon rouge
 scientificName: Thunnus thynnus (thon rouge de l'Atlantique)
 iucnStatus: LC
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/TunaFish.JPG/1280px-TunaFish.JPG
+  - image: ../../../assets/species/thon-rouge/0.jpg
     author: Tom Oates (Nabokov)
     page: https://commons.wikimedia.org/wiki/File:TunaFish.JPG
     licence: CC BY-SA 3.0
     alt: Thon rouge de l'Atlantique
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Bluefin_Tuna.jpg/1280px-Bluefin_Tuna.jpg
+  - image: ../../../assets/species/thon-rouge/1.jpg
     author: Ed Dunens
     page: https://commons.wikimedia.org/wiki/File:Bluefin_Tuna.jpg
     licence: CC BY 2.0
     alt: Thon rouge nageant près de la surface
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Group_of_tuna.jpg/1280px-Group_of_tuna.jpg
+  - image: ../../../assets/species/thon-rouge/2.jpg
     author: Danilo Cedrone (FAO)
     page: https://commons.wikimedia.org/wiki/File:Group_of_tuna.jpg
     licence: Public domain
     alt: Banc de thons rouges
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Tagging_of_bluefin_tuna.jpg/1280px-Tagging_of_bluefin_tuna.jpg
+  - image: ../../../assets/species/thon-rouge/3.jpg
     author: Finn-j
     page: https://commons.wikimedia.org/wiki/File:Tagging_of_bluefin_tuna.jpg
     licence: CC0
     alt: Marquage scientifique d'un thon rouge
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Profiletuna.jpg/1280px-Profiletuna.jpg
+  - image: ../../../assets/species/thon-rouge/4.jpg
     author: Vezzerina
     page: https://commons.wikimedia.org/wiki/File:Profiletuna.jpg
     licence: CC BY-SA 3.0

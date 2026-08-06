@@ -4,22 +4,22 @@ name: Grand fourmilier
 scientificName: Myrmecophaga tridactyla
 iucnStatus: VU
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/037_Giant_anteater_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg/1280px-037_Giant_anteater_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg
+  - image: ../../../assets/species/grand-fourmilier/0.jpg
     author: Giles Laurent
     page: https://commons.wikimedia.org/wiki/File:037_Giant_anteater_in_Encontro_das_Águas_State_Park_Photo_by_Giles_Laurent.jpg
     licence: CC BY-SA 4.0
     alt: Grand fourmilier sur un sentier de l'Amazonie
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/185_Giant_anteater_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg/1280px-185_Giant_anteater_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg
+  - image: ../../../assets/species/grand-fourmilier/1.jpg
     author: Giles Laurent
     page: https://commons.wikimedia.org/wiki/File:185_Giant_anteater_in_Encontro_das_Águas_State_Park_Photo_by_Giles_Laurent.jpg
     licence: CC BY-SA 4.0
     alt: Grand fourmilier reniflant le sol
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Myrmecophaga_tridactyla_134850802.jpg/1280px-Myrmecophaga_tridactyla_134850802.jpg
+  - image: ../../../assets/species/grand-fourmilier/2.jpg
     author: deboas
     page: https://commons.wikimedia.org/wiki/File:Myrmecophaga_tridactyla_134850802.jpg
     licence: CC BY 4.0
     alt: Grand fourmilier en train de chercher sa nourriture
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Myrmecophaga_tridactyla_7292861.jpg/1280px-Myrmecophaga_tridactyla_7292861.jpg
+  - image: ../../../assets/species/grand-fourmilier/3.jpg
     author: Leonel Roget
     page: https://commons.wikimedia.org/wiki/File:Myrmecophaga_tridactyla_7292861.jpg
     licence: CC BY 4.0

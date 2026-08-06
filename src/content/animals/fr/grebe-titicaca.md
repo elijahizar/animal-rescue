@@ -4,17 +4,17 @@ name: Grèbe du Titicaca
 scientificName: Rollandia microptera
 iucnStatus: EN
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/36_Titicaca_Grebe.JPG/1280px-36_Titicaca_Grebe.JPG
+  - image: ../../../assets/species/grebe-titicaca/0.jpg
     author: Tsirtalis
     page: https://commons.wikimedia.org/wiki/File:36_Titicaca_Grebe.JPG
     licence: CC BY-SA 4.0
     alt: Grèbe du Titicaca sur le lac
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Ma_-_Rollandia_microptera_-_1.jpg/1280px-Ma_-_Rollandia_microptera_-_1.jpg
+  - image: ../../../assets/species/grebe-titicaca/1.jpg
     author: Emőke Dénes
     page: https://commons.wikimedia.org/wiki/File:Ma_-_Rollandia_microptera_-_1.jpg
     licence: CC BY-SA 4.0
     alt: Grèbe du Titicaca nageant près des roseaux
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Titicaca_Grebe.jpg/1280px-Titicaca_Grebe.jpg
+  - image: ../../../assets/species/grebe-titicaca/2.jpg
     author: CLAUDIOLD
     page: https://commons.wikimedia.org/wiki/File:Titicaca_Grebe.jpg
     licence: CC BY-SA 4.0

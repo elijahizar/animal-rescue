@@ -39,10 +39,10 @@
 
 ## ADR-0004 — Imágenes: hotlinking Wikimedia Commons en lugar de `astro:assets`
 
-- **Estado**: Aceptado (2026-08-05)
+- **Estado**: Superceded (2026-08-06) — ver ADR-0007
 - **Contexto**: galerías de 5 fotos por ficha desde Wikimedia Commons (remotas).
   Se probó `astro:assets` con `inferSize` para AVIF/WebP + srcset.
-- **Decisión**: hotlinking de thumbnails (1280px) de Commons con
+- **Decisión (original)**: hotlinking de thumbnails (1280px) de Commons con
   `loading="lazy"` y `width`; sin `astro:assets`.
 - **Consecuencias**: Wikimedia responde HTTP 429 a descargas masivas y
   concurrentes en build (rate-limit) — el pipeline de cron se volvía lento y
@@ -73,3 +73,25 @@
   (logs de infraestructura, no usados por el proyecto).
 - **Consecuencias**: sin banner de cookies; página de política de privacidad
   corta y clara; el sitio funciona sin JS salvo islas (mapa/filtros).
+
+## ADR-0007 — Imágenes self-hosted con `astro:assets` (supersede ADR-0004)
+
+- **Estado**: Aceptado (2026-08-06); implementado en Fase 7
+- **Contexto**: con 30 fichas (~118 imágenes) el hotlinking seguía siendo
+  frágil (dependencia del CDN de Wikimedia en cada visita) y no permitía
+  optimización local (webp/avif + srcset). La descarga masiva en build provoca
+  HTTP 429 de Wikimedia.
+- **Decisión (Opción A)**: descargar cada imagen UNA vez (secuencial, con pausa
+  ~700 ms, reintentos con backoff y `Retry-After`) a `src/assets/species/{slug}/`
+  con `npm run fetch-images`, cambiar el schema de la colección a `gallery[].image: image()`
+  (helper de `astro:content`) y renderizar con el componente `<Image>` de
+  `astro:assets` (webp/avif + srcset, optimización LOCAL en build).
+- **Consecuencias**: sin peticiones a Wikimedia en build ni en visita; repo
+  +~39 MB (aceptable); las rutas relativas van de `src/content/animals/fr/*.md`
+  → `../../../assets/species/...` (3 niveles). El render de las islas React
+  (`AnimalList`) recibe `image.src` procesado y usa `<img>` simple.
+- **Qué deshabilita**: ADR-0004 queda como "Superseded"; se eliminan
+  `commonsSrcset` y `WIKIMEDIA_THUMB_STEPS` de `src/lib/urls.ts`.
+- **Convención futura**: para añadir una ficha nueva, elegir fotos en Commons,
+  ejecutar `npm run fetch-images` (una vez) y el frontmatter se reescribe con
+  rutas locales.

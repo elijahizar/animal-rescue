@@ -4,27 +4,27 @@ name: Pingouin de Humboldt
 scientificName: Spheniscus humboldti
 iucnStatus: VU
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Humboldt_Penguins_on_the_Ballestas_Islands_%286990567902%29.jpg/1280px-Humboldt_Penguins_on_the_Ballestas_Islands_%286990567902%29.jpg
+  - image: ../../../assets/species/pingouin-humboldt/0.jpg
     author: Alex Proimos
     page: https://commons.wikimedia.org/wiki/File:Humboldt_Penguins_on_the_Ballestas_Islands_(6990567902).jpg
     licence: CC BY 2.0
     alt: Pingouins de Humboldt sur les îles Ballestas
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Spheniscus_humboldti%2C_Islas_Ballestas_2.jpg/1280px-Spheniscus_humboldti%2C_Islas_Ballestas_2.jpg
+  - image: ../../../assets/species/pingouin-humboldt/1.jpg
     author: Charles Pence
     page: https://commons.wikimedia.org/wiki/File:Spheniscus_humboldti,_Islas_Ballestas_2.jpg
     licence: CC BY-SA 2.0
     alt: Pingouin de Humboldt sur les rochers
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Spheniscus_humboldti%2C_Islas_Ballestas_3.jpg/1280px-Spheniscus_humboldti%2C_Islas_Ballestas_3.jpg
+  - image: ../../../assets/species/pingouin-humboldt/2.jpg
     author: Stefan Krasowski
     page: https://commons.wikimedia.org/wiki/File:Spheniscus_humboldti,_Islas_Ballestas_3.jpg
     licence: CC BY 2.0
     alt: Pingouin de Humboldt près de l'eau
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Ping%C3%BCinos_en_Islas_Ballestas.JPG/1280px-Ping%C3%BCinos_en_Islas_Ballestas.JPG
+  - image: ../../../assets/species/pingouin-humboldt/3.jpg
     author: Manuel Gonzáles
     page: https://commons.wikimedia.org/wiki/File:Pingüinos_en_Islas_Ballestas.JPG
     licence: CC BY-SA 3.0
     alt: Colonie de pingouins de Humboldt
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Pinguinos-Humboldt_Isla_Choros_Chile.JPG/1280px-Pinguinos-Humboldt_Isla_Choros_Chile.JPG
+  - image: ../../../assets/species/pingouin-humboldt/4.jpg
     author: Nyrkx
     page: https://commons.wikimedia.org/wiki/File:Pinguinos-Humboldt_Isla_Choros_Chile.JPG
     licence: Public domain

@@ -4,27 +4,27 @@ name: Requin blanc
 scientificName: Carcharodon carcharias
 iucnStatus: VU
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Carcharodon_carcharias.jpg/1280px-Carcharodon_carcharias.jpg
+  - image: ../../../assets/species/requin-blanc/0.jpg
     author: Sharkdiver.com
     page: https://commons.wikimedia.org/wiki/File:Carcharodon_carcharias.jpg
     licence: Public domain
     alt: Requin blanc vu de profil
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Great_White_Shark_%2814730744390%29.jpg/1280px-Great_White_Shark_%2814730744390%29.jpg
+  - image: ../../../assets/species/requin-blanc/1.jpg
     author: Elias Levy
     page: https://commons.wikimedia.org/wiki/File:Great_White_Shark_(14730744390).jpg
     licence: CC BY 2.0
     alt: Grand requin blanc à la surface
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Great_White_Shark_%2814730742610%29.jpg/1280px-Great_White_Shark_%2814730742610%29.jpg
+  - image: ../../../assets/species/requin-blanc/2.jpg
     author: Elias Levy
     page: https://commons.wikimedia.org/wiki/File:Great_White_Shark_(14730742610).jpg
     licence: CC BY 2.0
     alt: Grand requin blanc sous l'eau
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Great_White_Shark_%2814730723649%29.jpg/1280px-Great_White_Shark_%2814730723649%29.jpg
+  - image: ../../../assets/species/requin-blanc/3.jpg
     author: Elias Levy
     page: https://commons.wikimedia.org/wiki/File:Great_White_Shark_(14730723649).jpg
     licence: CC BY 2.0
     alt: Grand requin blanc en plongée
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Feet_out_of_the_water_please_%2814869036753%29.jpg/1280px-Feet_out_of_the_water_please_%2814869036753%29.jpg
+  - image: ../../../assets/species/requin-blanc/4.jpg
     author: Christopher Michel
     page: https://commons.wikimedia.org/wiki/File:Feet_out_of_the_water_please_(14869036753).jpg
     licence: CC BY 2.0

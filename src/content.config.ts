@@ -3,25 +3,26 @@ import { glob } from 'astro/loaders';
 
 const animals = defineCollection({
 	loader: glob({ pattern: '**/*.md', base: './src/content/animals/fr' }),
-	schema: z.object({
-		slug: z.string(),
-		name: z.string(),
-		scientificName: z.string(),
-		iucnStatus: z.enum(['CR', 'EN', 'VU', 'NT', 'LC']),
-		gallery: z.array(
-			z.object({
-				src: z.string(),
-				author: z.string(),
-				page: z.string(),
-				licence: z.string(),
-				alt: z.string().optional(),
-			}),
-		),
-		causes: z.array(z.string()),
-		aider: z.string(),
-		regions: z.array(z.string()),
-		tags: z.array(z.string()).optional(),
-	}),
+	schema: ({ image }) =>
+		z.object({
+			slug: z.string(),
+			name: z.string(),
+			scientificName: z.string(),
+			iucnStatus: z.enum(['CR', 'EN', 'VU', 'NT', 'LC']),
+			gallery: z.array(
+				z.object({
+					image: image(),
+					author: z.string(),
+					page: z.string(),
+					licence: z.string(),
+					alt: z.string().optional(),
+				}),
+			),
+			causes: z.array(z.string()),
+			aider: z.string(),
+			regions: z.array(z.string()),
+			tags: z.array(z.string()).optional(),
+		}),
 });
 
 const regions = defineCollection({

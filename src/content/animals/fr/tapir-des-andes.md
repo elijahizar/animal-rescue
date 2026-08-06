@@ -4,17 +4,17 @@ name: Tapir des Andes
 scientificName: Tapirus pinchaque
 iucnStatus: EN
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Tapirus_pinchaque_133820375.jpg/1280px-Tapirus_pinchaque_133820375.jpg
+  - image: ../../../assets/species/tapir-des-andes/0.jpg
     author: desertnaturalist
     page: https://commons.wikimedia.org/wiki/File:Tapirus_pinchaque_133820375.jpg
     licence: CC BY 4.0
     alt: Tapir des Andes dans la forêt de nuages
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Tapirus_pinchaque_182788089.jpg/1280px-Tapirus_pinchaque_182788089.jpg
+  - image: ../../../assets/species/tapir-des-andes/1.jpg
     author: noverholtz
     page: https://commons.wikimedia.org/wiki/File:Tapirus_pinchaque_182788089.jpg
     licence: CC BY-SA 4.0
     alt: Tapir des Andes photographié au sol
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Tapirus_pinchaque_133820245.jpg/1280px-Tapirus_pinchaque_133820245.jpg
+  - image: ../../../assets/species/tapir-des-andes/2.jpg
     author: desertnaturalist
     page: https://commons.wikimedia.org/wiki/File:Tapirus_pinchaque_133820245.jpg
     licence: CC BY 4.0

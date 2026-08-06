@@ -19,6 +19,7 @@
 - **FASE 4 COMPLETADA** (2026-08-05): verificación de diseño (system-design vs código), rediseño e implementación de los chips de filtros en `/aide` (color-coded por categoría + estados), fix de scoping CSS de la isla `AnimalList` (los estilos nunca se aplicaban) y fix de doble slash en URLs de tarjetas
 - Next: **Fase 5 (backlog priorizado)**: SEO **5.1 COMPLETADA** (og:url absoluto, canonical, og:image noticias, srcset) → a11y (fallback sin-JS, mapa, contraste badges, skip-link) → rendimiento (preconnect, fetchpriority) → diseño/contenido (hero foto, OG home, fechas Europe/Paris) → operación (cron diario, 404)
 - **SESIONES PLANIFICADAS (2026-08-06)**: **Fase 6** = añadir 20 animales en peligro de extinción del Perú (lista aprobada por el usuario) + **Fase 7** = migrar todas las imágenes a self-hosted con `astro:assets` (decisión Opción A: descarga local + schema `image()`, migrar también las 10 fichas actuales). Plan tareas en las fases 6 y 7.
+- **ESTADO (2026-08-06)**: **FASE 6 COMPLETADA** (20 spp del Perú; commit de cierre `c200cd2`) y **FASE 7 COMPLETADA** (imágenes self-hosted, ADR-0007). Pendientes tras ambas fases: cron diario (5.5.1), quedan ítems Fase 5 (a11y/perf/diseño) y el commit de la Fase 7 (docs sin commitear).
 
 ---
 
@@ -326,36 +327,36 @@
 > seleccionadas). **~40 imágenes extra, bajo riesgo.**
 
 ### 7.1 Script de descarga `scripts/fetch-species-images.mjs` (nuevo)
-- [ ] Leer todos los `src/content/animals/fr/*.md` y extraer `gallery[].src`
-- [ ] Descargar cada thumb **1280px** a `src/assets/species/{slug}/{i}.jpg` **secuencial con pausa ~300 ms** (límite de rate de Wikimedia), verificar `HTTP 200`, saltar errores, idempotente (no redescarga si existe)
-- [ ] Reescribir el frontmatter: `src: <url>` → `image: ../../assets/species/{slug}/{i}.jpg` (ruta relativa desde `src/content/animals/fr/`), conservando `author/page/licence/alt`
-- [ ] Añadir script npm `"fetch-images": "node scripts/fetch-species-images.mjs"` en `package.json`
+- [x] Leer todos los `src/content/animals/fr/*.md` y extraer `gallery[].src`
+- [x] Descargar cada thumb **1280px** a `src/assets/species/{slug}/{i}.{ext}` **secuencial con pausa ~700 ms** (límite de rate de Wikimedia), verificar `HTTP 200`, reintentos con backoff (5, `Retry-After`), idempotente (no redescarga si existe)
+- [x] Reescribir el frontmatter: `src: <url>` → `image: ../../../assets/species/{slug}/{i}.{ext}` (ruta relativa desde `src/content/animals/fr/` — 3 niveles), conservando `author/page/licence/alt`
+- [x] Añadir script npm `"fetch-images": "node scripts/fetch-species-images.mjs"` en `package.json`
 
 ### 7.2 Schema (`src/content.config.ts`)
-- [ ] Cambiar `gallery[].src: z.string()` → `gallery[].image: image()` (helper de `astro:content`, resuelve rutas relativas que apunten dentro de la carpeta de contenido)
-- [ ] Regenerar tipos: `npx astro sync`
+- [x] Cambiar `gallery[].src: z.string()` → `gallery[].image: image()` (helper de `astro:content` — viene del contexto `schema: ({ image }) =>`, NO importable)
+- [x] Regenerar tipos: `npx astro sync`
 
 ### 7.3 Consumo en componentes (usar el componente `<Image>` de `astro:assets`)
-- [ ] `src/pages/fr/aide/[slug].astro`: `<img src={photo.src} srcset={commonsSrcset(photo.src)}>` → `<Image src={photo.image} ...>`; `heroImage` para og:image → `siteUrl(photo.image.src)` absoluto
-- [ ] `src/pages/fr/index.astro`: hero (mantener `fetchpriority`) y tarjetas destacadas con `<Image>`
-- [ ] `src/pages/fr/aide.astro` + `AnimalList.tsx`: pasar `image: gallery[0].image.src` (string ya procesado) a la isla React; en la tarjeta `<img src>` simple (sin srcset)
-- [ ] Revisar el footer/CARTE por si referencia `gallery[].src` (verificar con `grep`)
+- [x] `src/pages/fr/aide/[slug].astro`: `<Image src={photo.image} widths sizes>`; `heroImage` = `galerie[0].image.src` → `siteUrl()` absoluto para og:image
+- [x] `src/pages/fr/index.astro`: hero con `<Image>` (widths 500/960/1280/1920, `fetchpriority="high"`) y tarjetas destacadas (500/960)
+- [x] `src/pages/fr/aide.astro` + `AnimalList.tsx`: pasar `image: gallery[0].image.src` (string procesado) a la isla React; tarjeta con `<img width="1280">` simple (sin srcset)
+- [x] Revisar footer/CARTE por referencias a `gallery[].src` (`grep` limpio)
 
 ### 7.4 Limpieza del hotlinking
-- [ ] En `src/lib/urls.ts`: eliminar `commonsSrcset` y `WIKIMEDIA_THUMB_STEPS`; conservar `siteUrl`
-- [ ] Quitar todos los usos de `commonsSrcset` (home, ficha, AnimalList) y sus importaciones
+- [x] En `src/lib/urls.ts`: eliminar `commonsSrcset` y `WIKIMEDIA_THUMB_STEPS`; conservar `siteUrl`
+- [x] Quitar todos los usos de `commonsSrcset` (home, ficha, AnimalList) y sus importaciones
 
 ### 7.5 Docs (tras validación)
-- [ ] Actualizar `docs/content-guidelines.md` sección 2.3: imágenes LOCALES en `src/assets/species/`, flujo → `npm run fetch-images`, render con `astro:assets`; actualizar checklist sección 5 (foto: archivo local + crédito autor/page/licence en la ficha)
-- [ ] ADR-0004: marcar como "Superseded" y crear ADR-0007 `self-hosted + astro:assets` (justificación: se evita el 429 porque la descarga es 1 vez y no en cada build; repo +~40 MB aceptable para cron frecuente)
-- [ ] Actualizar `docs/system-design.md` (flujo de imágenes) y revisar `docs/plan.md` — pedir aprobación si cambia decisiones de `plan.md`
+- [x] Actualizar `docs/content-guidelines.md` sección 2.3: imágenes LOCALES en `src/assets/species/`, flujo → `npm run fetch-images`, render con `astro:assets`; actualizar checklist secciones 5 y 7 (foto: archivo local + crédito autor/page/licence en la ficha)
+- [x] ADR-0004: marcado "Superseded" y creado ADR-0007 `self-hosted + astro:assets` (justificación: se evita el 429 porque la descarga es 1 vez y no en cada build; repo +~39 MB aceptable para cron frecuente)
+- [x] Actualizar `docs/system-design.md` (flujo de imágenes, ADR-0007, riesgo Wikimedia 429 resuelto; sin cambios de decisión en `plan.md`)
 - [x] Actualizar este plan de ejecución (checkboxes + bitácora)
 
 ### 7.6 Validación Fase 7
 - [x] `npm run build` (0 errores) + `npx astro check` (0 errores)
-- [ ] `npm run preview` o deploy local: verificar og:image absolutos, hero, tarjetas y galería con las nuevas URLs locales
-- [ ] Confirmar que NO hay ninguna referencia `upload.wikimedia.org` en el build final (`grep -r upload.wikimedia dist/` → vacío)
-- [ ] Revisar en `npm run dev` una ficha antigua y una nueva (galería, crédito, mapa)
+- [x] `npm run preview` o deploy local: verificar og:image absolutos, hero, tarjetas y galería con las nuevas URLs locales
+- [x] Confirmar que NO hay ninguna referencia `upload.wikimedia.org` en el build final (`grep -r upload.wikimedia dist/` → vacío)
+- [x] Revisar en `npm run dev` una ficha antigua y una nueva (galería, crédito, mapa)
 
 ---
 
@@ -421,3 +422,9 @@ git status           # revisar antes de commits
 | 2026-08-06 | **Fase 6 — Batch 3 (commit `1d59591`)**: 5 fichas (singe choro, tocón, singe-araignée, harpie, grand fourmilier) + 11 regiones. Fix YAML `aider: >-`. Build 56 páginas, check 0 errores. |
 | 2026-08-06 | **Fase 6 — Batch 4 (commit `2c548cb`)**: 5 fichas (pava aliblanca, perruche de Tumbes, grenouille du Titicaca, crocodile de Tumbes, tortue imbriquée) + 10 regiones. 15 URLs verificadas HTTP 200. Build 61 páginas, check 0 errores. |
 | 2026-08-06 | **Fase 6 — cierre**: ampliados `KEYWORDS` (fetch-rss.mjs) con las 20 especies nuevas + `NEWS_TAG_LABELS` (src/lib/news.ts). Checkboxes 6.2/6.4 marcados. Revisión ficha a ficha de corrupciones (pava, grenouille, etc.). |
+| 2026-08-06 | **GitHub Actions no se disparó al push de Fase 6** (`c200cd2`): PushEvent registrado (push_id 39286861388) pero **0 workflow runs / 0 check-runs** para el head. Diagnóstico: workflow activo, enabled, default branch main, deploy manual OK. Causa probable: pérdida del evento por GitHub (no es configuración). Remedio: `gh workflow run deploy.yml` → run 31128973891 verde (11 s). Verificado: todas las fichas responden 200 en producción. El usuario pidió no hacer push de prueba. |
+| 2026-08-06 | **Fase 7 — Script 7.1** (`scripts/fetch-species-images.mjs`): lee `gallery[].src` de las 30 fichas, descarga secuencial con `PAUSE_MS 700` + retries 5 con backoff (`HTTP 429` → esperar `Retry-After`) a `src/assets/species/{slug}/`, reescribe frontmatter `src:` → `image: ../../../assets/species/{slug}/{i}.{ext}`. 118 imágenes (histórico: un segundo pase re-lanzado para terminar 3 `tigre` que el primer run dejó por 429). idempotente. |
+| 2026-08-06 | **Fase 7 — Schema 7.2**: `gallery[].image: image()` vía el contexto `schema: ({ image }) => z.object(...)` de `astro:content` (el helper `image` NO es importable de `astro:assets`). Corregidas las 30 fichas con `sed` de `../../` → `../../../` (3 niveles desde `src/content/animals/fr/`). |
+| 2026-08-06 | **Fase 7 — Componentes 7.3/7.4**: `[slug].astro`, `index.astro`, `aide.astro`, `AnimalList.tsx` migrados a `<Image>` de astro:assets / strings `image.src`; eliminados `commonsSrcset` y `WIKIMEDIA_THUMB_STEPS` de `src/lib/urls.ts` (queda solo `siteUrl`). grep `upload.wikimedia` vacío en src y dist. |
+| 2026-08-06 | **Fase 7 — Validación 7.6**: build 61 páginas (348 webp en `dist/_astro`, ~86 MB), `astro check` 0 errores (29 files). Preview `:4322`: og:image absoluto `https://elijahizar.github.io/animal-rescue/_astro/…`, `srcset` 500w/960w, imágenes HTTP 200. |
+| 2026-08-06 | **Fase 7 — Docs 7.5**: ADR-0004 → "Superseded", nuevo ADR-0007 (`self-hosted + astro:assets`); `content-guidelines.md` 2.1 (ejemplo `image: ../../../…`) y 2.3 (flujo `npm run fetch-images`, eliminado hotlinking); `system-design.md` flujo/imágenes/riesgo 429. `plan.md` sin cambios de decisión (ya decía 30 especies). |

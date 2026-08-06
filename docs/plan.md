@@ -14,7 +14,7 @@ Aplicación web para ayudar a salvar animales en peligro de extinción. Contenid
 **Contenido** (100% curado en francés, híbrido con IUCN Red List como referencia)
 - 30 especies en francés: las 10 iniciales (corail, tigre, rhinocéros noir, lion blanc, pingüino de Humboldt, thon rouge, dauphin commun, baleine bleue, guépard, requin blanc) + 20 especies en peligro del Perú (Fase 6, 2026-08-06): ours à lunettes, condor des Andes, chat des Andes, loutre marine, loutre géante, dauphin rose de l'Amazone, lamantin de l'Amazone, singe choro à queue jaune, singe tocón de San Martín, singe-araignée noir, tapir terrestre, tapir des Andes, harpie féroce, grand fourmilier, grèbe du Titicaca, pava à ailes blanches, perruche de Tumbes, grenouille du Titicaca, crocodile de Tumbes, tortue imbriquée
 - Nota: corail y thon rouge son grupos (no especies únicas) — se modelan como entrada con subespecies en el texto
-- Fichas en Content Collections por locale: nombre, nombre científico, estatus IUCN (badge), galería (3-6 fotos de Wikimedia Commons con crédito), descripción, causas (taxonomía reutilizable), cómo ayudar, regiones `lat/lng` compartidas con el mapa
+- Fichas en Content Collections por locale: nombre, nombre científico, estatus IUCN (badge), galería (3-6 fotos con crédito, descargadas de Wikimedia Commons y alojadas localmente — ADR-0007), descripción, causas (taxonomía reutilizable), cómo ayudar, regiones `lat/lng` compartidas con el mapa
 - Taxonomía de causas: déforestation, braconnage, pollution, changement climatique…
 - Noticias: feeds RSS francófonos, filtrado por keywords, últimas 30, blog con paginación y tags
 
@@ -34,7 +34,7 @@ Aplicación web para ayudar a salvar animales en peligro de extinción. Contenid
 
 **Extras**
 - OG tags + social sharing en las fichas y noticias
-- Lazy-load sobre thumbnails de Wikimedia Commons (hotlinking; `astro:assets` descartado, ver ADR-0004)
+- Lazy-load con imágenes self-hosted en `src/assets/species/` + `astro:assets` (webp responsivo, ver ADR-0007, que reemplaza el hotlinking de Wikimedia del ADR-0004)
 - Páginas legales: mentions légales + politique de confidentialité (sin cookies → sin banner)
 - Página `aider/` global: acciones diarias + ONGs con enlaces externos (sin donaciones)
 

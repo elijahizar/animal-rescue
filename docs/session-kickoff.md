@@ -38,8 +38,9 @@ DECISIONES CLAVE (resumen):
 - 10 especies: corail (grupo), tigre, rhinocéros noir, lion blanc (morfo, no especie),
   pingüino de Humboldt, thon rouge (grupo), dauphin commun, baleine bleue, guépard,
   requin blanc
-- Contenido curado híbrido con IUCN Red List como referencia; fotos Wikimedia Commons
-  con crédito (hotlinking, sin `astro:assets` — ver ADR-0004)
+- Contenido curado híbrido con IUCN Red List como referencia; fotos localizadas en
+  `src/assets/species/` (descarga 1 vez con `npm run fetch-images`; render `astro:assets`
+  — ver ADR-0007)
 - Causas: taxonomía reutilizable en `src/lib/causes.ts` (8 causas)
 - i18n: fr default con prefijo + redirect (`src/i18n`), colecciones por locale
 - Páginas: `/` · `/aide/` (filtros + búsqueda) · `/aide/[slug]/` · `/infos/` (blog)

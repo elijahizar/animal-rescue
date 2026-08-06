@@ -18,7 +18,7 @@ const listItems: AnimalListItem[] = animals.map((animal) => ({
 	continents: regions
 		.filter((region) => animal.data.regions.includes(region.data.id))
 		.map((region) => region.data.continent),
-	image: animal.data.gallery[0]?.src,
+	image: animal.data.gallery[0]?.image.src,
 }));
 ---
 

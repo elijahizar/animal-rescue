@@ -4,27 +4,27 @@ name: Corail
 scientificName: Scleractinia (coraux durs constructeurs de récifs)
 iucnStatus: EN
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Hard_coral_%28Acropora_sp.%29_%2848737750477%29.jpg/1280px-Hard_coral_%28Acropora_sp.%29_%2848737750477%29.jpg
+  - image: ../../../assets/species/corail/0.jpg
     author: Rickard Zerpe
     page: https://commons.wikimedia.org/wiki/File:Hard_coral_(Acropora_sp.)_(48737750477).jpg
     licence: CC BY 2.0
     alt: Corail dur du genre Acropora
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Acropora_and_Diver.jpg/1280px-Acropora_and_Diver.jpg
+  - image: ../../../assets/species/corail/1.jpg
     author: Mudasir Zainuddin
     page: https://commons.wikimedia.org/wiki/File:Acropora_and_Diver.jpg
     licence: CC BY-SA 4.0
     alt: Colonies d'Acropora et plongeur
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Acropora_tabulate.jpg/1280px-Acropora_tabulate.jpg
+  - image: ../../../assets/species/corail/2.jpg
     author: Akram AB
     page: https://commons.wikimedia.org/wiki/File:Acropora_tabulate.jpg
     licence: CC BY-SA 4.0
     alt: Acropora tabulaire
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Acropora_Bleaching.jpg/1280px-Acropora_Bleaching.jpg
+  - image: ../../../assets/species/corail/3.jpg
     author: Syahrul Harijo
     page: https://commons.wikimedia.org/wiki/File:Acropora_Bleaching.jpg
     licence: CC BY-SA 4.0
     alt: Acropora blanchis lors d'un épisode de blanchissement
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Staghorn_coral%2C_Bluestripe_snapper_and_Intermediate_cardinalfish_%2848737750932%29.jpg/1280px-Staghorn_coral%2C_Bluestripe_snapper_and_Intermediate_cardinalfish_%2848737750932%29.jpg
+  - image: ../../../assets/species/corail/4.jpg
     author: Rickard Zerpe
     page: https://commons.wikimedia.org/wiki/File:Staghorn_coral,_Bluestripe_snapper_and_Intermediate_cardinalfish_(48737750932).jpg
     licence: CC BY 2.0

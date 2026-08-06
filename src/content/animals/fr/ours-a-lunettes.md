@@ -4,22 +4,22 @@ name: Ours à lunettes
 scientificName: Tremarctos ornatus
 iucnStatus: VU
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Tremarctos_ornatus_289948407.jpg/1280px-Tremarctos_ornatus_289948407.jpg
+  - image: ../../../assets/species/ours-a-lunettes/0.jpg
     author: Attila Oláh
     page: https://commons.wikimedia.org/wiki/File:Tremarctos_ornatus_289948407.jpg
     licence: CC BY 4.0
     alt: Ours à lunettes dans les Andes du Pérou
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Tremarctos_ornatus_49070123.jpg/1280px-Tremarctos_ornatus_49070123.jpg
+  - image: ../../../assets/species/ours-a-lunettes/1.jpg
     author: sandy-espinozaf
     page: https://commons.wikimedia.org/wiki/File:Tremarctos_ornatus_49070123.jpg
     licence: CC BY 4.0
     alt: Ours à lunettes escaladant un arbre
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Spectacled_Bear_059.jpg/1280px-Spectacled_Bear_059.jpg
+  - image: ../../../assets/species/ours-a-lunettes/2.jpg
     author: Ltshears
     page: https://commons.wikimedia.org/wiki/File:Spectacled_Bear_059.jpg
     licence: CC BY-SA 3.0
     alt: Ours à lunettes en captivité
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Spectacled_Bear_Tennoji_2.jpg/1280px-Spectacled_Bear_Tennoji_2.jpg
+  - image: ../../../assets/species/ours-a-lunettes/3.jpg
     author: Kuribo
     page: https://commons.wikimedia.org/wiki/File:Spectacled_Bear_Tennoji_2.jpg
     licence: CC BY-SA 3.0

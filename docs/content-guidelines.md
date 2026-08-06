@@ -26,7 +26,7 @@ name: Guépard                # nombre común en francés (fr)
 scientificName: Acinonyx jubatus
 iucnStatus: VU               # CR | EN | VU | NT | LC
 gallery:
-  - src: https://upload.wikimedia.org/.../1280px-....jpg   # ancho 1280
+  - image: ../../../assets/species/guepard/0.jpg   # archivo local en src/assets/species/{slug}/
     author: Nom du photographe
     page: https://commons.wikimedia.org/wiki/File:...jpg
     licence: CC BY-SA 4.0    # o CC BY 2.0, CC0, Public domain…
@@ -58,7 +58,7 @@ tags:
   y principales amenazas.
 - Énfasis: escribir el estatus en **negrita** la primera vez ("**En danger**").
 
-### 2.3 Cómo seleccionar fotos de Wikimedia Commons
+### 2.3 Cómo seleccionar y descargar fotos de Wikimedia Commons
 
 1. Buscar en Commons y elegir 3-6 fotos con **licencia libre**:
    `CC BY`, `CC BY-SA`, `CC0` o `Public domain`. Evitar `CC BY-NC*` y `CC BY-ND`.
@@ -70,9 +70,12 @@ tags:
    parámetros `?utm_*`.
 4. Copiar el nombre `File:` y la URL de la página de Commons del autor; anotar la
    licencia exacta (se muestra en el `figcaption` de la ficha).
-5. **No descargar de forma masiva en build** (Wikimedia responde 429): el
-   navegador del visitante carga la imagen directamente (hotlinking) — es lo
-   correcto.
+5. **Descargar el archivo localmente** con `npm run fetch-images`: el script lee
+   `gallery` de cada ficha, descarga cada imagen a `src/assets/species/{slug}/`
+   (secuencial, con pausa y reintentos para evitar el HTTP 429 de Wikimedia,
+   idempotente) y reescribe el frontmatter a `image: ../../../assets/species/...`.
+   Ejecutar **una sola vez por ficha nueva**; en build NO se llama a Wikimedia
+   (las imágenes ya son locales y se optimizan con `astro:assets` → webp).
 
 ## 3. Regiones (`src/content/regions/fr/{id}.json`)
 
@@ -121,6 +124,7 @@ coincidir dentro de "mil**lions**".
 - [ ] Crear `src/content/animals/fr/{slug}.md` con el esquema de la sección 2.1
 - [ ] Verificar `iucnStatus` real en la UICN (citar evaluación/año en el body)
 - [ ] Seleccionar 3-6 fotos Commons con licencia libre (curl 200, crédito completo)
+- [ ] Descargarlas con `npm run fetch-images` (una vez por ficha) → `src/assets/species/{slug}/`
 - [ ] Crear sus regiones `src/content/regions/fr/{slug}-{zona}.json` (2-5 zonas)
 - [ ] Usar solo `causes` de la taxonomía (`src/lib/causes.ts`)
 - [ ] Añadir keywords nuevas a `scripts/fetch-rss.mjs` si aplica

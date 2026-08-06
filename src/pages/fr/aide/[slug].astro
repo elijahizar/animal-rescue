@@ -1,11 +1,12 @@
 ---
 import { getCollection, render } from 'astro:content';
 import { marked } from 'marked';
+import { Image } from 'astro:assets';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Causes from '../../../components/Causes.astro';
 import AnimalMap from '../../../components/AnimalMap.tsx';
 import { getRelativeLocaleUrl } from 'astro:i18n';
-import { siteUrl, commonsSrcset } from '../../../lib/urls';
+import { siteUrl } from '../../../lib/urls';
 import { IUCN_STATUS } from '../../../lib/iucn';
 import type { CauseId } from '../../../lib/causes';
 
@@ -35,7 +36,9 @@ const pageUrl = siteUrl(getRelativeLocaleUrl(locale, `aide/${animal.data.slug}`)
 const causes = animal.data.causes as CauseId[];
 const status = IUCN_STATUS[animal.data.iucnStatus];
 const description = (animal.body ?? '').slice(0, 160).replace(/[*#_\n]/g, ' ').trim() + '…';
-const heroImage = animal.data.gallery[0]?.src;
+const heroImage = animal.data.gallery[0]?.image.src
+	? siteUrl(animal.data.gallery[0].image.src)
+	: undefined;
 ---
 
 <BaseLayout title={`${animal.data.name} (${animal.data.scientificName})`} description={description}>
@@ -102,12 +105,12 @@ const heroImage = animal.data.gallery[0]?.src;
 			<div class="gallery">
 				{animal.data.gallery.map((photo) => (
 					<figure class="gallery-item">
-						<img
-							src={photo.src}
-							srcset={commonsSrcset(photo.src)}
+						<Image
+							src={photo.image}
 							alt={photo.alt ?? animal.data.name}
 							loading="lazy"
-							width="1280"
+							widths={[500, 960, 1280]}
+							sizes="(min-width: 720px) 33vw, 92vw"
 						/>
 						<figcaption>
 							Photo :{' '}

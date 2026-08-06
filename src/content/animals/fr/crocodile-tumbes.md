@@ -4,17 +4,17 @@ name: Crocodile de Tumbes
 scientificName: Crocodylus acutus
 iucnStatus: VU
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Crocodylus_acutus_mexico_01.jpg/1280px-Crocodylus_acutus_mexico_01.jpg
+  - image: ../../../assets/species/crocodile-tumbes/0.jpg
     author: Tomás Castelazo
     page: https://commons.wikimedia.org/wiki/File:Crocodylus_acutus_mexico_01.jpg
     licence: CC BY-SA 2.5
     alt: Crocodile de Tumbes près de l'eau
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Crocodylus_acutus_close_up_2.jpg/1280px-Crocodylus_acutus_close_up_2.jpg
+  - image: ../../../assets/species/crocodile-tumbes/1.jpg
     author: Tomascastelazo
     page: https://commons.wikimedia.org/wiki/File:Crocodylus_acutus_close_up_2.jpg
     licence: CC BY-SA 3.0
     alt: Tête de crocodile de Tumbes en gros plan
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Crocodylus_acutus_in_La_Manzanilla.jpg/1280px-Crocodylus_acutus_in_La_Manzanilla.jpg
+  - image: ../../../assets/species/crocodile-tumbes/2.jpg
     author: Tomás Castelazo
     page: https://commons.wikimedia.org/wiki/File:Crocodylus_acutus_in_La_Manzanilla.jpg
     licence: CC0

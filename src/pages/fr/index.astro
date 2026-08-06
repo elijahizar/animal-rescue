@@ -1,9 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { formatDate, excerpt, newsTagLabel } from '../../lib/news';
-import { commonsSrcset } from '../../lib/urls';
 import { IUCN_STATUS } from '../../lib/iucn';
 
 const animals = await getCollection('animals');
@@ -21,16 +21,16 @@ const description =
 
 <BaseLayout title={title} description={description}>
 	<section class="hero">
-		<img
-			class="hero-media"
-			src={hero?.src}
-			srcset={commonsSrcset(hero?.src ?? '', [500, 960, 1280])}
-			sizes="100vw"
-			alt={hero?.alt ?? 'Tigre du Bengale'}
-			width="1280"
-			height="853"
-			fetchpriority="high"
-		/>
+		{hero && (
+			<Image
+				class="hero-media"
+				src={hero.image}
+				alt={hero.alt ?? 'Tigre du Bengale'}
+				widths={[500, 960, 1280, 1920]}
+				sizes="100vw"
+				fetchpriority="high"
+			/>
+		)}
 		<div class="hero-content">
 			<div class="container">
 				<h1 class="hero-title">Aidons les animaux en danger d'extinction</h1>
@@ -64,14 +64,16 @@ const description =
 							class="card"
 							href={getRelativeLocaleUrl('fr', `aide/${animal.data.slug}`)}
 						>
-							<img
-								class="card-img"
-								src={animal.data.gallery[0]?.src}
-								srcset={commonsSrcset(animal.data.gallery[0]?.src ?? '')}
-								alt={animal.data.gallery[0]?.alt ?? animal.data.name}
-								loading="lazy"
-								width="1280"
-							/>
+							{animal.data.gallery[0] && (
+								<Image
+									class="card-img"
+									src={animal.data.gallery[0].image}
+									alt={animal.data.gallery[0].alt ?? animal.data.name}
+									loading="lazy"
+									widths={[500, 960]}
+									sizes="(min-width: 900px) 30vw, 100vw"
+								/>
+							)}
 							<div class="card-body">
 								<div class="card-head">
 									<h3>{animal.data.name}</h3>

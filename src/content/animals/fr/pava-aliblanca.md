@@ -4,17 +4,17 @@ name: Pava à ailes blanches
 scientificName: Penelope albipennis
 iucnStatus: EN
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Penelope_albipennis_255064244.jpg/1280px-Penelope_albipennis_255064244.jpg
+  - image: ../../../assets/species/pava-aliblanca/0.jpg
     author: Thibaud Aronson
     page: https://commons.wikimedia.org/wiki/File:Penelope_albipennis_255064244.jpg
     licence: CC BY-SA 4.0
     alt: Pava à ailes blanches perché
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Penelope_albipennis1.jpg/1280px-Penelope_albipennis1.jpg
+  - image: ../../../assets/species/pava-aliblanca/1.jpg
     author: BluesyPete
     page: https://commons.wikimedia.org/wiki/File:Penelope_albipennis1.jpg
     licence: CC BY-SA 3.0
     alt: Pava à ailes blanches dans son habitat
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Pava_aliblanca_%28Penelope_albipennis%29.jpg/1280px-Pava_aliblanca_%28Penelope_albipennis%29.jpg
+  - image: ../../../assets/species/pava-aliblanca/2.jpg
     author: Miguel Alván
     page: https://commons.wikimedia.org/wiki/File:Pava_aliblanca_(Penelope_albipennis).jpg
     licence: CC BY-SA 4.0

@@ -4,12 +4,12 @@ name: Chat des Andes
 scientificName: Leopardus jacobita
 iucnStatus: EN
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Gato_Andino.jpg/1280px-Gato_Andino.jpg
+  - image: ../../../assets/species/chat-des-andes/0.jpg
     author: RSANILOPEZ
     page: https://commons.wikimedia.org/wiki/File:Gato_Andino.jpg
     licence: CC BY-SA 4.0
     alt: Chat des Andes dans la puna péruvienne
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Chat-des-Andes.jpg/1280px-Chat-des-Andes.jpg
+  - image: ../../../assets/species/chat-des-andes/1.jpg
     author: ChaleatP
     page: https://commons.wikimedia.org/wiki/File:Chat-des-Andes.jpg
     licence: CC BY-SA 4.0

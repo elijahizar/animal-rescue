@@ -4,22 +4,22 @@ name: Tapir terrestre
 scientificName: Tapirus terrestris
 iucnStatus: VU
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/036_South_American_tapir_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg/1280px-036_South_American_tapir_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg
+  - image: ../../../assets/species/tapir-terrestre/0.jpg
     author: Giles Laurent
     page: https://commons.wikimedia.org/wiki/File:036_South_American_tapir_in_Encontro_das_Águas_State_Park_Photo_by_Giles_Laurent.jpg
     licence: CC BY-SA 4.0
     alt: Tapir terrestre dans la forêt amazonienne
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/South_American_tapir_%28Tapirus_terrestris%29_swimming_Cristalino.jpg/1280px-South_American_tapir_%28Tapirus_terrestris%29_swimming_Cristalino.jpg
+  - image: ../../../assets/species/tapir-terrestre/1.jpg
     author: Charles J. Sharp
     page: https://commons.wikimedia.org/wiki/File:South_American_tapir_(Tapirus_terrestris)_swimming_Cristalino.jpg
     licence: CC BY-SA 4.0
     alt: Tapir terrestre traversant une rivière à la nage
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/South_American_tapir_%28Tapirus_terrestris%29.JPG/1280px-South_American_tapir_%28Tapirus_terrestris%29.JPG
+  - image: ../../../assets/species/tapir-terrestre/2.jpg
     author: Charles J. Sharp
     page: https://commons.wikimedia.org/wiki/File:South_American_tapir_(Tapirus_terrestris).JPG
     licence: CC BY-SA 4.0
     alt: Tapir terrestre vu de profil
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Brazilian_tapir_zoo.JPG/1280px-Brazilian_tapir_zoo.JPG
+  - image: ../../../assets/species/tapir-terrestre/3.jpg
     author: LadyofHats
     page: https://commons.wikimedia.org/wiki/File:Brazilian_tapir_zoo.JPG
     licence: Public domain

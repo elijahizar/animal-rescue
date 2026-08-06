@@ -4,22 +4,22 @@ name: Singe araignée noir
 scientificName: Ateles chamek
 iucnStatus: EN
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Ateles_chamek.jpg/1280px-Ateles_chamek.jpg
+  - image: ../../../assets/species/singe-araignee-noir/0.jpg
     author: Ivan Mlinaric
     page: https://commons.wikimedia.org/wiki/File:Ateles_chamek.jpg
     licence: CC BY 2.0
     alt: Singe araignée noir suspendu à une branche
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Ateles_chamek_SP_Zoo.jpg/1280px-Ateles_chamek_SP_Zoo.jpg
+  - image: ../../../assets/species/singe-araignee-noir/1.jpg
     author: Miguelrangeljr
     page: https://commons.wikimedia.org/wiki/File:Ateles_chamek_SP_Zoo.jpg
     licence: CC BY-SA 3.0
     alt: Singe araignée noir perché dans son enclos
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Ateles_chamek_126223254.jpg/1280px-Ateles_chamek_126223254.jpg
+  - image: ../../../assets/species/singe-araignee-noir/2.jpg
     author: Floro Ortiz Contreras
     page: https://commons.wikimedia.org/wiki/File:Ateles_chamek_126223254.jpg
     licence: CC BY 4.0
     alt: Singe araignée noir en Amazonie péruvienne
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Spider_monkeys_%28Ateles_chamek%29_in_rehabilitation.jpg/1280px-Spider_monkeys_%28Ateles_chamek%29_in_rehabilitation.jpg
+  - image: ../../../assets/species/singe-araignee-noir/3.jpg
     author: Mikaela
     page: https://commons.wikimedia.org/wiki/File:Spider_monkeys_(Ateles_chamek)_in_rehabilitation.jpg
     licence: CC BY-SA 4.0

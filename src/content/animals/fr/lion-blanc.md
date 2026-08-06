@@ -4,27 +4,27 @@ name: Lion blanc
 scientificName: Panthera leo
 iucnStatus: VU
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/White_Lion.jpg/1280px-White_Lion.jpg
+  - image: ../../../assets/species/lion-blanc/0.jpg
     author: Stano Novak
     page: https://commons.wikimedia.org/wiki/File:White_Lion.jpg
     licence: CC BY 2.5
     alt: Lion blanc au pelage clair
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/White_lion_side_face.jpg/1280px-White_lion_side_face.jpg
+  - image: ../../../assets/species/lion-blanc/1.jpg
     author: Shafquat Ameen
     page: https://commons.wikimedia.org/wiki/File:White_lion_side_face.jpg
     licence: CC BY-SA 4.0
     alt: Profil d'un lion blanc
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/White_lion._%2811384059533%29.jpg/1280px-White_lion._%2811384059533%29.jpg
+  - image: ../../../assets/species/lion-blanc/2.jpg
     author: Bob Adams
     page: https://commons.wikimedia.org/wiki/File:White_lion._(11384059533).jpg
     licence: CC BY-SA 2.0
     alt: Lion blanc en safari en Afrique du Sud
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/White_lion_cub_%2814659220940%29.jpg/1280px-White_lion_cub_%2814659220940%29.jpg
+  - image: ../../../assets/species/lion-blanc/3.jpg
     author: Benjamin Balázs
     page: https://commons.wikimedia.org/wiki/File:White_lion_cub_(14659220940).jpg
     licence: CC0
     alt: Lionceau blanc
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/H%C3%A9lone_%2C_de_witte_leeuwin.jpg/1280px-H%C3%A9lone_%2C_de_witte_leeuwin.jpg
+  - image: ../../../assets/species/lion-blanc/4.jpg
     author: Frank Wouters
     page: https://commons.wikimedia.org/wiki/File:H%C3%A9lone_,_de_witte_leeuwin.jpg
     licence: CC BY 2.0

@@ -4,22 +4,22 @@ name: Loutre géante
 scientificName: Pteronura brasiliensis
 iucnStatus: EN
 gallery:
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/018_Giant_otter_eating_a_fish_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg/1280px-018_Giant_otter_eating_a_fish_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg
+  - image: ../../../assets/species/loutre-geante/0.jpg
     author: Giles Laurent
     page: https://commons.wikimedia.org/wiki/File:018_Giant_otter_eating_a_fish_in_Encontro_das_Águas_State_Park_Photo_by_Giles_Laurent.jpg
     licence: CC BY-SA 4.0
     alt: Loutre géante mangeant un poisson
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/139_Giant_otter_swimming_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg/1280px-139_Giant_otter_swimming_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg
+  - image: ../../../assets/species/loutre-geante/1.jpg
     author: Giles Laurent
     page: https://commons.wikimedia.org/wiki/File:139_Giant_otter_swimming_in_Encontro_das_Águas_State_Park_Photo_by_Giles_Laurent.jpg
     licence: CC BY-SA 4.0
     alt: Loutre géante nageant à la surface
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Giant_otter_%28Pteronura_brasiliensis%29_juvenile.jpg/1280px-Giant_otter_%28Pteronura_brasiliensis%29_juvenile.jpg
+  - image: ../../../assets/species/loutre-geante/2.jpg
     author: Charles J. Sharp
     page: https://commons.wikimedia.org/wiki/File:Giant_otter_(Pteronura_brasiliensis)_juvenile.jpg
     licence: CC BY-SA 4.0
     alt: Loutre géante juvénile sortant de l'eau
-  - src: https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Pteronura_brasiliensis.jpg/1280px-Pteronura_brasiliensis.jpg
+  - image: ../../../assets/species/loutre-geante/3.jpg
     author: Steve Wilson
     page: https://commons.wikimedia.org/wiki/File:Pteronura_brasiliensis.jpg
     licence: CC BY 2.0
