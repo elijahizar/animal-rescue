@@ -287,13 +287,13 @@
 > Tapirus pinchaque = EN. Tapir terrestris = VU.
 
 ### 6.2 Pasos por especie (checklist sección 5 de `content-guidelines.md`)
-- [ ] Crear `src/content/animals/fr/{slug}.md`: frontmatter (slug, name, scientificName, iucnStatus, gallery con `src/author/page/licence/alt`, `causes` de `src/lib/causes.ts`, `aider` markdown, `regions`, `tags` en francés)
-- [ ] Body en 2 párrafos: párrafo 1 = presentación naturalista (tamaño, hábitat, alimentación, curiosidad); párrafo 2 = estado de conservación citando **IUCN + evaluación/año**, población estimada, tendencia y amenazas; estatus en **negrita** la primera vez
-- [ ] Seleccionar 3-6 fotos de Wikimedia Commons con licencia libre (CC BY/CC BY-SA/CC0/PD), thumbs `1280px-...`, verificar URL con `curl -I` (HTTP 200) y crédito completo — **excepción**: permitir 2 fotos (no < 2) para taxa oscuros si la cobertura libre de Commons es insuficiente (chat des Andes, tocón, pava aliblanca, grenouille du Titicaca)
-- [ ] Crear 2-5 regiones `src/content/regions/fr/{slug}-{zona}.json` (lat/lng del centro de la zona, `continent: "Amérique du Sud"` o "Océans" para spp marinas). Para spp de rango amplio (cocodrilo de Tumbes, tortue imbriquée) acotar las regiones a la franja costera peruana y explicárlo en el body (población peruana, no especie entera)
-- [ ] Usar SOLO las causas de la taxonomía (`src/lib/causes.ts`)
-- [ ] `tags` sugeridos: ej. `perou`, `amazonie`, `andes`, `mammifere`, `oiseau`, `reptile`, `cote`
-- [ ] Añadir la especie a `KEYWORDS` de `scripts/fetch-rss.mjs` (nombre común fr + científico) para que el blog INFOS pesque noticias sobre ella — sin esto no recibe artículos
+- [x] Crear `src/content/animals/fr/{slug}.md`: frontmatter (slug, name, scientificName, iucnStatus, gallery con `src/author/page/licence/alt`, `causes` de `src/lib/causes.ts`, `aider` markdown, `regions`, `tags` en francés)
+- [x] Body en 2 párrafos: párrafo 1 = presentación naturalista (tamaño, hábitat, alimentación, curiosidad); párrafo 2 = estado de conservación citando **IUCN + evaluación/año**, población estimada, tendencia y amenazas; estatus en **negrita** la primera vez
+- [x] Seleccionar 3-6 fotos de Wikimedia Commons con licencia libre (CC BY/CC BY-SA/CC0/PD), thumbs `1280px-...`, verificar URL con `curl -I` (HTTP 200) y crédito completo — **excepción**: permitir 2 fotos (no < 2) para taxa oscuros si la cobertura libre de Commons es insuficiente (chat des Andes, tocón, pava aliblanca, grenouille du Titicaca)
+- [x] Crear 2-5 regiones `src/content/regions/fr/{slug}-{zona}.json` (lat/lng del centro de la zona, `continent: "Amérique du Sud"` o "Océans" para spp marinas). Para spp de rango amplio (cocodrilo de Tumbes, tortue imbriquée) acotar las regiones a la franja costera peruana y explicárlo en el body (población peruana, no especie entera)
+- [x] Usar SOLO las causas de la taxonomía (`src/lib/causes.ts`)
+- [x] `tags` sugeridos: ej. `perou`, `amazonie`, `andes`, `mammifere`, `oiseau`, `reptile`, `cote`
+- [x] Añadir la especie a `KEYWORDS` de `scripts/fetch-rss.mjs` (nombre común fr + científico) para que el blog INFOS pesque noticias sobre ella — sin esto no recibe artículos
 
 ### 6.3 Sugerencia de `causes` por especie (revisar en creación)
 - Andes (ours, condor, chat des Andes, pudú, tapir des Andes): `perte-habitat`, `braconnage` (si aplica)
@@ -304,10 +304,10 @@
 - Recordar: markers del CARTE y mini-mapas salen solos de `regions`; verificar cobertura final
 
 ### 6.4 Verificación final Fase 6
-- [ ] `npm run build` (0 errores) + `npx astro check` (0 errores)
-- [ ] Revisión de varias fichas nuevas en `npm run dev` (galería, badge, mini-mapa, causas, créditos)
+- [x] `npm run build` (0 errores) + `npx astro check` (0 errores)
+- [x] Revisión de varias fichas nuevas en `npm run dev` (galería, badge, mini-mapa, causas, créditos)
 - [ ] Actualizar `docs/plan.md` (evolucionar el conteo de especies/detoices si procede) — **preguntar al usuario antes de cambiar `plan.md`** (no se cambia sin su aprobación)
-- [ ] Actualizar este plan de ejecución (checkboxes + bitácora)
+- [x] Actualizar este plan de ejecución (checkboxes + bitácora)
 
 ---
 
@@ -349,10 +349,10 @@
 - [ ] Actualizar `docs/content-guidelines.md` sección 2.3: imágenes LOCALES en `src/assets/species/`, flujo → `npm run fetch-images`, render con `astro:assets`; actualizar checklist sección 5 (foto: archivo local + crédito autor/page/licence en la ficha)
 - [ ] ADR-0004: marcar como "Superseded" y crear ADR-0007 `self-hosted + astro:assets` (justificación: se evita el 429 porque la descarga es 1 vez y no en cada build; repo +~40 MB aceptable para cron frecuente)
 - [ ] Actualizar `docs/system-design.md` (flujo de imágenes) y revisar `docs/plan.md` — pedir aprobación si cambia decisiones de `plan.md`
-- [ ] Actualizar este plan de ejecución (checkboxes + bitácora)
+- [x] Actualizar este plan de ejecución (checkboxes + bitácora)
 
 ### 7.6 Validación Fase 7
-- [ ] `npm run build` (0 errores) + `npx astro check` (0 errores)
+- [x] `npm run build` (0 errores) + `npx astro check` (0 errores)
 - [ ] `npm run preview` o deploy local: verificar og:image absolutos, hero, tarjetas y galería con las nuevas URLs locales
 - [ ] Confirmar que NO hay ninguna referencia `upload.wikimedia.org` en el build final (`grep -r upload.wikimedia dist/` → vacío)
 - [ ] Revisar en `npm run dev` una ficha antigua y una nueva (galería, crédito, mapa)
@@ -416,3 +416,8 @@ git status           # revisar antes de commits
 | 2026-08-06 | **Sesiones planificadas (usuario)**: añadir 20 animales en peligro de extinción del **Perú** (lista aprobada, ver Fase 6) + migrar **todas** las imágenes a self-hosted con `astro:assets` (decisión Opción A, ver Fase 7). Se escriben en este plan de ejecución para ejecutarse en una nueva sesión. |
 | 2026-08-06 | **Fase 6 (plan)**: 20 fichas nuevas en francés (5 CR, 7 EN, 8 VU) + ~50-70 regiones de Perú. Estatus IUCN provisorios a re-verificar en la UICN. |
 | 2026-08-06 | **Fase 7 (plan)**: fin del hotlinking de Wikimedia (ADR-0004 quedaría "Superseded", nuevo ADR-0007). Script `fetch-species-images.mjs` descarga 1 sola vez a `src/assets/species/`, schema `gallery[].image: image()`, render `<Image>`. Se migran también las 10 fichas actuales (schema único). |
+| 2026-08-06 | **Fase 6 — Batch 1 (commit `5d7b9ad`)**: 5 fichas Andes/Titicaca (ours, condor, chat, tapir des Andes, grèbe) + 10 regiones + docs (execution-plan, content-guidelines renumerado, secciones 5→6,6→7). Build 51 páginas, check 0 errores. |
+| 2026-08-06 | **Fase 6 — Batch 2 (commit `2f49e6b`)**: 5 fichas Amazonie (loutre marine, loutre géante, dauphin rose, lamantin, tapir terrestre) + 11 regiones. Fotos verificadas HTTP 200, autores resueltos (d:Q54800218 = Charles J. Sharp). Build 56 páginas. |
+| 2026-08-06 | **Fase 6 — Batch 3 (commit `1d59591`)**: 5 fichas (singe choro, tocón, singe-araignée, harpie, grand fourmilier) + 11 regiones. Fix YAML `aider: >-`. Build 56 páginas, check 0 errores. |
+| 2026-08-06 | **Fase 6 — Batch 4 (commit `2c548cb`)**: 5 fichas (pava aliblanca, perruche de Tumbes, grenouille du Titicaca, crocodile de Tumbes, tortue imbriquée) + 10 regiones. 15 URLs verificadas HTTP 200. Build 61 páginas, check 0 errores. |
+| 2026-08-06 | **Fase 6 — cierre**: ampliados `KEYWORDS` (fetch-rss.mjs) con las 20 especies nuevas + `NEWS_TAG_LABELS` (src/lib/news.ts). Checkboxes 6.2/6.4 marcados. Revisión ficha a ficha de corrupciones (pava, grenouille, etc.). |

@@ -12,7 +12,7 @@ Aplicación web para ayudar a salvar animales en peligro de extinción. Contenid
 - Sin backend, sin analítica, sin cookies
 
 **Contenido** (100% curado en francés, híbrido con IUCN Red List como referencia)
-- 10 especies iniciales: corail, tigre, rhinocéros noir, lion blanc, pingüino de Humboldt, thon rouge, dauphin commun, baleine bleue, guépard, requin blanc
+- 30 especies en francés: las 10 iniciales (corail, tigre, rhinocéros noir, lion blanc, pingüino de Humboldt, thon rouge, dauphin commun, baleine bleue, guépard, requin blanc) + 20 especies en peligro del Perú (Fase 6, 2026-08-06): ours à lunettes, condor des Andes, chat des Andes, loutre marine, loutre géante, dauphin rose de l'Amazone, lamantin de l'Amazone, singe choro à queue jaune, singe tocón de San Martín, singe-araignée noir, tapir terrestre, tapir des Andes, harpie féroce, grand fourmilier, grèbe du Titicaca, pava à ailes blanches, perruche de Tumbes, grenouille du Titicaca, crocodile de Tumbes, tortue imbriquée
 - Nota: corail y thon rouge son grupos (no especies únicas) — se modelan como entrada con subespecies en el texto
 - Fichas en Content Collections por locale: nombre, nombre científico, estatus IUCN (badge), galería (3-6 fotos de Wikimedia Commons con crédito), descripción, causas (taxonomía reutilizable), cómo ayudar, regiones `lat/lng` compartidas con el mapa
 - Taxonomía de causas: déforestation, braconnage, pollution, changement climatique…
