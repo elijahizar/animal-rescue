@@ -43,6 +43,12 @@ const KEYWORDS = {
 	'perruche-tumbes': ['perruche', 'perruches', 'tumbes'],
 	'crocodile-tumbes': ['crocodile', 'crocodiles', 'crocodylus'],
 	'tortue-imbriquee': ['tortue', 'tortues', 'turtle', 'imbriquee', 'hawksbill'],
+	'leopard-de-l-amour': ['léopard de l’amour', 'leopard de l’amour', "léopard de l'amour", 'amur leopard', 'léopard', 'leopard'],
+	'saola': ['saola', 'pseudoryx', 'licorne d’asie'],
+	'koala': ['koala', 'koalas'],
+	'tarsier-des-philippines': ['tarsier', 'tarsiers', 'carlito'],
+	'orang-outan': ['orang-outan', 'orang-outans', 'orangoutan', 'orangutan', 'pongo'],
+	'chimpanze': ['chimpanzé', 'chimpanze', 'chimpanzés', 'pan troglodytes', 'grand singe', 'grands singes'],
 	IUCN: ['iucn', 'espèce menacée', 'espèces menacées', 'biodiversité', 'faune sauvage'],
 };
 

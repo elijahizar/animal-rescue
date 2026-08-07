@@ -20,6 +20,7 @@
 - Next: **Fase 5 (backlog priorizado)**: SEO **5.1 COMPLETADA** (og:url absoluto, canonical, og:image noticias, srcset) → a11y (fallback sin-JS, mapa, contraste badges, skip-link) → rendimiento (preconnect, fetchpriority) → diseño/contenido (hero foto, OG home, fechas Europe/Paris) → operación (cron diario, 404)
 - **SESIONES PLANIFICADAS (2026-08-06)**: **Fase 6** = añadir 20 animales en peligro de extinción del Perú (lista aprobada por el usuario) + **Fase 7** = migrar todas las imágenes a self-hosted con `astro:assets` (decisión Opción A: descarga local + schema `image()`, migrar también las 10 fichas actuales). Plan tareas en las fases 6 y 7.
 - **ESTADO (2026-08-06)**: **FASE 6 COMPLETADA** (20 spp del Perú; commit de cierre `c200cd2`) y **FASE 7 COMPLETADA** (imágenes self-hosted, ADR-0007). Pendientes tras ambas fases: cron diario (5.5.1), quedan ítems Fase 5 (a11y/perf/diseño) y el commit de la Fase 7 (docs sin commitear).
+- **FASE 8 COMPLETADA (2026-08-07)**: 6 spp emblemas (léopard de l'Amour CR, saola CR, koala VU, tarsier des Philippines NT, orang-outan de Bornéo CR, chimpanzé EN) + 16 regiones + imágenes self-hosted (29) + keywords RSS/news. Build 67 páginas, check 0 errores. **Sin commit** (a la espera del usuario).
 
 ---
 
@@ -360,6 +361,44 @@
 
 ---
 
+## Fase 8 — 6 espèces emblématiques d'Asie et d'Océanie
+
+> **Objetivo** (2026-08-07, usuario): añadir 6 fichas: léopard de l'Amour,
+> saola, koala, tarsier des Philippines, orang-outan de Bornéo, chimpanzé commun.
+> Contenido 100% en francés según `docs/content-guidelines.md` (checklist 6).
+> Imágenes self-hosted directamente (flujo Fase 7: `src:` → `npm run fetch-images`
+> → `image:` local).
+
+### 8.1 Especies y estatus IUCN (verificados en línea)
+
+| # | Slug | Nom (fr) | Scientifique | IUCN |
+|---|---|---|---|---|
+| 1 | `leopard-de-l-amour` | Léopard de l'Amour | *Panthera pardus orientalis* | CR (Jackson & Nowell 2008) |
+| 2 | `saola` | Saola | *Pseudoryx nghetinhensis* | CR (2020) |
+| 3 | `koala` | Koala | *Phascolarctos cinereus* | VU (Woinarski & Burbidge, rev. 2020) |
+| 4 | `tarsier-des-philippines` | Tarsier des Philippines | *Carlito syrichta* | NT (Shekelle 2020) |
+| 5 | `orang-outan` | Orang-outan de Bornéo | *Pongo pygmaeus* | CR (Ancrenaz et al. 2024) |
+| 6 | `chimpanze` | Chimpanzé commun | *Pan troglodytes* | EN (Humle et al. 2016) |
+
+> Decisiones del usuario: koala **VU** (estatus global UICN, no EN australiano
+> del EPBC Act); tarsier **NT** (primer NT del sitio); orang-outan de **Bornéo**
+> (*Pongo pygmaeus*). CR del leopardo de Amur = subespecie (misma categoría que
+> la spp: LC pero subespecie CR según UICN).
+
+### 8.2 Pasos
+- [x] Crear las 6 fichas `src/content/animals/fr/*.md` (frontmatter + body en 2 párrafos, `aider`, `regions`, `tags`)
+- [x] Fotos de Wikimedia Commons: 5 por ficha (29 total), autores/licencias verificados vía API de Commons; thumbs `1280px-` (2 fotos de saola y 2 de koala en resolución original por tamaño de archivo)
+- [x] Corregir erratas de francés ficha a ficha (leopard, saola, koala, tarsier, orang-outan, chimpanzé)
+- [x] Crear 16 regiones JSON (leopard ×2, saola ×3, koala ×3, tarsier ×3, orang-outan ×2, chimpanzé ×3)
+- [x] Ejecutar `npm run fetch-images` (29 imágenes descargadas con reintentos 429, todas JPEG válidas; frontmatter reescrito a `image:` local)
+- [x] Ampliar `KEYWORDS` (scripts/fetch-rss.mjs) y `NEWS_TAG_LABELS` (src/lib/news.ts) con las 6 especies
+- [x] `npm run build` (67 páginas) + `npx astro check` (0 errores)
+- [ ] Actualizar `docs/plan.md` si procede (preguntar al usuario) — **sin cambios sin aprobación**
+- [x] Actualizar este plan de ejecución (checkboxes + bitácora)
+- [ ] Commit (solo cuando el usuario lo pida)
+
+---
+
 ## Definición de listo (DoD) por sesión
 
 - Todos los cambios compilados: `npm run build` sin errores
@@ -428,3 +467,7 @@ git status           # revisar antes de commits
 | 2026-08-06 | **Fase 7 — Componentes 7.3/7.4**: `[slug].astro`, `index.astro`, `aide.astro`, `AnimalList.tsx` migrados a `<Image>` de astro:assets / strings `image.src`; eliminados `commonsSrcset` y `WIKIMEDIA_THUMB_STEPS` de `src/lib/urls.ts` (queda solo `siteUrl`). grep `upload.wikimedia` vacío en src y dist. |
 | 2026-08-06 | **Fase 7 — Validación 7.6**: build 61 páginas (348 webp en `dist/_astro`, ~86 MB), `astro check` 0 errores (29 files). Preview `:4322`: og:image absoluto `https://elijahizar.github.io/animal-rescue/_astro/…`, `srcset` 500w/960w, imágenes HTTP 200. |
 | 2026-08-06 | **Fase 7 — Docs 7.5**: ADR-0004 → "Superseded", nuevo ADR-0007 (`self-hosted + astro:assets`); `content-guidelines.md` 2.1 (ejemplo `image: ../../../…`) y 2.3 (flujo `npm run fetch-images`, eliminado hotlinking); `system-design.md` flujo/imágenes/riesgo 429. `plan.md` sin cambios de decisión (ya decía 30 especies). |
+| 2026-08-07 | **Fase 8 — 6 spp nuevas** (usuario): léopard de l'Amour (CR, subespecie), saola (CR), koala (VU, decisión usuario: global UICN), tarsier des Philippines (NT, primer NT), orang-outan de Bornéo (CR, decisión: *Pongo pygmaeus*), chimpanzé commun (EN). Estatus verificados en línea. |
+| 2026-08-07 | **Fase 8 — Fichas**: 6 fichas creadas (leopard-de-l-amour, saola, koala, tarsier-des-philippines, orang-outan, chimpanze) + 16 regiones JSON. Autores/licencias de las 10 fotos de orang-outan/chimpanze re-verificadas vía API Commons (Thomas Fuhrmann, Bernard DUPONT, A.Baihaqi, Joeavison1, Giles Laurent, Charles J. Sharp, Ben Costamagna, H. Zell). Erratas de francés corregidas ficha a ficha. |
+| 2026-08-07 | **Fase 8 — Imágenes**: `npm run fetch-images` descargó 29 imágenes (con retries 429 de Wikimedia), todas JPEG válidas (`file` OK), frontmatter reescrito de `src:` → `image: ../../../assets/species/{slug}/{n}.jpg`. |
+| 2026-08-07 | **Fase 8 — RSS/news**: `KEYWORDS` (fetch-rss.mjs) + `NEWS_TAG_LABELS` (src/lib/news.ts) ampliados con las 6 spp. Build 67 páginas, `astro check` 0 errores. **Sin commit** (esperando al usuario). |

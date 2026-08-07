@@ -29,6 +29,12 @@ export const NEWS_TAG_LABELS: Record<string, string> = {
 	'perruche-tumbes': 'Perruche de Tumbes',
 	'crocodile-tumbes': 'Crocodile de Tumbes',
 	'tortue-imbriquee': 'Tortue imbriquée',
+	'leopard-de-l-amour': 'Léopard de l’Amour',
+	'saola': 'Saola',
+	'koala': 'Koala',
+	'tarsier-des-philippines': 'Tarsier des Philippines',
+	'orang-outan': 'Orang-outan de Bornéo',
+	'chimpanze': 'Chimpanzé commun',
 	IUCN: 'Biodiversité',
 };
 
