@@ -109,4 +109,11 @@ const ordered = [...entries].sort((a, b) => (a.data.date < b.data.date ? 1 : -1)
 		color: var(--color-muted);
 		margin: 0;
 	}
+
+	@media (max-width: 720px) {
+		.page {
+			padding-left: var(--space-8);
+			padding-right: var(--space-8);
+		}
+	}
 </style>

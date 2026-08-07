@@ -1,0 +1,122 @@
+---
+const LEAF_COUNT = 16;
+
+const leaves = Array.from({ length: LEAF_COUNT }, (_, i) => {
+	const seed = (i * 2654435761) % 1000 / 1000;
+	const left = 2 + seed * 96;
+	const delay = -((14 + seed * 14) % 28);
+	const duration = 16 + (1 - seed) * 12;
+	const sway = 30 + seed * 70;
+	const scale = 0.7 + seed * 0.8;
+	const opacity = 0.12 + ((i * 37) % 18) / 100;
+	return { left, delay, duration, sway, scale, opacity };
+});
+---
+
+<div class="animated-bg" aria-hidden="true">
+	<div class="bg-gradient"></div>
+	{
+		leaves.map((leaf, i) => (
+			<i
+				class="leaf"
+				style={`left:${leaf.left}%; --dur:${leaf.duration.toFixed(1)}s; --delay:${leaf.delay.toFixed(2)}s; --sway:${leaf.sway.toFixed(0)}px; transform:scale(${leaf.scale.toFixed(2)}); opacity:${leaf.opacity};`}
+				data-index={i}
+			/>
+		))
+	}
+</div>
+
+<style>
+	.animated-bg,
+	.bg-gradient,
+	.leaf {
+		position: fixed;
+		top: 0;
+		left: 0;
+		pointer-events: none;
+	}
+
+	.animated-bg {
+		inset: 0;
+		z-index: -1;
+		overflow: hidden;
+	}
+
+	.bg-gradient {
+		inset: 0;
+		background:
+			radial-gradient(45% 55% at 12% 18%, rgba(64, 145, 108, 0.16), transparent 70%),
+			radial-gradient(50% 60% at 88% 82%, rgba(43, 108, 82, 0.14), transparent 70%),
+			radial-gradient(35% 45% at 70% 25%, rgba(231, 111, 81, 0.06), transparent 70%),
+			var(--color-cream);
+		animation: drift 60s ease-in-out infinite alternate;
+	}
+
+	@keyframes drift {
+		from {
+			transform: translate3d(-1.5%, -1%, 0) scale(1.02);
+		}
+		to {
+			transform: translate3d(1.5%, 1.5%, 0) scale(1.06);
+		}
+	}
+
+	.leaf {
+		top: -12%;
+		width: 22px;
+		height: 30px;
+		opacity: 0.15;
+		will-change: transform;
+		animation: leaf var(--dur) var(--delay) linear infinite;
+	}
+
+	.leaf::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: var(--color-forest);
+		border-radius:
+			100% 0 100% 0
+			/ 100% 0 100% 0;
+		transform: rotate(35deg);
+		clip-path: polygon(
+			50% 0%,
+			100% 50%,
+			50% 100%,
+			0% 50%
+		);
+	}
+
+	.leaf::after {
+		content: '';
+		position: absolute;
+		left: 50%;
+		top: 4%;
+		bottom: 4%;
+		width: 1px;
+		background: var(--color-cream);
+		opacity: 0.5;
+	}
+
+	@keyframes leaf {
+		0% {
+			transform: translate3d(0, -15vh, 0) rotate(0deg);
+		}
+		50% {
+			transform: translate3d(var(--sway), 50vh, 0) rotate(180deg);
+		}
+		100% {
+			transform: translate3d(calc(var(--sway) * -1), 115vh, 0) rotate(360deg);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.bg-gradient {
+			animation: none;
+		}
+
+		.leaf {
+			display: none;
+		}
+	}
+</style>
